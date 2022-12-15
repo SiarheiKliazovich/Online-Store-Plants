@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./App.css";
 
-import Header from "../Header/Header";
+import Header from "../Header";
 import Home from "../Home";
 import Product from "../Product";
 import ProductGrid from "../ProductGrid";
