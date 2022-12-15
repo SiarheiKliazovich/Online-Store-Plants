@@ -17,8 +17,8 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
-    "build:css": "node-sass src/ -o src/ ",
-    "watch:css": "npm run build:css && node-sass src/ -o src/ -w -r",
+    "build:css": "sass src/",
+    "watch:css": "npm run build:css && sass src/ --watch",
     "start:js": "react-scripts start",
     "start": "npm-run-all -p watch:css start:js",
     "build:js": "react-scripts build",
@@ -50,7 +50,7 @@
     "@typescript-eslint/parser": "^5.46.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-webpack-plugin": "^3.2.0",
-    "node-sass": "^7.0.3",
+    "sass": "^1.56.2",
     "ts-loader": "^9.4.2"
   }
 }
