@@ -1,6 +1,8 @@
+@import '../../sass/variables';
+
 .header {
-  background-color: #fff;
-  color: rgb(20, 19, 19);
+  background-color: $main-background-color;
+  color: $main-text-color;
 }
 
 .header__container {
@@ -35,12 +37,12 @@
 }
 
 .header__link {
-  color: rgb(20, 19, 19);
+  color: $main-text-color;
   transition: 1s;
 
   &:hover,
   &:active {
-    color: rgb(26, 90, 31);
+    color: $main-text-color-active;
   }
 }
 
