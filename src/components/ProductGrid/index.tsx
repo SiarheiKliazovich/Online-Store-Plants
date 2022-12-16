@@ -37,7 +37,6 @@ const ProductGrid = () => {
                   value="1"
                   title="Qty"
                   pattern="[0-9]*"
-                  // inputmode="numeric"
                 />
                 <input className="plus" type="button" value="+" />
               </div>

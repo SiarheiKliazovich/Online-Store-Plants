@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-// import { Link } from "react-router-dom";
 import "./App.css";
 
 import Header from "../Header";
@@ -14,7 +13,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/productItem" element={<ProductItem />} />
+        <Route path="/productitem" element={<ProductItem />} />
         <Route path="/products" element={<Products />} />
         <Route path="/about" element={<About />} />
       </Routes>
