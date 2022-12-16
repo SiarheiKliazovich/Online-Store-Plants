@@ -7,6 +7,7 @@ import Home from "../Home";
 import Product from "../Product";
 import ProductGrid from "../ProductGrid";
 import About from "../About";
+import Footer from "../Footer";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/products" element={<ProductGrid />} />
         <Route path="/about" element={<About />} />
       </Routes>
+      <Footer />
     </>
   );
 };
