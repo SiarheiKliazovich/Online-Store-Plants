@@ -3,7 +3,7 @@
   color: #222523;
 }
 
-.header__container {
+.header__wrapper {
   display: flex;
   justify-content: space-between;
   width: 100%;

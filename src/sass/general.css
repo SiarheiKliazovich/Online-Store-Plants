@@ -341,9 +341,11 @@ a {
   box-sizing: border-box;
 }
 
-.wrapper {
+.container {
   max-width: 1200px;
   margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 /*# sourceMappingURL=general.css.map */

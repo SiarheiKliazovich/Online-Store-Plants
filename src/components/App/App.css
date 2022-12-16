@@ -341,15 +341,15 @@ a {
   box-sizing: border-box;
 }
 
-.wrapper {
+.container {
   max-width: 1200px;
   margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: aqua;
-  color: red;
 }
 
 /*# sourceMappingURL=App.css.map */
