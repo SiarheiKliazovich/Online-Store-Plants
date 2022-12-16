@@ -2,10 +2,10 @@
 
 .header {
   background-color: $color-white;
-  color: $main-text-color;
+  color: $color-dark-grey;
 }
 
-.header__container {
+.header__wrapper {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -37,12 +37,12 @@
 }
 
 .header__link {
-  color: $main-text-color;
+  color: $color-dark-grey;
   transition: 1s;
 
   &:hover,
   &:active {
-    color: $main-text-color-active;
+    color: $color-green;
   }
 }
 

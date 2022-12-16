@@ -5,8 +5,8 @@ import "./header.scss";
 const Header = () => {
   return (
     <div className="header">
-      <div className="wrapper">
-        <div className="header__container">
+      <div className="container">
+        <div className="header__wrapper">
           <div className="header__logo"></div>
           <nav className="header__nav">
             <ul className="header__list">
