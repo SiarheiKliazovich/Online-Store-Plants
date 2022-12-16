@@ -7,7 +7,7 @@
 
 .container-inner {
   padding: 15px;
-  width: 45%;
+  width: 33%;
 }
 
 .product-block-inner{
@@ -32,7 +32,10 @@
   font-family: $font-family-primary;
   font-weight: $font-weight-bold;
   letter-spacing: 0.2px;
-  padding-bottom: 5px;
+  padding:5px 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .price{
