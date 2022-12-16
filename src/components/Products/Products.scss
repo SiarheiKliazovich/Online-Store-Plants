@@ -1,0 +1,22 @@
+@import "../../sass/variables";
+
+
+.main__wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+.main__filter{
+  width: 30%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.main__product {
+  width: 70%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+

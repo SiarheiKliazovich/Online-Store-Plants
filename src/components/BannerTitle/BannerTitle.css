@@ -3,7 +3,8 @@
   padding: 10px 0;
   text-align: center;
   border-bottom: 1px solid #e4e4e4;
-  width: 100%; }
+  width: 100%;
+}
 
 .banner__title {
   font-weight: 500;
@@ -12,4 +13,7 @@
   float: none;
   color: #000;
   font-family: Work Sans, sans-serif;
-  font-size: 20px; }
+  font-size: 24px;
+}
+
+/*# sourceMappingURL=BannerTitle.css.map */

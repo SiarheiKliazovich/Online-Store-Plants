@@ -1,0 +1,35 @@
+.filter {
+  padding-top: 15px;
+}
+
+.filter__panel {
+  background-color: #000;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.filter__panel_text {
+  color: #ffffff;
+  padding: 10px 15px;
+  text-transform: uppercase;
+}
+
+.filter__color {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter__color_item {
+  border-bottom: 1px solid #e4e4e4;
+  padding: 10px 0 10px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.color-item__link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
+}
+
+/*# sourceMappingURL=Filters.css.map */

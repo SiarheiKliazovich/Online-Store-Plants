@@ -1,0 +1,35 @@
+@import "../../sass/variables";
+
+.filter {
+  padding-top: 15px;
+}
+
+.filter__panel {
+  background-color:$color-black;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.filter__panel_text {
+  color: $color-white;
+  padding: 10px 15px;
+  text-transform: uppercase;
+}
+
+.filter__color {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter__color_item{
+  border-bottom: 1px solid $color-grey;
+  padding:10px 0 10px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.color-item__link {
+  text-decoration: none;
+  cursor: pointer;
+  color: $color-black;
+}
