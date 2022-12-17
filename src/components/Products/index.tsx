@@ -1,7 +1,7 @@
 import BannerTitle from "../BannerTitle";
 import Filter from "../Filters";
 import ProductGrid from "../ProductGrid";
-import "./Products.css";
+import "./Products.scss";
 
 const Products = () => {
   return (

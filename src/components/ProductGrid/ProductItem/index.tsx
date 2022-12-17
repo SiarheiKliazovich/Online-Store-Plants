@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { Product } from "../../../interface/product";
 import { Link } from "react-router-dom";
-import "./ProductItem.css";
+import "./ProductItem.scss";
 
 type ProductType = {
   product: Product;
