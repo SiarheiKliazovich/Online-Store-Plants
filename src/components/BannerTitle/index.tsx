@@ -1,9 +1,9 @@
 import "./BannerTitle.scss";
 
-const BannerTitle = () => {
+const BannerTitle = (props: { title: string }) => {
   return (
     <div className="banner">
-      <h1 className="banner__title">Products</h1>
+      <h1 className="banner__title">{props.title}</h1>
     </div>
   );
 };

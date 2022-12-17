@@ -1,5 +1,6 @@
+import BannerTitle from "../BannerTitle";
 const About = () => {
-  return <div>About</div>;
+  return <BannerTitle title="About" />;
 };
 
 export default About;

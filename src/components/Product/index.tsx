@@ -1,7 +1,7 @@
 import BannerTitle from "../BannerTitle";
 
 const Product = () => {
-  return <BannerTitle />;
+  return <BannerTitle title="Product" />;
 };
 
 export default Product;
