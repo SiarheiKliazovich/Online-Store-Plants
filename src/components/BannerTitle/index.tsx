@@ -1,4 +1,4 @@
-import "./BannerTitle.css";
+import "./BannerTitle.scss";
 
 const BannerTitle = () => {
   return (

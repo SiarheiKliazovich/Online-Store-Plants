@@ -1,6 +1,6 @@
 import products from "../../data/products";
 import ProductItem from "./ProductItem";
-import "./ProductGrid.css";
+import "./ProductGrid.scss";
 
 const ProductGrid = () => {
   return (
