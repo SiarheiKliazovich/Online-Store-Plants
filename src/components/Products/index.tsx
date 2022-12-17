@@ -7,7 +7,7 @@ const Products = () => {
   return (
     <>
       <main className="main">
-        <BannerTitle />
+        <BannerTitle title="Product" />
         <div className="container">
           <div className="main__wrapper">
             <div className="main__filter">

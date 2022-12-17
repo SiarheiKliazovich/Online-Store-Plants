@@ -1,7 +1,8 @@
 import React from "react";
+import BannerTitle from "../BannerTitle";
 
 const Home = () => {
-  return <div>Home</div>;
+  return <BannerTitle title="Home" />;
 };
 
 export default Home;
