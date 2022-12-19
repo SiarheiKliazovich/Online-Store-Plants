@@ -11,7 +11,6 @@ type ProductGridType = {
 
 const ProductGrid: FunctionComponent<ProductGridType> = ({
   view,
-  setView,
 }: ProductGridType) => {
   return (
     <div
