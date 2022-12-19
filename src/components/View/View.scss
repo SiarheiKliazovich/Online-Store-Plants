@@ -1,0 +1,39 @@
+@import "../../sass/variables";
+
+.view__wrapper {
+  display: flex;
+}
+
+.btn__view_column {
+  background: url(../../assets/images/png/fourround.png) ;
+  padding: 19px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 8px;
+  border: none;
+  cursor: pointer;
+  
+    border-radius: 3px;
+}
+
+.btn__view_column:hover {
+  background-color: $color-grey;
+}
+
+.btn__view_string {
+  background: url(../../assets/images/png/list.png) no-repeat top right;
+  padding: 19px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.btn__view_string:hover {
+  background-color: $color-grey;
+}
+
+.btn-active {
+  background-color: $color-grey;
+}
