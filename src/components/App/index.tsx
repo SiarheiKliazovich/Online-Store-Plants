@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.scss";
 
@@ -8,17 +9,34 @@ import About from "../About";
 import Footer from "../Footer";
 import Product from "../Product";
 
-const App = () => (
-  <>
-    <Header />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/product/:productId" element={<Product />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/about" element={<About />} />
-    </Routes>
-    <Footer />
-  </>
-);
+const App = () => {
+  const [inShoppingCart, setInShoppinfCart] = useState([2]);
+
+  const addInShoppingCart = (id: number): void => {
+    if (inShoppingCart.indexOf(id) === -1) {
+      setInShoppinfCart(() => {
+        const newArr = [...inShoppingCart, id];
+        return newArr;
+      });
+    }
+  };
+
+  return (
+    <>
+      <Header />
+      {/* <Product
+        inShoppingCart={inShoppingCart}
+        addInShoppingCart={addInShoppingCart}
+      /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/product/:productId" element={<Product />} /> */}
+        <Route path="/products" element={<Products />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+      <Footer />
+    </>
+  );
+};
 
 export default App;
