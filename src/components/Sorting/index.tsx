@@ -1,10 +1,6 @@
 import "./Sorting.scss";
 import { FunctionComponent } from "react";
-
-type SortingType = {
-  sorting: string;
-  setSorting: (s: string) => void;
-};
+import { SortingType } from "../../types";
 
 const Sorting: FunctionComponent<SortingType> = ({
   sorting,
@@ -13,11 +9,12 @@ const Sorting: FunctionComponent<SortingType> = ({
   <div className="sorting__wrapper">
     <select
       className="form-select"
-      name=""
-      id=""
       value={sorting}
       onChange={(event) => setSorting(event.target.value)}
     >
+      <option value={""} disabled>
+        Select sort:
+      </option>
       <option value={"ratingASC"}>Sort by Rating ASC</option>
       <option value={"ratingDESC"}>Sort by Rating DESC</option>
       <option value={"priceASC"}>Sort by Price ASC</option>

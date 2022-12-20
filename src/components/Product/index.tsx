@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import BannerTitle from "../BannerTitle";
-import { IProduct } from "../../interface/product";
+import { IProduct } from "../../interfaces/product";
 import products from "../../data/products";
 
 import "./product.scss";
@@ -29,10 +29,6 @@ const Product = ({ inShoppingCart, addInShoppingCart }: Props) => {
     availability,
   } = product as IProduct;
   const [image, setImage] = useState(images[0]);
-<<<<<<< HEAD
-=======
-  const [priceProduct, setPrice] = useState(price);
->>>>>>> 01c7c79af0dc246c7291c8af97b1a7f9c2ee7c9c
 
   const changeImage = (e: React.MouseEvent<HTMLDivElement>): void => {
     const img = e.target;

@@ -1,11 +1,7 @@
 import { FunctionComponent } from "react";
 import classNames from "classnames";
 import "./View.scss";
-
-type ViewType = {
-  view: string;
-  setView: (s: string) => void;
-};
+import { ViewType } from "../../types";
 
 const View: FunctionComponent<ViewType> = ({ view, setView }: ViewType) => (
   <div className="view">

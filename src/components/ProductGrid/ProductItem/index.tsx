@@ -1,11 +1,7 @@
 import { FunctionComponent } from "react";
-import { IProduct } from "../../../interface/product";
+import { ProductType } from "../../../types";
 import { Link } from "react-router-dom";
 import "./ProductItem.scss";
-
-type ProductType = {
-  product: IProduct;
-};
 
 const ProductItem: FunctionComponent<ProductType> = ({
   product,

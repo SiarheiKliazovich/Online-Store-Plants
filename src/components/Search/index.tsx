@@ -1,10 +1,7 @@
 import "./Search.scss";
 import { FunctionComponent } from "react";
+import { SearchType } from "../../types";
 
-type SearchType = {
-  searchQuery: string;
-  setSearchQuery: (s: string) => void;
-};
 const Search: FunctionComponent<SearchType> = ({
   searchQuery,
   setSearchQuery,
