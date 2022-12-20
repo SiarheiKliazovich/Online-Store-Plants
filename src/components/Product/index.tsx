@@ -25,7 +25,7 @@ interface Props {
 const Product = ({ inShoppingCart, addInShoppingCart }: Props) => {
   //console.log(inShoppingCart);
   const [image, setImage] = useState(images[0]);
-  const [priceProduct, setPrice] = useState(price[0]);
+  const [priceProduct, setPrice] = useState(price);
 
   const changeImage = (e: React.MouseEvent<HTMLDivElement>): void => {
     const img = e.target;
