@@ -29,6 +29,10 @@ const Product = ({ inShoppingCart, addInShoppingCart }: Props) => {
     availability,
   } = product as IProduct;
   const [image, setImage] = useState(images[0]);
+<<<<<<< HEAD
+=======
+  const [priceProduct, setPrice] = useState(price);
+>>>>>>> 01c7c79af0dc246c7291c8af97b1a7f9c2ee7c9c
 
   const changeImage = (e: React.MouseEvent<HTMLDivElement>): void => {
     const img = e.target;
