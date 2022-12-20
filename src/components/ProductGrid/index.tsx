@@ -2,12 +2,7 @@ import ProductItem from "./ProductItem";
 import "./ProductGrid.scss";
 import classNames from "classnames";
 import { FunctionComponent } from "react";
-import { IProduct } from "./../../interface/product";
-
-type ProductGridType = {
-  view: string;
-  products: IProduct[];
-};
+import { ProductGridType } from "../../types";
 
 const ProductGrid: FunctionComponent<ProductGridType> = ({
   view,
