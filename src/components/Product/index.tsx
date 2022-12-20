@@ -1,21 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import BannerTitle from "../BannerTitle";
-import { Product as ProductInterface } from "../../interface/product";
+import { IProduct } from "../../interface/product";
 import products from "../../data/products";
 
 import "./product.scss";
-
-const {
-  id,
-  name,
-  description,
-  size,
-  availability,
-  price,
-  category,
-  brand,
-  images,
-} = products[0];
 
 interface Props {
   inShoppingCart: number[];
@@ -24,8 +13,22 @@ interface Props {
 
 const Product = ({ inShoppingCart, addInShoppingCart }: Props) => {
   //console.log(inShoppingCart);
+  const { productId } = useParams();
+  const product = products.find(
+    (product: IProduct) => product.id.toString() === productId
+  ) as IProduct;
+  const {
+    id,
+    images,
+    price,
+    size,
+    name,
+    description,
+    category,
+    brand,
+    availability,
+  } = product as IProduct;
   const [image, setImage] = useState(images[0]);
-  const [priceProduct, setPrice] = useState(price[0]);
 
   const changeImage = (e: React.MouseEvent<HTMLDivElement>): void => {
     const img = e.target;
@@ -86,7 +89,7 @@ const Product = ({ inShoppingCart, addInShoppingCart }: Props) => {
 
   return (
     <>
-      <BannerTitle title={`${category[0]} | ${name}`} />
+      <BannerTitle title={`${category} | ${name}`} />
       <div className="product__wrapper container">
         <div className="product__images">
           <div className="product__main-image">
@@ -101,14 +104,17 @@ const Product = ({ inShoppingCart, addInShoppingCart }: Props) => {
               <span>Brand:</span> {brand}
             </p>
             <p className="product__category">
-              <span>Category:</span> {category[0]}
+              <span>Category:</span> {category}
             </p>
             <p className="product__availability">
               <span>Availability:</span> {availability}
             </p>
+            <p className="product__availability">
+              <span>Size:</span> {size}
+            </p>
           </div>
           <div className="product__price hl">
-            <span>Price:</span> ${priceProduct}
+            <span>Price:</span> ${price}
           </div>
           <div className="product__options">
             <div className="product__size">

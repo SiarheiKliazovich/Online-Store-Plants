@@ -1,6 +1,6 @@
 @import "../../sass/variables";
 
-.maim__product_wrapper {
+.main__product_wrapper {
   display: flex;
   flex-wrap: wrap;
 }
@@ -50,7 +50,7 @@
   overflow: hidden;
 }
 
-.product__description {
+.product__description_card  {
   display: none;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -59,8 +59,46 @@
   font-family: $font-family-primary;
 }
 
-.price {
-  padding-bottom: 10px;
+.product__category_card {
+  color: $color-black;
+  font-family: $font-family-primary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding:5px 5px;
+}
+
+.product__brand_card {
+  color: $color-black;
+  font-family: $font-family-primary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding:5px 5px;
+}
+
+.product__rating_card {
+  color: $color-black;
+  font-family: $font-family-primary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding:5px 5px;
+}
+
+.product__stock_card {
+  color: $color-black;
+  font-family: $font-family-primary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding:5px 5px;
+}
+
+.product__price_card {
+  padding:5px 5px;
+  color: $color-black;
+  font-family: $font-family-primary;
 }
 // *************************пусть пока будет закоменчено*********
 // .product__quantity {
@@ -121,7 +159,27 @@
     flex-direction: row;
   }
 
-  .product__description {
+  .product__description_card {
     display: block;
+    padding: 5px;
+  }
+  .product__category_card {
+    text-align: left;
+  }
+
+  .product__brand_card {
+    text-align: left;
+  }
+
+  .product__rating_card {
+    text-align: left;
+  }
+
+  .product__rating_card {
+    text-align: left;
+  }
+
+  .product__stock_card {
+    text-align: left;
   }
 }
