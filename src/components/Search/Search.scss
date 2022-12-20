@@ -1,0 +1,16 @@
+@import "../../sass/variables";
+
+.search__wrapper {
+  font-family: $font-family-primary;
+  word-wrap: break-word;
+}
+
+.input-search {
+  width: 140%;
+  border: 2px solid $color-grey;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  font-size: 80%;
+  text-align: center;
+}
