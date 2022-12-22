@@ -1,4 +1,5 @@
 @import '../../sass/variables';
+@import '../../sass/mixins';
 
 .header {
   background-color: $color-white;
@@ -11,6 +12,23 @@
   width: 100%;
   padding: 20px 10px 20px 0;
   height: 100px;
+
+  @include media-mobile {
+    flex-wrap: wrap;
+    height: 120px;
+  }
+}
+
+.header__link {
+  @include media-mobile {
+    width: 50%;
+    margin-bottom: 5px;
+
+    &:last-child {
+      display: flex;
+      justify-content: flex-end;
+    }   
+  }
 }
 
 .header__logo {
@@ -19,11 +37,23 @@
   background-repeat: no-repeat;
   width: 200px;
   height: 60px;
+
+  @include media-mobile {
+    width: 150px;
+    background-size: contain;
+  }
 }
 
 .header__sum {
   align-self: center;
   font-size: $font-size-llg;
+
+  @include media-mobile {
+    font-size: $font-size-lg;
+    order: 1;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .header__cart {
@@ -49,6 +79,13 @@
   &:hover,
   &:active {
     scale: 1.1;
+  }
+
+  @include media-mobile {
+    width: 50px;
+    background-size: contain;
+    align-self: center;
+    margin-top: 5px;
   }
 }
 
