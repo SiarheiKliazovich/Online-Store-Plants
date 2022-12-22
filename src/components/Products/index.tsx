@@ -14,6 +14,7 @@ const Products = () => {
   const [sorting, setSorting] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [productList, setProductList] = useState(products);
+  const [filters, setFilters] = useState([]);
 
   const getSortedValues = () => {
     if (sorting === "ratingASC")
@@ -32,7 +33,6 @@ const Products = () => {
   }, [searchQuery]);
 
   useEffect(() => {
-    console.log(sorting);
     setProductList(getSortedValues());
   }, [sorting]);
 
@@ -43,6 +43,7 @@ const Products = () => {
         <div className="main__wrapper">
           <div className="main__filter">
             <Filter />
+            {/*   */}
           </div>
           <div className="main__product">
             <div className="view-sorting">
