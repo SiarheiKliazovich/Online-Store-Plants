@@ -27,13 +27,15 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <div className="header__basket">
-            <span className="basket__image"></span>
-            <div className="basket__text">
-              <p className="basket__name">My Cart</p>
-              <p className="basket__count">Items</p>
+          <Link className="header__link" to="/cart">
+            <div className="header__basket">
+              <span className="basket__image"></span>
+              <div className="basket__text">
+                <p className="basket__name">My Cart</p>
+                <p className="basket__count">Items</p>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

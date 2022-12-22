@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FunctionComponent } from "react";
 import ReactDOM from "react-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./modal.scss";
 
@@ -14,6 +15,8 @@ interface IModal {
 }
 
 const Modal: FunctionComponent<IModal> = ({ onClose, show }) => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [nameDirty, setNameDirty] = useState(false);
   const [nameError, setNameError] = useState("Cannot be empty");
@@ -255,8 +258,8 @@ const Modal: FunctionComponent<IModal> = ({ onClose, show }) => {
     }
 
     if (formValid) {
-      console.log("Valis");
       setModalContent(false);
+      setTimeout(() => navigate("/products"), 5000);
     }
   };
 
@@ -352,14 +355,10 @@ const Modal: FunctionComponent<IModal> = ({ onClose, show }) => {
 
   const [modalContent, setModalContent] = useState(true);
 
-  useEffect(() => {
-    setTimeout(onClose, 3000);
-  }, [modalContent]);
-
   return ReactDOM.createPortal(
     <div className={`modal${show ? " show" : ""}`} onClick={onClose}>
       <div className="modal__content" onClick={(e) => e.stopPropagation()}>
-        {modalContent ? modalForm : textMessage};
+        {modalContent ? modalForm : textMessage}
       </div>
     </div>,
     document.getElementById("root")!
