@@ -24,13 +24,17 @@ const App = () => {
   return (
     <>
       <Header />
-      {/* <Product
-        inShoppingCart={inShoppingCart}
-        addInShoppingCart={addInShoppingCart}
-      /> */}
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/product/:productId" element={<Product />} /> */}
+        <Route
+          path="/product/:productId"
+          element={
+            <Product
+              inShoppingCart={inShoppingCart}
+              addInShoppingCart={addInShoppingCart}
+            />
+          }
+        />
         <Route path="/products" element={<Products />} />
         <Route path="/about" element={<About />} />
       </Routes>

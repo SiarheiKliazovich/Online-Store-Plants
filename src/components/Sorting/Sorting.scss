@@ -1,18 +1,12 @@
 @import "../../sass/variables";
 
-
-.select {
+.form-select {
   appearance: menulist-button;
-  width: 150px;
+  width: 100%;
   opacity: 1;
   height: 38px;
   font-size: 14px;
-  border: 2px solid #e4e4e4;
-  border-radius: 3px;
-}
-
-.orderby {
-  z-index: 9;
+  border: 2px solid $color-grey;
+  border-radius: 5px;
   cursor: pointer;
-  
 }
