@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useState, FunctionComponent } from "react";
 import { useParams } from "react-router-dom";
 import BannerTitle from "../BannerTitle";
 import { IProduct } from "../../interfaces/product";
 import products from "../../data/products";
+import { ButtonCart } from "./ButtonCart";
 
 import "./product.scss";
 
-interface Props {
+interface IProps {
   inShoppingCart: number[];
   addInShoppingCart: (id: number) => void;
 }
 
-const Product = ({ inShoppingCart, addInShoppingCart }: Props) => {
-  //console.log(inShoppingCart);
+const Product: FunctionComponent<IProps> = ({
+  inShoppingCart,
+  addInShoppingCart,
+}) => {
+  console.log(inShoppingCart);
   const { productId } = useParams();
   const product = products.find(
     (product: IProduct) => product.id.toString() === productId
@@ -40,7 +44,7 @@ const Product = ({ inShoppingCart, addInShoppingCart }: Props) => {
     }
   };
 
-  const imgElements = images.map((item, i) => {
+  const imgElements = images.map((item: string, i: number) => {
     return (
       <div key={i} className="product__mini-image" onClick={changeImage}>
         <img src={item} alt={name} className="product__mini-img" />
@@ -48,38 +52,7 @@ const Product = ({ inShoppingCart, addInShoppingCart }: Props) => {
     );
   });
 
-  // const changePrice = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-  //   const {
-  //     target: { value: selectText },
-  //   } = e;
-  //   const indexOfSelectedSize = size.indexOf(selectText);
-  //   setPrice(price[indexOfSelectedSize]);
-  // };
-
-  const buttonCart = () => {
-    if (inShoppingCart.indexOf(id) > -1) {
-      return (
-        <button className="product__button" disabled>
-          In Cart
-        </button>
-      );
-    } else {
-      return (
-        <button className="product__button" onClick={addToCart}>
-          Add To Cart
-        </button>
-      );
-    }
-  };
-
-  const addToCart = () => {
-    console.log("Добавление в корзину");
-    addInShoppingCart(id);
-    //console.log(inShoppingCart);
-    buttonCart();
-  };
-
-  const buyNow = () => {
+  const buyNow = (): void => {
     if (inShoppingCart.indexOf(id) === -1) {
       console.log("Товара в корзине нет");
     } else {
@@ -117,20 +90,15 @@ const Product = ({ inShoppingCart, addInShoppingCart }: Props) => {
             <span>Price:</span> ${price}
           </div>
           <div className="product__options">
-            <div className="product__size">
-              {/* <span>Size:</span>
-              <select onChange={changePrice}>
-                {size.map((item, i) => (
-                  <option key={i} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select> */}
-            </div>
+            <div className="product__size"></div>
           </div>
           <div className="product__order"></div>
           <div className="product__buttons hl">
-            {buttonCart()}
+            <ButtonCart
+              cart={inShoppingCart}
+              id={id}
+              addInShoppingCart={addInShoppingCart}
+            />
             <button className="product__button" onClick={buyNow}>
               Buy Now
             </button>
