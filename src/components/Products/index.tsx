@@ -8,6 +8,7 @@ import ProductGrid from "../ProductGrid";
 import Sorting from "../Sorting";
 import View from "../View";
 import Search from "../Search";
+import { getSortedValues } from "../../helpers/sorting";
 
 const Products = () => {
   const [view, setView] = useState("grid");
@@ -16,24 +17,12 @@ const Products = () => {
   const [productList, setProductList] = useState(products);
   const [filters, setFilters] = useState([]);
 
-  const getSortedValues = () => {
-    if (sorting === "ratingASC")
-      return products.sort((current, next) => current.rating - next.rating);
-    if (sorting === "ratingDESC")
-      return products.sort((current, next) => next.rating - current.rating);
-    if (sorting === "priceASC")
-      return products.sort((current, next) => current.price - next.price);
-    if (sorting === "priceDESC")
-      return products.sort((current, next) => next.price - current.price);
-    return products;
-  };
-
   useEffect(() => {
     setProductList(getSearchProducts(searchQuery, products));
   }, [searchQuery]);
 
   useEffect(() => {
-    setProductList(getSortedValues());
+    setProductList(getSortedValues(sorting, products));
   }, [sorting]);
 
   return (
@@ -43,7 +32,6 @@ const Products = () => {
         <div className="main__wrapper">
           <div className="main__filter">
             <Filter />
-            {/*   */}
           </div>
           <div className="main__product">
             <div className="view-sorting">
@@ -55,6 +43,7 @@ const Products = () => {
               <Sorting sorting={sorting} setSorting={setSorting} />
             </div>
             <ProductGrid view={view} products={productList} />
+            <div className="not-found">No products found 😏</div>
           </div>
         </div>
       </div>

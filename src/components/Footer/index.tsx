@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import "./footer.scss";
 
 const Footer = () => {
@@ -9,21 +7,9 @@ const Footer = () => {
         <div className="footer__wrapper">
           <nav className="footer__nav vl">
             <ul className="footer__list">
-              <li className="footer__item">
-                <Link className="footer__link" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="footer__item">
-                <Link className="footer__link" to="/products">
-                  Products
-                </Link>
-              </li>
-              <li className="footer__item">
-                <Link className="footer__link" to="/about">
-                  About
-                </Link>
-              </li>
+              <li className="footer__item"></li>
+              <li className="footer__item"></li>
+              <li className="footer__item"></li>
             </ul>
           </nav>
           <div className="footer__github vl">

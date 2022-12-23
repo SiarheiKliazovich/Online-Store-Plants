@@ -10,26 +10,26 @@ const filterItem = () => {
   products.map((product) => newBrand.push(product.brand));
   products.map((product) => newPrice.push(product.price));
   products.map((product) => newStock.push(product.stock));
-  const Category = newCateg.filter((element, index) => {
+  const category = newCateg.filter((element, index) => {
     return newCateg.indexOf(element) === index;
   });
-  const Brand = newBrand.filter((element, index) => {
+  const brand = newBrand.filter((element, index) => {
     return newBrand.indexOf(element) === index;
   });
-  const Price = newPrice.filter((element, index) => {
+  const price = newPrice.filter((element, index) => {
     return newPrice.indexOf(element) === index;
   });
-  const Stock = newStock.filter((element, index) => {
+  const stock = newStock.filter((element, index) => {
     return newStock.indexOf(element) === index;
   });
   /*
   {category:{list:[],all:0, filtered:0}, brand:[], price:[],stock:[]}
   */
   return {
-    Category,
-    Brand,
-    Price,
-    Stock,
+    category,
+    brand,
+    price,
+    stock,
   };
 };
 
@@ -42,7 +42,7 @@ const Filter = () => {
       </div>
       <div className="category__wrapper">
         <h3 className="title__filter">Category</h3>
-        {filterItem().Category.map((category) => (
+        {filterItem().category.map((category) => (
           <div className="filter__list">
             <div className="checkbox-filter">
               <input
@@ -50,21 +50,21 @@ const Filter = () => {
                 className="input__category"
                 type="checkbox"
               />
-              <label className="label__category" htmlFor="">
+              <label className="label__filter" htmlFor="">
                 {category}
               </label>
-              <span className="span__category">(?/?)</span>
+              <span className="span__filter">(?/?)</span>
             </div>
           </div>
         ))}
       </div>
       <div className="brand__wrapper">
         <h3 className="title__filter">Brand</h3>
-        {filterItem().Brand.map((brand) => (
+        {filterItem().brand.map((brand) => (
           <div className="filter__list">
             <div className="checkbox-filter">
               <input className="input__filter" type="checkbox" />
-              <label className="label__filter" htmlFor="London-Plants&Co">
+              <label className="label__filter" htmlFor="">
                 {brand}
               </label>
               <span className="span__filter">(?/?)</span>
@@ -74,11 +74,53 @@ const Filter = () => {
       </div>
       <div className="price__wrapper">
         <h3 className="title__filter">Price</h3>
-        <div className="filter__list"></div>
+        {/* {filterItem().price.map((price) => ( */}
+        <div className="filter__list">
+          <div className="range_container">
+            <div className="form_control">
+              <div className="form_control_container__time">Min price</div>⟷
+              <div className="form_control_container__time">Max price</div>
+            </div>
+            <div className="sliders_control">
+              <input
+                id="fromSlider"
+                type="range"
+                // value={price}
+                min="0"
+                max="100"
+              />
+              <input
+                id="toSlider"
+                type="range"
+                // value={price}
+                min="0"
+                max="100"
+              />
+            </div>
+          </div>
+        </div>
+        {/* ))} */}
       </div>
       <div className="stock__wrapper">
         <h3 className="title__filter">Stock</h3>
-        <div className="filter__list"></div>
+        <div className="filter__list">
+          <div className="range_container">
+            <div className="form_control">
+              <div className="form_control_container__time">min stock</div>⟷
+              <div className="form_control_container__time">max stock</div>
+            </div>
+            <div className="sliders_control">
+              <input
+                id="fromSlider"
+                type="range"
+                value="10"
+                min="0"
+                max="100"
+              />
+              <input id="toSlider" type="range" value="40" min="0" max="100" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

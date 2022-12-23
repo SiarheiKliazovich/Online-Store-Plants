@@ -17,6 +17,7 @@
   overflow: hidden;
   flex-direction: column;
   display: flex;
+  padding: 5px;
 }
 
 .img-prod_wrapper {
@@ -182,4 +183,13 @@
   .product__stock_card {
     text-align: left;
   }
+  .product__price_card {
+    text-align: left;
+  }
+}
+
+.not-found {
+  text-align: center;
+  font-size: 200%;
+  margin-top: 10%;
 }
