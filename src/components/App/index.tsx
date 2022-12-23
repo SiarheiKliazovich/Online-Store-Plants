@@ -8,6 +8,7 @@ import Products from "../Products";
 import About from "../About";
 import Footer from "../Footer";
 import Product from "../Product";
+import Cart from "../Cart";
 
 const App = () => {
   const [inShoppingCart, setInShoppinfCart] = useState([2]);
@@ -25,7 +26,7 @@ const App = () => {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
         <Route
           path="/product/:productId"
           element={
@@ -35,8 +36,9 @@ const App = () => {
             />
           }
         />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/about" element={<About />} />
+        {/* <Route path="/about" element={<About />} /> */}
       </Routes>
       <Footer />
     </>

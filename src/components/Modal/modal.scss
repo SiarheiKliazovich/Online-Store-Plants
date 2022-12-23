@@ -1,4 +1,5 @@
 @import '../../sass/variables';
+@import '../../sass/mixins';
 
 .modal {
   position: fixed;
@@ -13,6 +14,7 @@
   opacity: 0;
   transition: all 0.5s ease-in-out;
   pointer-events: none;
+	height: 100%;
 }
 
 .modal.show {
@@ -20,7 +22,7 @@
 	pointer-events: visible;
 
 	.modal__content {
-		transform: translateY(0);
+		transform: translateY(0);		
 	}
 }
 
@@ -29,14 +31,20 @@
   background-color: $color-white;  
 	transform: translateY(-200px);
 	transition: all 0.5s ease-in-out;
-
 	border: 2px solid $color-dark-grey;
 	border-radius: 10px;
-	width: 500px;
+	overflow-y: auto;
+	max-height: calc(100vh - 40px);
+
+	@include media-mobile {
+		width: 300px;		
+	}
 }
 
 .modal__form {
-	padding: 20px;
+	padding: 20px 20px;
+	display: flex;
+	flex-direction: column;
 }
 
 .modal__personal,
@@ -46,7 +54,9 @@
 	input {
 		width: 100%;
 		display: block;
-		margin-bottom: 5px;
+		margin-bottom: 5px;		
+		border: 2px solid $color-dark-grey;
+		border-radius: 5px;
 	}	
 }
 
@@ -87,43 +97,33 @@
 	background-image: url('../../assets/images/png/mastercard.png');
 }
 
+.modal__button {	
+	width: 120px;
+	height: 40px;
+	align-self: center;
+	border-radius: 5px;
+	border: none;
+	font-size: $font-size-lg;
+	background-color: $color-green-white;
+	color: $color-white;
+	cursor: pointer;
+	transition: 0.5s;
 
+	&:hover {
+		background-color: $color-dark-grey;
+	}
+  
+	&:disabled {
+		background-color: $color-light-grey;
+		color: $color-dark-grey;
+		cursor: default;	
+		border: 2px solid $color-dark-grey;	
+		color: $color-dark-grey;
+	}
+}
 
-
-
-
- 
-.modal.enter-done {
-  opacity: 1;
-  pointer-events: visible;
+.modal__text {
+	padding: 20px;
+	text-align: center;
+	font-size: $font-size-xlg;
 }
-  
-.modal.exit {
-  opacity: 0;
-}
-  
-
-  
-.modal.enter-done .modal-content {
-  transform: translateY(0);
-}
-  
-.modal.exit .modal-content {
-  transform: translateY(-200px);
-}
-  
-.modal-header,
-.modal-footer {
-  padding: 10px;
-}
-  
-.modal-title {
-  margin: 0;
-}
-  
-.modal-body {
-  padding: 10px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-}
-  
