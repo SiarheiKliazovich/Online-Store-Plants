@@ -110,14 +110,8 @@ const Filter = () => {
               <div className="form_control_container__time">max stock</div>
             </div>
             <div className="sliders_control">
-              <input
-                id="fromSlider"
-                type="range"
-                value="10"
-                min="0"
-                max="100"
-              />
-              <input id="toSlider" type="range" value="40" min="0" max="100" />
+              <input id="fromSlider" type="range" value="" min="0" max="100" />
+              <input id="toSlider" type="range" value="" min="0" max="100" />
             </div>
           </div>
         </div>
