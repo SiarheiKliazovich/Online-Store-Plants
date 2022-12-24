@@ -1,0 +1,86 @@
+@import '../../../sass/variables';
+
+.modal__form {
+	padding: 20px 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.modal__personal,
+.modal__credit {
+	margin-bottom: 10px;
+
+	input {
+		width: 100%;
+		display: block;
+		margin-bottom: 5px;		
+		border: 2px solid $color-dark-grey;
+		border-radius: 5px;
+	}	
+}
+
+.modal__personal-info,
+.modal__credit-card {
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: $font-size-xlg;
+	font-weight: $font-weight-bold;
+}
+
+.modal__credit {
+	display: flex;
+	flex-direction: column;
+}
+
+.modal__image {
+	margin-bottom: 5px;
+	margin-left: calc(50% - 20px);
+	background-image: url('../../../assets/images/png/card.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: block;
+	width: 45px;
+	height: 30px;
+	text-align: center;	
+}
+
+.american {
+	background-image: url('../../../assets/images/png/american.png');
+}
+
+.visa {
+	background-image: url('../../../assets/images/png/visa.png');
+}
+
+.mastercard {
+	background-image: url('../../../assets/images/png/mastercard.png');
+}
+
+.modal__button {	
+	width: 120px;
+	height: 40px;
+	align-self: center;
+	border-radius: 5px;
+	border: none;
+	font-size: $font-size-lg;
+	background-color: $color-green-white;
+	color: $color-white;
+	cursor: pointer;
+	transition: 0.5s;
+
+	&:hover {
+		background-color: $color-dark-grey;
+	}
+  
+	&:disabled {
+		background-color: $color-light-grey;
+		color: $color-dark-grey;
+		cursor: default;	
+		border: 2px solid $color-dark-grey;	
+		color: $color-dark-grey;
+	}
+}
+
+.error {
+	color: $color-red;
+}
