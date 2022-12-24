@@ -2,17 +2,14 @@ import React, { useState, useEffect, FunctionComponent } from "react";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 
+import { IModal } from "@/src/interfaces/modal";
+
 import "./modal.scss";
 
 const validateDate = (date: string): boolean => {
   const month = date.slice(0, 2);
   return +month <= 12;
 };
-
-interface IModal {
-  onClose: () => void;
-  show: boolean;
-}
 
 const Modal: FunctionComponent<IModal> = ({ onClose, show }) => {
   const navigate = useNavigate();
