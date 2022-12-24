@@ -2,8 +2,8 @@ import React, { useState, useEffect, FunctionComponent } from "react";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 
-import { IModal } from "@/src/interfaces/modal";
-import { validateDate } from "@/src/helpers/validateDate";
+import { IModal } from "../../interfaces/modal";
+import { validateDate } from "../../helpers/validateDate";
 
 import "./modal.scss";
 
