@@ -1,7 +1,7 @@
 import "./notFound.scss";
 
 const NotFound = () => {
-  return <main className="not-found vh"></main>;
+  return <div className="not-found"></div>;
 };
 
 export default NotFound;

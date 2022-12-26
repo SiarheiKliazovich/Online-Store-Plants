@@ -6,6 +6,7 @@
 	background-image: url('../../assets/images/img/not-found.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
+	margin-top: 0;
 
 	@include media-mobile {
 		height: calc(100vh - 220px);
