@@ -1,25 +1,15 @@
-import products from "../data/products";
+import { IProduct } from "../interfaces/product";
 
-// TODO: -> helpers/filters
-export const getFilters = () => {
+export const getFilters = (products: IProduct[]) => {
   const newBrand: string[] = [];
   const newPrice: number[] = [];
   const newCateg: string[] = [];
   const newStock: number[] = [];
-  // TODO: to separate functin formatProductItem -> helpers/filters
-
-  // const formatProductItem = (products: IProduct[], arr, property) =>
-  //   products.map((product) => arr.push(product[property]));
 
   products.map((product) => newCateg.push(product.category));
   products.map((product) => newBrand.push(product.brand));
   products.map((product) => newPrice.push(product.price));
   products.map((product) => newStock.push(product.stock));
-  // TODO: to separate functin getUniqueArray(arr) -> helpers/filters
-  // const getUniqueArray= (arr) => {
-  //  const arr = filter((element, index) => {
-  //   return .indexOf(element) === index;
-  // }
 
   const categories = newCateg.filter((element, index) => {
     return newCateg.indexOf(element) === index;
@@ -39,7 +29,7 @@ export const getFilters = () => {
       return {
         title: category,
         filtered: 0,
-        //TODO to separate function
+
         allProductsCount: products.filter(
           (product) => product.category === category
         ).length,

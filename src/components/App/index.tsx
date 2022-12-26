@@ -3,9 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.scss";
 
 import Header from "../Header";
-
 import Products from "../Products";
-
 import Footer from "../Footer";
 import Product from "../Product";
 
@@ -34,7 +32,7 @@ const App = () => {
             />
           }
         />
-        <Route path="/products" element={<Products />} />
+        <Route path="/" element={<Products />} />
       </Routes>
       <Footer />
     </>

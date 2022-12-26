@@ -3,24 +3,27 @@ import { useEffect } from "react";
 import { FiltersType } from "../../types";
 import { getFilters } from "../../helpers/filter";
 import { FunctionComponent } from "react";
+import products from "./../../data/products";
 
-const filter = getFilters();
-console.log("filters", filter);
 const Filters: FunctionComponent<FiltersType> = ({
   filters,
   setFilters,
+  productList,
+  filterReset,
 }: FiltersType) => {
+  const productFilters = getFilters(products);
+  const filterList = getFilters(productList);
+
   useEffect(() => {
-    // console.log(Math.min.apply(null, filter.prices));
     setFilters({
       ...filters,
       prices: [
-        Math.min.apply(null, filter.prices),
-        Math.max.apply(null, filter.prices),
+        Math.min.apply(null, filterList.prices),
+        Math.max.apply(null, filterList.prices),
       ],
       stocks: [
-        Math.min.apply(null, filter.stocks),
-        Math.max.apply(null, filter.stocks),
+        Math.min.apply(null, filterList.stocks),
+        Math.max.apply(null, filterList.stocks),
       ],
     });
   }, []);
@@ -28,12 +31,15 @@ const Filters: FunctionComponent<FiltersType> = ({
   return (
     <div className="filter">
       <div className="filter__panel">
-        <button className="btn__filters-reset">Reset Filters</button>
+        <button className="btn__filters-reset" onClick={() => filterReset()}>
+          Reset Filters
+        </button>
+
         <button className="btn__copy-link">Copy Link</button>
       </div>
       <div className="category__wrapper">
         <h3 className="title__filter">Category</h3>
-        {filter.categories.map((category, index) => (
+        {productFilters.categories.map((category, index) => (
           <div className="filter__list" key={category.title + index}>
             <div className="checkbox-filter">
               <input
@@ -62,7 +68,13 @@ const Filters: FunctionComponent<FiltersType> = ({
                 {category.title}
               </label>
               <span className="span__filter">
-                ({category.allProductsCount}/{category.allProductsCount})
+                (
+                {
+                  productList.filter(
+                    (product) => product.category === category.title
+                  ).length
+                }
+                /{category.allProductsCount})
               </span>
             </div>
           </div>
@@ -70,7 +82,7 @@ const Filters: FunctionComponent<FiltersType> = ({
       </div>
       <div className="brand__wrapper">
         <h3 className="title__filter">Brand</h3>
-        {filter.brands.map((brand, index) => (
+        {productFilters.brands.map((brand, index) => (
           <div className="filter__list" key={brand.title + index}>
             <div className="checkbox-filter">
               <input
@@ -83,7 +95,9 @@ const Filters: FunctionComponent<FiltersType> = ({
                   if (filters.brands.includes(brand.title)) {
                     setFilters({
                       ...filters,
-                      brands: filters.brands.filter((el) => el !== brand.title),
+                      brands: filters.brands.filter(
+                        (brandItem) => brandItem !== brand.title
+                      ),
                     });
                   } else {
                     setFilters({
@@ -97,7 +111,12 @@ const Filters: FunctionComponent<FiltersType> = ({
                 {brand.title}
               </label>
               <span className="span__filter">
-                ({brand.allBrandCount}/{brand.allBrandCount})
+                (
+                {
+                  productList.filter((product) => product.brand === brand.title)
+                    .length
+                }
+                /{brand.allBrandCount})
               </span>
             </div>
           </div>
@@ -108,41 +127,29 @@ const Filters: FunctionComponent<FiltersType> = ({
         <div className="filter__list">
           <div className="form_control">
             <div className="form_control_container__time">
-              {Math.min(...filter.prices)}
+              {Math.min(...filterList.prices)}
             </div>
             ⟷
             <div className="form_control_container__time">
-              {Math.max(...filter.prices)}
+              {Math.max(...filterList.prices)}
             </div>
           </div>
           <div className="range_container">
             <div className="sliders_control">
-              <input id="fromSlider" type="range" value="1" min="0" max="100" />
-              <input id="toSlider" type="range" value="100" min="0" max="100" />
-            </div>
-            <div className="form_control">
-              <div className="form_control_container">
-                <div className="form_control_container__time"></div>
-                <input
-                  className="form_control_container__time__input"
-                  type="number"
-                  id="fromInput"
-                  value={Math.min.apply(null, filter.prices)}
-                  min="0"
-                  max="100"
-                />
-              </div>
-              <div className="form_control_container">
-                <div className="form_control_container__time"></div>
-                <input
-                  className="form_control_container__time__input"
-                  type="number"
-                  id="toInput"
-                  value={Math.max.apply(null, filter.prices)}
-                  min="0"
-                  max="100"
-                />
-              </div>
+              <input
+                id="fromSlider"
+                type="range"
+                value={filters.prices[0]}
+                min={Math.min.apply(null, filterList.prices)}
+                max={Math.max.apply(null, filterList.prices)}
+              />
+              <input
+                id="toSlider"
+                type="range"
+                value={filters.prices[1]}
+                min={Math.min.apply(null, filterList.prices)}
+                max={Math.max.apply(null, filterList.prices)}
+              />
             </div>
           </div>
         </div>
@@ -152,41 +159,29 @@ const Filters: FunctionComponent<FiltersType> = ({
         <div className="filter__list">
           <div className="form_control">
             <div className="form_control_container__time">
-              {Math.min(...filter.stocks)}
+              {Math.min(...filterList.stocks)}
             </div>
             ⟷
             <div className="form_control_container__time">
-              {Math.max(...filter.stocks)}
+              {Math.max(...filterList.stocks)}
             </div>
           </div>
           <div className="range_container">
             <div className="sliders_control">
-              <input id="fromSlider" type="range" value="1" min="0" max="100" />
-              <input id="toSlider" type="range" value="100" min="0" max="100" />
-            </div>
-            <div className="form_control">
-              <div className="form_control_container">
-                <div className="form_control_container__time"></div>
-                <input
-                  className="form_control_container__time__input"
-                  type="number"
-                  id="fromInput"
-                  value={Math.min.apply(null, filter.stocks)}
-                  min="0"
-                  max="100"
-                />
-              </div>
-              <div className="form_control_container">
-                <div className="form_control_container__time"></div>
-                <input
-                  className="form_control_container__time__input"
-                  type="number"
-                  id="toInput"
-                  value={Math.max.apply(null, filter.stocks)}
-                  min="0"
-                  max="100"
-                />
-              </div>
+              <input
+                id="fromSlider"
+                type="range"
+                value={filters.stocks[0]}
+                min={Math.min.apply(null, filterList.stocks)}
+                max={Math.max.apply(null, filterList.stocks)}
+              />
+              <input
+                id="toSlider"
+                type="range"
+                value={filters.stocks[1]}
+                min={Math.min.apply(null, filterList.stocks)}
+                max={Math.max.apply(null, filterList.stocks)}
+              />
             </div>
           </div>
         </div>
