@@ -4,6 +4,7 @@
 .product__wrapper {
   display: flex;
 	padding: 20px 10px;
+	min-height: calc(100vh - 259px);
 
 	@include media-mobile {
 		flex-direction: column;
