@@ -1,6 +1,7 @@
 .footer {
   background-color: #d9e5e1;
   color: #222523;
+  height: 100px;
 }
 
 .footer__wrapper {
@@ -8,7 +9,7 @@
   justify-content: space-between;
   align-content: center;
   width: 100%;
-  padding: 20px;
+  padding: 18px 20px;
 }
 
 .footer__github {

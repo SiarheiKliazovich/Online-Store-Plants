@@ -4,6 +4,7 @@
 .footer {
   background-color: $color-light-grey;
   color: $color-dark-grey;
+  height: 100px;
 }
 
 .footer__wrapper {
@@ -11,7 +12,7 @@
   justify-content: space-between;
   align-content: center;
   width: 100%;
-  padding: 20px;
+  padding: 18px 20px;
 }
 
 .footer__github {

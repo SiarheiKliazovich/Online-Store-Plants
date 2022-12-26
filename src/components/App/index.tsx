@@ -7,6 +7,7 @@ import Products from "../Products";
 import Footer from "../Footer";
 import Product from "../Product";
 import Cart from "../Cart";
+import NotFound from "../NotFound";
 
 const App = () => {
   const [inShoppingCart, setInShoppinfCart] = useState([2]);
@@ -24,6 +25,7 @@ const App = () => {
     <>
       <Header />
       <Routes>
+        <Route path="*" element={<NotFound />} />
         <Route
           path="/product/:productId"
           element={

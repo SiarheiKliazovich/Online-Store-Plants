@@ -1,18 +1,15 @@
 import { useState, FunctionComponent } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
 import BannerTitle from "../BannerTitle";
 import { IProduct } from "../../interfaces/product";
+import { IProductPage } from "../../interfaces/productPage";
 import products from "../../data/products";
 import { ButtonCart } from "./ButtonCart";
 
 import "./product.scss";
 
-interface IProps {
-  inShoppingCart: number[];
-  addInShoppingCart: (id: number) => void;
-}
-
-const Product: FunctionComponent<IProps> = ({
+const Product: FunctionComponent<IProductPage> = ({
   inShoppingCart,
   addInShoppingCart,
 }) => {
@@ -21,6 +18,7 @@ const Product: FunctionComponent<IProps> = ({
   const product = products.find(
     (product: IProduct) => product.id.toString() === productId
   ) as IProduct;
+
   const {
     id,
     images,
@@ -32,6 +30,9 @@ const Product: FunctionComponent<IProps> = ({
     brand,
     availability,
   } = product as IProduct;
+
+  const navigate = useNavigate();
+
   const [image, setImage] = useState(images[0]);
 
   const changeImage = (e: React.MouseEvent<HTMLDivElement>): void => {
@@ -58,6 +59,8 @@ const Product: FunctionComponent<IProps> = ({
     } else {
       console.log("Товар в корзине есть");
     }
+
+    setTimeout(() => navigate("/cart", { state: { show: true } }), 2000);
   };
 
   return (
