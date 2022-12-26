@@ -5,27 +5,24 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer__wrapper">
-          <nav className="footer__nav vl">
-            <ul className="footer__list">
-              <li className="footer__item"></li>
-              <li className="footer__item"></li>
-              <li className="footer__item"></li>
-            </ul>
-          </nav>
-          <div className="footer__github vl">
+          <div className="footer__github">
             <a
               className="footer__github-link"
               href="https://github.com/SiarheiKliazovich"
+              target="_blank"
             ></a>
             <a
               className="footer__github-link"
               href="https://github.com/anast-ananko"
+              target="_blank"
             ></a>
           </div>
-          <div className="footer__text">
-            <a className="footer__rs" href="https://rs.school/js/"></a>
-            <span className="footer__year">2023</span>
-          </div>
+          <div className="footer__year">2023</div>
+          <a
+            className="footer__rs"
+            href="https://rs.school/js/"
+            target="_blank"
+          ></a>
         </div>
       </div>
     </footer>

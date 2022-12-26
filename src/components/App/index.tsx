@@ -6,6 +6,7 @@ import Header from "../Header";
 import Products from "../Products";
 import Footer from "../Footer";
 import Product from "../Product";
+import Cart from "../Cart";
 
 const App = () => {
   const [inShoppingCart, setInShoppinfCart] = useState([2]);
@@ -32,6 +33,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/" element={<Products />} />
       </Routes>
       <Footer />
