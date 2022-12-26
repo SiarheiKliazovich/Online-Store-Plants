@@ -1,39 +1,30 @@
 import "./Filters.scss";
-import products from "../../data/products";
+import { useEffect } from "react";
+import { FiltersType } from "../../types";
+import { getFilters } from "../../helpers/filter";
+import { FunctionComponent } from "react";
 
-const filterItem = () => {
-  const newBrand: string[] = [];
-  const newPrice: number[] = [];
-  const newCateg: string[] = [];
-  const newStock: number[] = [];
-  products.map((product) => newCateg.push(product.category));
-  products.map((product) => newBrand.push(product.brand));
-  products.map((product) => newPrice.push(product.price));
-  products.map((product) => newStock.push(product.stock));
-  const category = newCateg.filter((element, index) => {
-    return newCateg.indexOf(element) === index;
-  });
-  const brand = newBrand.filter((element, index) => {
-    return newBrand.indexOf(element) === index;
-  });
-  const price = newPrice.filter((element, index) => {
-    return newPrice.indexOf(element) === index;
-  });
-  const stock = newStock.filter((element, index) => {
-    return newStock.indexOf(element) === index;
-  });
-  /*
-  {category:{list:[],all:0, filtered:0}, brand:[], price:[],stock:[]}
-  */
-  return {
-    category,
-    brand,
-    price,
-    stock,
-  };
-};
+const filter = getFilters();
+console.log("filters", filter);
+const Filters: FunctionComponent<FiltersType> = ({
+  filters,
+  setFilters,
+}: FiltersType) => {
+  useEffect(() => {
+    // console.log(Math.min.apply(null, filter.prices));
+    setFilters({
+      ...filters,
+      prices: [
+        Math.min.apply(null, filter.prices),
+        Math.max.apply(null, filter.prices),
+      ],
+      stocks: [
+        Math.min.apply(null, filter.stocks),
+        Math.max.apply(null, filter.stocks),
+      ],
+    });
+  }, []);
 
-const Filter = () => {
   return (
     <div className="filter">
       <div className="filter__panel">
@@ -42,76 +33,160 @@ const Filter = () => {
       </div>
       <div className="category__wrapper">
         <h3 className="title__filter">Category</h3>
-        {filterItem().category.map((category) => (
-          <div className="filter__list">
+        {filter.categories.map((category, index) => (
+          <div className="filter__list" key={category.title + index}>
             <div className="checkbox-filter">
               <input
-                value={category}
+                value={category.title}
                 className="input__category"
                 type="checkbox"
+                id={category.title}
+                checked={filters.categories.includes(category.title)}
+                onChange={(event) => {
+                  if (filters.categories.includes(category.title)) {
+                    setFilters({
+                      ...filters,
+                      categories: filters.categories.filter(
+                        (el) => el !== category.title
+                      ),
+                    });
+                  } else {
+                    setFilters({
+                      ...filters,
+                      categories: [...filters.categories, event.target.value],
+                    });
+                  }
+                }}
               />
-              <label className="label__filter" htmlFor="">
-                {category}
+              <label className="label__filter" htmlFor={category.title}>
+                {category.title}
               </label>
-              <span className="span__filter">(?/?)</span>
+              <span className="span__filter">
+                ({category.allProductsCount}/{category.allProductsCount})
+              </span>
             </div>
           </div>
         ))}
       </div>
       <div className="brand__wrapper">
         <h3 className="title__filter">Brand</h3>
-        {filterItem().brand.map((brand) => (
-          <div className="filter__list">
+        {filter.brands.map((brand, index) => (
+          <div className="filter__list" key={brand.title + index}>
             <div className="checkbox-filter">
-              <input className="input__filter" type="checkbox" />
-              <label className="label__filter" htmlFor="">
-                {brand}
+              <input
+                value={brand.title}
+                className="input__filter"
+                type="checkbox"
+                id={brand.title}
+                checked={filters.brands.includes(brand.title)}
+                onChange={(event) => {
+                  if (filters.brands.includes(brand.title)) {
+                    setFilters({
+                      ...filters,
+                      brands: filters.brands.filter((el) => el !== brand.title),
+                    });
+                  } else {
+                    setFilters({
+                      ...filters,
+                      brands: [...filters.brands, event.target.value],
+                    });
+                  }
+                }}
+              />
+              <label className="label__filter" htmlFor={brand.title}>
+                {brand.title}
               </label>
-              <span className="span__filter">(?/?)</span>
+              <span className="span__filter">
+                ({brand.allBrandCount}/{brand.allBrandCount})
+              </span>
             </div>
           </div>
         ))}
       </div>
       <div className="price__wrapper">
         <h3 className="title__filter">Price</h3>
-        {/* {filterItem().price.map((price) => ( */}
         <div className="filter__list">
-          <div className="range_container">
-            <div className="form_control">
-              <div className="form_control_container__time">Min price</div>⟷
-              <div className="form_control_container__time">Max price</div>
+          <div className="form_control">
+            <div className="form_control_container__time">
+              {Math.min(...filter.prices)}
             </div>
+            ⟷
+            <div className="form_control_container__time">
+              {Math.max(...filter.prices)}
+            </div>
+          </div>
+          <div className="range_container">
             <div className="sliders_control">
-              <input
-                id="fromSlider"
-                type="range"
-                // value={price}
-                min="0"
-                max="100"
-              />
-              <input
-                id="toSlider"
-                type="range"
-                // value={price}
-                min="0"
-                max="100"
-              />
+              <input id="fromSlider" type="range" value="1" min="0" max="100" />
+              <input id="toSlider" type="range" value="100" min="0" max="100" />
+            </div>
+            <div className="form_control">
+              <div className="form_control_container">
+                <div className="form_control_container__time"></div>
+                <input
+                  className="form_control_container__time__input"
+                  type="number"
+                  id="fromInput"
+                  value={Math.min.apply(null, filter.prices)}
+                  min="0"
+                  max="100"
+                />
+              </div>
+              <div className="form_control_container">
+                <div className="form_control_container__time"></div>
+                <input
+                  className="form_control_container__time__input"
+                  type="number"
+                  id="toInput"
+                  value={Math.max.apply(null, filter.prices)}
+                  min="0"
+                  max="100"
+                />
+              </div>
             </div>
           </div>
         </div>
-        {/* ))} */}
       </div>
       <div className="stock__wrapper">
         <h3 className="title__filter">Stock</h3>
         <div className="filter__list">
-          <div className="range_container">
-            <div className="form_control">
-              <div className="form_control_container__time">min stock</div>⟷
-              <div className="form_control_container__time">max stock</div>
+          <div className="form_control">
+            <div className="form_control_container__time">
+              {Math.min(...filter.stocks)}
             </div>
+            ⟷
+            <div className="form_control_container__time">
+              {Math.max(...filter.stocks)}
+            </div>
+          </div>
+          <div className="range_container">
             <div className="sliders_control">
-              <input id="fromSlider" type="range" value="" min="0" max="100" />
-              <input id="toSlider" type="range" value="" min="0" max="100" />
+              <input id="fromSlider" type="range" value="1" min="0" max="100" />
+              <input id="toSlider" type="range" value="100" min="0" max="100" />
+            </div>
+            <div className="form_control">
+              <div className="form_control_container">
+                <div className="form_control_container__time"></div>
+                <input
+                  className="form_control_container__time__input"
+                  type="number"
+                  id="fromInput"
+                  value={Math.min.apply(null, filter.stocks)}
+                  min="0"
+                  max="100"
+                />
+              </div>
+              <div className="form_control_container">
+                <div className="form_control_container__time"></div>
+                <input
+                  className="form_control_container__time__input"
+                  type="number"
+                  id="toInput"
+                  value={Math.max.apply(null, filter.stocks)}
+                  min="0"
+                  max="100"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -119,4 +194,4 @@ const Filter = () => {
     </div>
   );
 };
-export default Filter;
+export default Filters;

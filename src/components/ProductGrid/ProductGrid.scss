@@ -3,12 +3,12 @@
 .main__product_wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .container-inner {
   padding: 15px;
-  width: 33%;
+  width: 33.3%;
 }
 
 .product-block-inner{

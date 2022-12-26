@@ -494,7 +494,7 @@ const products = [
     category: "Orchid",
     stock: 126,
     rating: 4.4,
-    brand: "Holland Service Plant",
+    brand: "Holland Service Plants",
     thumbnail:
       "https://envatopixel.com/wordpress/plantlish/wp-content/uploads/2021/07/18.webp",
     images: [

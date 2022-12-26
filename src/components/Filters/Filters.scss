@@ -7,7 +7,7 @@
 .filter__panel {
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .btn__filters-reset {
@@ -121,7 +121,7 @@ display: block;
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin: 15% auto;
+  margin: 5% auto;
 }
 
 .sliders_control {
@@ -133,13 +133,14 @@ display: block;
   position: relative;
   display: flex;
   justify-content: space-between;
-  font-size: 24px;
+  font-size: $font-size-md;
   color: $color-dark-grey;
-  padding-bottom: 40px;
+  padding: 10px 20px 0 20px;
+  padding-bottom: 15px;
 }
 
 input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
+  // -webkit-appearance: none;
   pointer-events: all;
   width: 24px;
   height: 24px;
@@ -150,7 +151,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 input[type=range]::-moz-range-thumb {
-  -webkit-appearance: none;
+  // -webkit-appearance: none;
   pointer-events: all;
   width: 24px;
   height: 24px;
@@ -175,6 +176,7 @@ input[type="number"] {
   height: 30px;
   font-size: 20px;
   border: none;
+  display: none;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -183,7 +185,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type="range"] {
-  -webkit-appearance: none; 
+  // -webkit-appearance: none; 
   appearance: none;
   height: 2px;
   width: 100%;
