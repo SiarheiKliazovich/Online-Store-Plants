@@ -1,40 +1,106 @@
 import { useState, useEffect } from "react";
-import { getSearchProducts } from "../../helpers/search";
+import { useSearchParams } from "react-router-dom";
 import "./Products.scss";
 import products from "../../data/products";
 import BannerTitle from "../BannerTitle";
-import Filter from "../Filters";
+import Filters from "../Filters";
 import ProductGrid from "../ProductGrid";
 import Sorting from "../Sorting";
 import View from "../View";
 import Search from "../Search";
+import { IFilter } from "./../../interfaces/filter";
+import { getProducts } from "./../../helpers/search";
 
 const Products = () => {
-  const [view, setView] = useState("grid");
-  const [sorting, setSorting] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const URLParams = Object.fromEntries([...searchParams]);
+  const [view, setView] = useState(URLParams.view ? URLParams.view : "grid");
+  const [sorting, setSorting] = useState(URLParams.sort ? URLParams.sort : "");
+  const [searchQuery, setSearchQuery] = useState(
+    URLParams.search ? URLParams.search : ""
+  );
   const [productList, setProductList] = useState(products);
-
-  const getSortedValues = () => {
-    if (sorting === "ratingASC")
-      return products.sort((current, next) => current.rating - next.rating);
-    if (sorting === "ratingDESC")
-      return products.sort((current, next) => next.rating - current.rating);
-    if (sorting === "priceASC")
-      return products.sort((current, next) => current.price - next.price);
-    if (sorting === "priceDESC")
-      return products.sort((current, next) => next.price - current.price);
-    return products;
+  const [filters, setFilters] = useState<IFilter>({
+    categories:
+      URLParams.categories && URLParams.categories.length !== 0
+        ? URLParams.categories.split(",")
+        : [],
+    brands:
+      URLParams.brands && URLParams.brands.length !== 0
+        ? URLParams.brands.split(",")
+        : [],
+    prices: [],
+    stocks: [],
+  });
+  const filterReset = () => {
+    setSearchParams({});
+    setFilters({ categories: [], brands: [], prices: [], stocks: [] });
+    setSorting("");
+    setSearchQuery("");
   };
 
   useEffect(() => {
-    setProductList(getSearchProducts(searchQuery, products));
+    const params = Object.fromEntries([...searchParams]);
+    setSearchParams({
+      ...params,
+      categories: filters.categories.join(","),
+      brands: filters.brands.join(","),
+    });
+
+    setProductList(
+      getProducts(
+        searchQuery,
+        sorting,
+        filters.categories,
+        filters.brands,
+        products
+      )
+    );
+  }, [filters]);
+
+  useEffect(() => {
+    const params = Object.fromEntries([...searchParams]);
+    setSearchParams({
+      ...params,
+      sort: sorting,
+    });
+
+    setProductList(
+      getProducts(
+        searchQuery,
+        sorting,
+        filters.categories,
+        filters.brands,
+        products
+      )
+    );
+  }, [sorting]);
+
+  useEffect(() => {
+    const params = Object.fromEntries([...searchParams]);
+    setSearchParams({
+      ...params,
+      search: searchQuery,
+    });
+
+    setProductList(
+      getProducts(
+        searchQuery,
+        sorting,
+        filters.categories,
+        filters.brands,
+        products
+      )
+    );
   }, [searchQuery]);
 
   useEffect(() => {
-    console.log(sorting);
-    setProductList(getSortedValues());
-  }, [sorting]);
+    const params = Object.fromEntries([...searchParams]);
+    setSearchParams({
+      ...params,
+      view: view,
+    });
+  }, [view]);
 
   return (
     <main className="main">
@@ -42,7 +108,12 @@ const Products = () => {
       <div className="container">
         <div className="main__wrapper">
           <div className="main__filter">
-            <Filter />
+            <Filters
+              setFilters={setFilters}
+              filters={filters}
+              productList={productList}
+              filterReset={filterReset}
+            />
           </div>
           <div className="main__product">
             <div className="view-sorting">
@@ -54,6 +125,9 @@ const Products = () => {
               <Sorting sorting={sorting} setSorting={setSorting} />
             </div>
             <ProductGrid view={view} products={productList} />
+            {productList.length === 0 && (
+              <div className="not-found">No products found 😏</div>
+            )}
           </div>
         </div>
       </div>

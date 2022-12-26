@@ -31,7 +31,7 @@ const ProductItem: FunctionComponent<ProductType> = ({
           <h4 className="product__rating_card">Rating: {product.rating}</h4>
           <h4 className="product__stock_card">In Stock: {product.stock}</h4>
 
-          <span className="product__price_card">Price: ${product.price}</span>
+          <h4 className="product__price_card">Price: ${product.price}</h4>
         </div>
 
         <div className="product__quantity">

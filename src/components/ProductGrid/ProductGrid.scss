@@ -3,11 +3,12 @@
 .main__product_wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .container-inner {
   padding: 15px;
-  width: 33%;
+  width: 33.3%;
 }
 
 .product-block-inner{
@@ -17,6 +18,7 @@
   overflow: hidden;
   flex-direction: column;
   display: flex;
+  padding: 5px;
 }
 
 .img-prod_wrapper {
@@ -139,7 +141,7 @@
   background-color:$color-green-black;
   color: $color-white;
   border-color: $color-green-white;
-  font-family: Work Sans, sans-serif;
+  font-family: $font-family-primary;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
@@ -182,4 +184,13 @@
   .product__stock_card {
     text-align: left;
   }
+  .product__price_card {
+    text-align: left;
+  }
+}
+
+.not-found {
+  text-align: center;
+  font-size: 200%;
+  margin-top: 10%;
 }
