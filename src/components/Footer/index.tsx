@@ -1,6 +1,8 @@
+import { FunctionComponent } from "react";
+
 import "./footer.scss";
 
-const Footer = () => {
+const Footer: FunctionComponent = () => {
   return (
     <footer className="footer">
       <div className="container">

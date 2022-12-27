@@ -11,6 +11,11 @@
   width: 100%;
   padding: 18px 20px;
 }
+@media (max-width: 767px) {
+  .footer__wrapper {
+    padding: 18px 10px;
+  }
+}
 
 .footer__github {
   display: flex;
