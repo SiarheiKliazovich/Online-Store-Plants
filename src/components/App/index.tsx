@@ -10,33 +10,54 @@ import Footer from "../Footer";
 import Product from "../Product";
 
 const App = () => {
-  const [inShoppingCart, setInShoppinfCart] = useState([2]);
+  // const [inShoppingCart, setInShoppinfCart] = useState([2]);
 
-  const addInShoppingCart = (id: number): void => {
-    if (inShoppingCart.indexOf(id) === -1) {
-      setInShoppinfCart(() => {
-        const newArr = [...inShoppingCart, id];
-        return newArr;
-      });
-    }
+  // const addInShoppingCart = (id: number): void => {
+  //   if (inShoppingCart.indexOf(id) === -1) {
+  //     setInShoppinfCart(() => {
+  //       const newArr = [...inShoppingCart, id];
+  //       return newArr;
+  //     });
+  //   }
+  // };
+
+  const [shoppingCart, setShoppingCart] = useState(
+    localStorage.getItem("cart") ? localStorage.getItem("cart") : []
+  );
+  console.log(shoppingCart);
+  const addToShoppingCart = (id) => {
+    return localStorage.setItem("cart", [
+      ...shoppingCart,
+      {
+        id: id,
+        count: 1,
+      },
+    ]);
   };
-
   return (
     <>
-      <Header />
+      <Header shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/product/:productId"
           element={
             <Product
-              inShoppingCart={inShoppingCart}
-              addInShoppingCart={addInShoppingCart}
+              shoppingCart={shoppingCart}
+              setShoppingCart={setShoppingCart}
             />
           }
         />
-        <Route path="/products" element={<Products />} />
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/"
+          element={
+            <Products
+              shoppingCart={shoppingCart}
+              setShoppingCart={setShoppingCart}
+            />
+          }
+        />
+        {/* <Route path="/about" element={<About />} /> */}
       </Routes>
       <Footer />
     </>
