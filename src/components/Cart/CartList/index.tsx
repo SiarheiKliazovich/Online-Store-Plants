@@ -16,7 +16,6 @@ const CartList = () => {
   const [selectValue, setSelectValue] = useState(3);
   const [code, setCode] = useState("");
 
-
   const updateCart = (id: number, counter: number): void => {
     parseCart = getUpdateStotage();
     const newArrayItems = parseCart.map((item) => {
@@ -66,7 +65,7 @@ const CartList = () => {
         showAvailableCode = true;
         availableCode = i;
       }
-    })
+    });
   };
 
   const codeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -113,13 +112,13 @@ const CartList = () => {
               value={code}
               onChange={(e) => codeHandler(e)}
             />
-            {showAvailableCode ? <div>availableCode</div> : ''}
+            {showAvailableCode ? <div>availableCode</div> : ""}
           </div>
           <div className="promo__codes">Promo for test: 'RS', 'EPM'</div>
           <button className="promo__button">Check</button>
         </div>
       </div>
-    </>  
+    </>
   );
 };
 

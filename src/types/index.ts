@@ -65,6 +65,7 @@ export type ProductPageType = {
 export type HeaderType = {
   sumPrices: number;
   sumCount: number;
+};
 
 export type CartType = {
   id: number;
