@@ -11,8 +11,13 @@ import Search from "../Search";
 import { IFilter } from "./../../interfaces/filter";
 import { getProducts } from "./../../helpers/search";
 import { getFilters } from "../../helpers/filter";
+import { FunctionComponent } from "react";
+import { ProductsType } from "../../types";
 
-const Products = () => {
+const Products: FunctionComponent<ProductsType> = ({
+  shoppingCart,
+  addToShoppingCart,
+}: ProductsType) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const URLParams = Object.fromEntries([...searchParams]);
   const [view, setView] = useState(URLParams.view ? URLParams.view : "grid");
@@ -148,7 +153,12 @@ const Products = () => {
               />
               <Sorting sorting={sorting} setSorting={setSorting} />
             </div>
-            <ProductGrid view={view} products={productList} />
+            <ProductGrid
+              view={view}
+              products={productList}
+              addToShoppingCart={addToShoppingCart}
+              shoppingCart={shoppingCart}
+            />
             {productList.length === 0 && (
               <div className="not-found">No products found 😏</div>
             )}

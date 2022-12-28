@@ -12,7 +12,10 @@ export const getSortedAscPrice = (products: IProduct[]) =>
 export const getSortedDescPrice = (products: IProduct[]) =>
   products.sort((current, next) => next.price - current.price) as IProduct[];
 
-export const getSortedValues = (sorting: string, productList: IProduct[]) => {
+export const getSortedValues = (
+  sorting: string,
+  productList: IProduct[]
+): IProduct[] => {
   const products = [...productList];
   switch (sorting) {
     case "ratingASC":

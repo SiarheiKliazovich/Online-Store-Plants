@@ -12,7 +12,7 @@ const Filters: FunctionComponent<FiltersType> = ({
   productFilters,
 }: FiltersType) => {
   const [copied, setCopied] = useState(false);
-  const copy = () => {
+  const copy = (): void => {
     const el = document.createElement("input");
     el.value = window.location.href;
     document.body.appendChild(el);
@@ -23,25 +23,25 @@ const Filters: FunctionComponent<FiltersType> = ({
     setTimeout(setCopied, 1500);
   };
 
-  const setFilterMaxPrices = (value: string) =>
+  const setFilterMaxPrices = (value: string): void =>
     setFilters({
       ...filters,
       prices: [filters.prices[0], parseInt(value, 10)],
     });
 
-  const setFilterMinPrices = (value: string) =>
+  const setFilterMinPrices = (value: string): void =>
     setFilters({
       ...filters,
       prices: [parseInt(value, 10), filters.prices[1]],
     });
 
-  const setFilterMaxStocks = (value: string) =>
+  const setFilterMaxStocks = (value: string): void =>
     setFilters({
       ...filters,
       stocks: [filters.stocks[0], parseInt(value, 10)],
     });
 
-  const setFilterMinStocks = (value: string) =>
+  const setFilterMinStocks = (value: string): void =>
     setFilters({
       ...filters,
       stocks: [parseInt(value, 10), filters.stocks[1]],

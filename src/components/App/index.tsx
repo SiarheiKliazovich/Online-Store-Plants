@@ -1,42 +1,63 @@
-import { useState } from "react";
+import { useState, FunctionComponent } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.scss";
-
+import { IShoppingCart } from "../../interfaces/shoppingCart";
 import Header from "../Header";
 import Products from "../Products";
 import Footer from "../Footer";
 import Product from "../Product";
 import Cart from "../Cart";
 import NotFound from "../NotFound";
+import products from "../../data/products";
+import { IProduct } from "./../..//interfaces/product";
 
-const App = () => {
-  // const [inShoppingCart, setInShoppinfCart] = useState([2]);
+const App: FunctionComponent = () => {
+  const cart = localStorage.getItem("cart");
+  const cartObj = cart ? JSON.parse(cart) : [];
 
-  // const addInShoppingCart = (id: number): void => {
-  //   if (inShoppingCart.indexOf(id) === -1) {
-  //     setInShoppinfCart(() => {
-  //       const newArr = [...inShoppingCart, id];
-  //       return newArr;
-  //     });
-  //   }
-  // };
+  const [shoppingCart, setShoppingCart] = useState<IShoppingCart[]>(cartObj);
 
-  const [shoppingCart, setShoppingCart] = useState(
-    localStorage.getItem("cart") ? localStorage.getItem("cart") : []
-  );
-  console.log(shoppingCart);
-  const addToShoppingCart = (id) => {
-    return localStorage.setItem("cart", [
-      ...shoppingCart,
-      {
-        id: id,
-        count: 1,
-      },
-    ]);
+  const addToShoppingCart = (id: number): void => {
+    const prodInShoppingCart = shoppingCart.filter(
+      (product: IShoppingCart) => product.id === id
+    );
+
+    if (prodInShoppingCart.length > 0) {
+      setShoppingCart(
+        shoppingCart.filter((product: IShoppingCart) => product.id !== id)
+      );
+    } else {
+      setShoppingCart([
+        ...shoppingCart,
+        {
+          id: id,
+          count: 1,
+        },
+      ]);
+    }
+    localStorage.setItem("cart", JSON.stringify(shoppingCart));
   };
+  const sumPrices = (): number => {
+    const prodToCart: IProduct[] = [];
+    shoppingCart.forEach((prod) =>
+      prodToCart.push(
+        products.find((product: IProduct) => product.id === prod.id)!
+      )
+    );
+    return prodToCart.reduce((prev, curr) => {
+      return prev + curr.price;
+    }, 0);
+  };
+
+  const sumCount = (): number => {
+    return shoppingCart.reduce((prev, curr) => {
+      return prev + curr.count;
+    }, 0);
+  };
+
   return (
     <>
-      <Header shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />
+      <Header sumPrices={sumPrices()} sumCount={sumCount()} />
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route
@@ -44,7 +65,7 @@ const App = () => {
           element={
             <Product
               shoppingCart={shoppingCart}
-              setShoppingCart={setShoppingCart}
+              addToShoppingCart={addToShoppingCart}
             />
           }
         />
@@ -53,7 +74,7 @@ const App = () => {
           element={
             <Products
               shoppingCart={shoppingCart}
-              setShoppingCart={setShoppingCart}
+              addToShoppingCart={addToShoppingCart}
             />
           }
         />

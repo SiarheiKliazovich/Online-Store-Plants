@@ -1,0 +1,11 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.cart__wrapper {
+	min-height: calc(100vh - 200px);
+	margin: 0 auto;
+
+	@include media-mobile {
+		min-height: calc(100vh - 220px);
+	}
+}

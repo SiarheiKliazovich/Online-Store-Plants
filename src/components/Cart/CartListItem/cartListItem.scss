@@ -1,0 +1,77 @@
+@import '../../../sass/variables';
+@import '../../../sass/mixins';
+
+.cart__item {
+  display: flex;
+	align-content: center;
+	border-bottom: 1px solid $color-dark-grey;
+}
+
+.cart__item-number {
+	font-size: $font-size-lg;
+	width: 30px;
+	align-self: center;
+	text-align: center;
+}
+
+.cart__item-text {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	padding: 5px;
+}
+
+.cart__item-name {
+	font-size: $font-size-lg;
+	margin-bottom: 5px;
+}
+
+.cart__item-category {
+	font-size: $font-size-md;
+	font-style: italic;
+	margin-bottom: 5px;
+}
+
+.cart__price {
+	width: 60px;
+	margin: 0 10px;
+	font-size: $font-size-llg;
+	align-self: center;
+	text-align: center;
+}
+
+.cart__counter {
+	margin: 5px 20px;
+	align-self: center;
+	display: flex;
+}
+
+.mini-button {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	cursor: pointer;
+	font-size: $font-size-lg;
+	background-color: $color-grey;
+	border: none;
+	transition: 0.5s;
+
+	&:hover {
+		background-color: $color-green-hover;
+	}
+}
+
+.counter {
+	font-size: $font-size-llg;
+	margin: 0 10px;
+	width: 16px;
+	text-align: center;
+}
+
+.cart__total {
+	width: 60px;
+	margin: 0 15px;
+	align-self: center;
+	font-size: $font-size-llg;
+}
