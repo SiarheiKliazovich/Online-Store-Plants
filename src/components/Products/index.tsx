@@ -10,6 +10,7 @@ import View from "../View";
 import Search from "../Search";
 import { IFilter } from "./../../interfaces/filter";
 import { getProducts } from "./../../helpers/search";
+import { getFilters } from "../../helpers/filter";
 
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,6 +21,9 @@ const Products = () => {
     URLParams.search ? URLParams.search : ""
   );
   const [productList, setProductList] = useState(products);
+
+  const productFilters = getFilters(products);
+  const filterList = getFilters(productList);
   const [filters, setFilters] = useState<IFilter>({
     categories:
       URLParams.categories && URLParams.categories.length !== 0
@@ -29,12 +33,23 @@ const Products = () => {
       URLParams.brands && URLParams.brands.length !== 0
         ? URLParams.brands.split(",")
         : [],
-    prices: [],
-    stocks: [],
+    prices:
+      URLParams.prices && URLParams.prices.length !== 0
+        ? URLParams.prices.split(",").map(Number)
+        : filterList.prices,
+    stocks:
+      URLParams.stocks && URLParams.stocks.length !== 0
+        ? URLParams.stocks.split(",").map(Number)
+        : filterList.stocks,
   });
   const filterReset = () => {
-    setSearchParams({});
-    setFilters({ categories: [], brands: [], prices: [], stocks: [] });
+    setSearchParams({ view: view });
+    setFilters({
+      categories: [],
+      brands: [],
+      prices: productFilters.prices,
+      stocks: productFilters.stocks,
+    });
     setSorting("");
     setSearchQuery("");
   };
@@ -45,6 +60,8 @@ const Products = () => {
       ...params,
       categories: filters.categories.join(","),
       brands: filters.brands.join(","),
+      prices: filters.prices.join(","),
+      stocks: filters.stocks.join(","),
     });
 
     setProductList(
@@ -53,6 +70,8 @@ const Products = () => {
         sorting,
         filters.categories,
         filters.brands,
+        filters.prices,
+        filters.stocks,
         products
       )
     );
@@ -71,6 +90,8 @@ const Products = () => {
         sorting,
         filters.categories,
         filters.brands,
+        filters.prices,
+        filters.stocks,
         products
       )
     );
@@ -89,6 +110,8 @@ const Products = () => {
         sorting,
         filters.categories,
         filters.brands,
+        filters.prices,
+        filters.stocks,
         products
       )
     );
@@ -113,6 +136,7 @@ const Products = () => {
               filters={filters}
               productList={productList}
               filterReset={filterReset}
+              productFilters={productFilters}
             />
           </div>
           <div className="main__product">

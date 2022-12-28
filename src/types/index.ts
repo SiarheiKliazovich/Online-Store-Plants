@@ -1,5 +1,6 @@
 import { IProduct } from "../interfaces/product";
 import { IFilter } from "../interfaces/filter";
+import { IProdFilter } from "../interfaces/productFilters";
 
 export type ProductType = {
   product: IProduct;
@@ -30,4 +31,18 @@ export type FiltersType = {
   setFilters: (filters: IFilter) => void;
   productList: IProduct[];
   filterReset: () => void;
+  productFilters: IProdFilter;
+};
+
+export type FilterRangeType = {
+  minLabel: number;
+  maxLabel: number;
+  valueFromSlider: number;
+  minFromSlider: number;
+  maxFromSlider: number;
+  setFiltersFromSlider: (value: string) => void;
+  setFiltersToSlider: (value: string) => void;
+  valueToSlider: number;
+  minToSlider: number;
+  maxToSlider: number;
 };

@@ -43,7 +43,7 @@ export const getFilters = (products: IProduct[]) => {
           .length,
       };
     }),
-    prices,
-    stocks,
+    prices: [Math.min.apply(null, prices), Math.max.apply(null, prices)],
+    stocks: [Math.min.apply(null, stocks), Math.max.apply(null, stocks)],
   };
 };

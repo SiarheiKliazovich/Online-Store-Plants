@@ -11,6 +11,8 @@ export const getProducts = (
   sorting: string,
   categories: string[],
   brands: string[],
+  prices: number[],
+  stocks: number[],
   products: IProduct[]
 ) => {
   const filteredProducts = products
@@ -19,6 +21,16 @@ export const getProducts = (
     )
     .filter((product) =>
       brands.length ? brands.includes(product.brand) : product
+    )
+    .filter((product) =>
+      prices.length
+        ? product.price >= prices[0] && product.price <= prices[1]
+        : product
+    )
+    .filter((product) =>
+      stocks.length
+        ? product.stock >= stocks[0] && product.stock <= stocks[1]
+        : product
     )
     .filter((product) =>
       searchQuery ? product.name.includes(searchQuery) : product
