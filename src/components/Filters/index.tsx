@@ -1,43 +1,63 @@
 import "./Filters.scss";
-import { useEffect } from "react";
 import { FiltersType } from "../../types";
-import { getFilters } from "../../helpers/filter";
 import { FunctionComponent } from "react";
-import products from "./../../data/products";
+import { useState } from "react";
+import FilterRange from "../Filters/FilterRange";
 
 const Filters: FunctionComponent<FiltersType> = ({
   filters,
   setFilters,
   productList,
   filterReset,
+  productFilters,
 }: FiltersType) => {
-  const productFilters = getFilters(products);
-  const filterList = getFilters(productList);
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    const el = document.createElement("input");
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    setCopied(true);
+    setTimeout(setCopied, 1500);
+  };
 
-  useEffect(() => {
+  const setFilterMaxPrices = (value: string) =>
     setFilters({
       ...filters,
-      prices: [
-        Math.min.apply(null, filterList.prices),
-        Math.max.apply(null, filterList.prices),
-      ],
-      stocks: [
-        Math.min.apply(null, filterList.stocks),
-        Math.max.apply(null, filterList.stocks),
-      ],
+      prices: [filters.prices[0], parseInt(value, 10)],
     });
-  }, []);
+
+  const setFilterMinPrices = (value: string) =>
+    setFilters({
+      ...filters,
+      prices: [parseInt(value, 10), filters.prices[1]],
+    });
+
+  const setFilterMaxStocks = (value: string) =>
+    setFilters({
+      ...filters,
+      stocks: [filters.stocks[0], parseInt(value, 10)],
+    });
+
+  const setFilterMinStocks = (value: string) =>
+    setFilters({
+      ...filters,
+      stocks: [parseInt(value, 10), filters.stocks[1]],
+    });
 
   return (
     <div className="filter">
-      <div className="filter__panel">
+      <div className="filter__btn_wrapper">
         <button className="btn__filters-reset" onClick={() => filterReset()}>
           Reset Filters
         </button>
-
-        <button className="btn__copy-link">Copy Link</button>
+        <button className="btn__copy-link" onClick={copy}>
+          {!copied ? "Copy link" : "Copied!"}
+        </button>
       </div>
-      <div className="category__wrapper">
+      <div className="filter__panel">
         <h3 className="title__filter">Category</h3>
         {productFilters.categories.map((category, index) => (
           <div className="filter__list" key={category.title + index}>
@@ -80,7 +100,7 @@ const Filters: FunctionComponent<FiltersType> = ({
           </div>
         ))}
       </div>
-      <div className="brand__wrapper">
+      <div className="filter__panel">
         <h3 className="title__filter">Brand</h3>
         {productFilters.brands.map((brand, index) => (
           <div className="filter__list" key={brand.title + index}>
@@ -122,69 +142,35 @@ const Filters: FunctionComponent<FiltersType> = ({
           </div>
         ))}
       </div>
-      <div className="price__wrapper">
+      <div className="filter__panel">
         <h3 className="title__filter">Price</h3>
-        <div className="filter__list">
-          <div className="form_control">
-            <div className="form_control_container__time">
-              {Math.min(...filterList.prices)}
-            </div>
-            ⟷
-            <div className="form_control_container__time">
-              {Math.max(...filterList.prices)}
-            </div>
-          </div>
-          <div className="range_container">
-            <div className="sliders_control">
-              <input
-                id="fromSlider"
-                type="range"
-                value={filters.prices[0]}
-                min={Math.min.apply(null, filterList.prices)}
-                max={Math.max.apply(null, filterList.prices)}
-              />
-              <input
-                id="toSlider"
-                type="range"
-                value={filters.prices[1]}
-                min={Math.min.apply(null, filterList.prices)}
-                max={Math.max.apply(null, filterList.prices)}
-              />
-            </div>
-          </div>
-        </div>
+        <FilterRange
+          minLabel={filters.prices[0]}
+          maxLabel={filters.prices[1]}
+          valueFromSlider={filters.prices[0]}
+          minFromSlider={productFilters.prices[0]}
+          maxFromSlider={filters.prices[1]}
+          setFiltersFromSlider={setFilterMinPrices}
+          setFiltersToSlider={setFilterMaxPrices}
+          valueToSlider={filters.prices[1]}
+          minToSlider={filters.prices[0]}
+          maxToSlider={productFilters.prices[1]}
+        />
       </div>
-      <div className="stock__wrapper">
+      <div className="filter__panel">
         <h3 className="title__filter">Stock</h3>
-        <div className="filter__list">
-          <div className="form_control">
-            <div className="form_control_container__time">
-              {Math.min(...filterList.stocks)}
-            </div>
-            ⟷
-            <div className="form_control_container__time">
-              {Math.max(...filterList.stocks)}
-            </div>
-          </div>
-          <div className="range_container">
-            <div className="sliders_control">
-              <input
-                id="fromSlider"
-                type="range"
-                value={filters.stocks[0]}
-                min={Math.min.apply(null, filterList.stocks)}
-                max={Math.max.apply(null, filterList.stocks)}
-              />
-              <input
-                id="toSlider"
-                type="range"
-                value={filters.stocks[1]}
-                min={Math.min.apply(null, filterList.stocks)}
-                max={Math.max.apply(null, filterList.stocks)}
-              />
-            </div>
-          </div>
-        </div>
+        <FilterRange
+          minLabel={filters.stocks[0]}
+          maxLabel={filters.stocks[1]}
+          valueFromSlider={filters.stocks[0]}
+          minFromSlider={productFilters.stocks[0]}
+          maxFromSlider={filters.stocks[1]}
+          setFiltersFromSlider={setFilterMinStocks}
+          setFiltersToSlider={setFilterMaxStocks}
+          valueToSlider={filters.stocks[1]}
+          minToSlider={filters.stocks[0]}
+          maxToSlider={productFilters.stocks[1]}
+        />
       </div>
     </div>
   );

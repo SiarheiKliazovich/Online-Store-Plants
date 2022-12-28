@@ -4,7 +4,7 @@
   padding-top: 15px;
 }
 
-.filter__panel {
+.filter__btn_wrapper {
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
@@ -44,7 +44,7 @@
   }
 }
 
-.category__wrapper {
+.filter__panel {
 border: 2px solid $color-grey;
 border-radius: 5px;
 overflow: hidden;
@@ -93,29 +93,6 @@ display: block;
   margin-left: auto;
 }
 
-.brand__wrapper {
-  border: 2px solid $color-grey;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.price__wrapper {
-  border: 2px solid $color-grey;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.stock__wrapper {
-  border: 2px solid $color-grey;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: 10px;
-  display: block;
-}
 //////////////////////////////////////
 .range_container {
   display: flex;
