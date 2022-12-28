@@ -1,25 +1,46 @@
-import { FunctionComponent, useState, useEffect } from "react";
+import { FunctionComponent, useState } from "react";
 
 import products from "../../../data/products";
 import CartListItem from "../CartListItem";
+import { getUpdateStotage } from "../../../helpers/getUpdateStorage";
 
 import "./cartList.scss";
 
-// const cart = localStorage.getItem("cart");
-// let parseCart;
-// if (typeof cart === "string") {
-//   parseCart = JSON.parse(cart);
-// }
-// console.log(Array.from(Object.entries(parseCart)));
-// const arrayFromCart = Array.from(Object.entries(parseCart));
-
 const CartList = () => {
+  let parseCart = getUpdateStotage();
+  const [cartData, setCartData] = useState(parseCart);
   const [selectValue, setSelectValue] = useState(3);
 
-  // const items = arrayFromCart.map((item, i) => {
-  //   const id = +item[0];
-  //   return <CartListItem key={id} {...products[id]} i={i} />;
-  // });
+  const updateCart = (id: number, counter: number): void => {
+    parseCart = getUpdateStotage();
+    const newArrayItems = parseCart.map((item) => {
+      if (item.id === id) {
+        return { ...item, count: counter };
+      }
+      return item;
+    });
+    localStorage.setItem("cart", JSON.stringify(newArrayItems));
+  };
+
+  const deleteItem = (id: number): void => {
+    parseCart = getUpdateStotage();
+    const newArrayItems = parseCart.filter((item) => item.id !== id);
+    localStorage.setItem("cart", JSON.stringify(newArrayItems));
+    setCartData(newArrayItems);
+  };
+
+  const items = parseCart.map((item, i) => {
+    const id = item.id;
+    return (
+      <CartListItem
+        key={id}
+        {...products[id - 1]}
+        i={i}
+        deleteItem={deleteItem}
+        updateCart={updateCart}
+      />
+    );
+  });
 
   const handleChangeSelect = (
     e: React.ChangeEvent<HTMLSelectElement>
@@ -51,7 +72,7 @@ const CartList = () => {
         <div className="header__quantity">Quantity</div>
         <div className="header__total">Total</div>
       </div>
-      <div className="cart__items">{}</div>
+      <div className="cart__items">{items}</div>
     </div>
   );
 };
