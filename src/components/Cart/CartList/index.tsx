@@ -11,7 +11,6 @@ const CartList = () => {
   const [cartData, setCartData] = useState(parseCart);
   const [selectValue, setSelectValue] = useState(3);
 
-
   const updateCart = (id: number, counter: number): void => {
     parseCart = getUpdateStotage();
     const newArrayItems = parseCart.map((item) => {
@@ -73,7 +72,7 @@ const CartList = () => {
         <div className="header__quantity">Quantity</div>
         <div className="header__total">Total</div>
       </div>
-      <div className="cart__items">{}</div>
+      <div className="cart__items">{items}</div>
     </div>
   );
 };

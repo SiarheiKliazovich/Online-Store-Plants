@@ -1,4 +1,4 @@
-import { useState, FunctionComponent } from "react";
+import { useState, FunctionComponent, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.scss";
 import { IShoppingCart } from "../../interfaces/shoppingCart";
@@ -30,13 +30,17 @@ const App: FunctionComponent = () => {
       setShoppingCart([
         ...shoppingCart,
         {
-          id: id,
+          id,
           count: 1,
         },
       ]);
     }
-    localStorage.setItem("cart", JSON.stringify(shoppingCart));
   };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(shoppingCart));
+  }, [shoppingCart]);
+
   const sumPrices = (): number => {
     const prodToCart: IProduct[] = [];
     shoppingCart.forEach((prod) =>
