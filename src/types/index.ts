@@ -46,3 +46,8 @@ export type FilterRangeType = {
   minToSlider: number;
   maxToSlider: number;
 };
+
+export type CartType = {
+  id: number;
+  count: number;
+};
