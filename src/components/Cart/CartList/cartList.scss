@@ -1,0 +1,52 @@
+@import '../../../sass/variables';
+@import '../../../sass/mixins';
+
+.cart__content {
+  width: 70%;
+}
+
+.cart__pag {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.pag__label {
+	font-size: $font-size-lg;
+	margin-left: 10px;
+}
+
+.pag__select {
+	margin: 0 10px;
+}
+
+.cart__header {
+	display: flex;
+	font-size: $font-size-llg;
+	border-bottom: 1px solid $color-dark-grey;
+	padding-bottom: 10px;
+}
+
+.header__name {
+	width: 340px;
+	margin: 0 60px;
+}
+
+.header__price {
+	width: 60px;
+	margin: 0 10px;
+}
+
+.header__quantity {
+	width: 100px;
+	margin: 0 10px;
+}
+
+.header__total {
+	width: 100px;
+	margin: 0 10px;
+}
+
+.cart__items {
+	display: flex;
+	flex-direction: column;
+}
