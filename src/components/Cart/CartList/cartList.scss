@@ -2,7 +2,8 @@
 @import '../../../sass/mixins';
 
 .cart__content {
-  width: 70%;
+  width: calc(70% - 20px);
+	margin-right: 20px;
 }
 
 .cart__pag {
@@ -49,4 +50,52 @@
 .cart__items {
 	display: flex;
 	flex-direction: column;
+}
+
+.cart__summary {
+	width: 30%;
+	background-color: $color-grey;
+	border-radius: 10px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.summary__title {
+	font-size: $font-size-xxlg;
+	padding-top: 40px;
+	margin-bottom: 20px;
+}
+
+.summary__items {
+	font-size: $font-size-xlg;
+	margin-bottom: 20px;
+}
+
+.summary__amount {
+	font-size: $font-size-xlg;
+	margin-bottom: 20px;
+}
+
+.promo__input {
+	border-radius: 5px;
+}
+
+.summary__promo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.promo__input {
+	margin-bottom: 5px;
+}
+
+.promo__codes {
+	margin-bottom: 5px;
+}
+
+.summary__promo {
+	margin-bottom: 20px;
 }
