@@ -1,4 +1,5 @@
 @import '../../sass/variables';
+@import '../../sass/mixins';
 
 .modal {
   position: fixed;
@@ -13,6 +14,7 @@
   opacity: 0;
   transition: all 0.5s ease-in-out;
   pointer-events: none;
+	height: 100%;
 }
 
 .modal.show {
@@ -20,7 +22,7 @@
 	pointer-events: visible;
 
 	.modal__content {
-		transform: translateY(0);
+		transform: translateY(0);		
 	}
 }
 
@@ -29,101 +31,18 @@
   background-color: $color-white;  
 	transform: translateY(-200px);
 	transition: all 0.5s ease-in-out;
-
 	border: 2px solid $color-dark-grey;
 	border-radius: 10px;
-	width: 500px;
+	overflow-y: auto;
+	max-height: calc(100vh - 40px);
+
+	@include media-mobile {
+		width: 300px;		
+	}
 }
 
-.modal__form {
+.modal__text {
 	padding: 20px;
-}
-
-.modal__personal,
-.modal__credit {
-	margin-bottom: 10px;
-
-	input {
-		width: 100%;
-		display: block;
-		margin-bottom: 5px;
-	}	
-}
-
-.modal__personal-info,
-.modal__credit-card {
-	margin-bottom: 10px;
 	text-align: center;
 	font-size: $font-size-xlg;
-	font-weight: $font-weight-bold;
 }
-
-.modal__credit {
-	display: flex;
-	flex-direction: column;
-}
-
-.modal__image {
-	margin-bottom: 5px;
-	margin-left: calc(50% - 20px);
-	background-image: url('../../assets/images/png/card.png');
-	background-repeat: no-repeat;
-	background-size: contain;
-	display: block;
-	width: 45px;
-	height: 30px;
-	text-align: center;	
-}
-
-.american {
-	background-image: url('../../assets/images/png/american.png');
-}
-
-.visa {
-	background-image: url('../../assets/images/png/visa.png');
-}
-
-.mastercard {
-	background-image: url('../../assets/images/png/mastercard.png');
-}
-
-
-
-
-
-
- 
-.modal.enter-done {
-  opacity: 1;
-  pointer-events: visible;
-}
-  
-.modal.exit {
-  opacity: 0;
-}
-  
-
-  
-.modal.enter-done .modal-content {
-  transform: translateY(0);
-}
-  
-.modal.exit .modal-content {
-  transform: translateY(-200px);
-}
-  
-.modal-header,
-.modal-footer {
-  padding: 10px;
-}
-  
-.modal-title {
-  margin: 0;
-}
-  
-.modal-body {
-  padding: 10px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-}
-  

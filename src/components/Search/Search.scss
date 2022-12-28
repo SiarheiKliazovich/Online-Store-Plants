@@ -3,6 +3,7 @@
 .search__wrapper {
   font-family: $font-family-primary;
   word-wrap: break-word;
+  width: 45%;
 }
 
 .input-search {
@@ -11,7 +12,7 @@
   border-radius: 5px;
   padding: 5px;
   outline: none;
-  font-size: 80%;
+  font-size: 100%;
   text-align: center;
   height: 38px;
 }

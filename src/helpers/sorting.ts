@@ -1,27 +1,19 @@
 import { IProduct } from "../interfaces/product";
 
 export const getSortedAscRating = (products: IProduct[]) =>
-  products.sort((current, next) =>
-    current.rating < next.rating ? 1 : -1
-  ) as IProduct[];
+  products.sort((current, next) => current.rating - next.rating) as IProduct[];
 
 export const getSortedDescRating = (products: IProduct[]) =>
-  products.sort((current, next) =>
-    current.rating > next.rating ? 1 : -1
-  ) as IProduct[];
+  products.sort((current, next) => next.rating - current.rating) as IProduct[];
 
 export const getSortedAscPrice = (products: IProduct[]) =>
-  products.sort((current, next) =>
-    current.price < next.price ? 1 : -1
-  ) as IProduct[];
+  products.sort((current, next) => current.price - next.price) as IProduct[];
 
 export const getSortedDescPrice = (products: IProduct[]) =>
-  products.sort((current, next) =>
-    current.price > next.price ? 1 : -1
-  ) as IProduct[];
+  products.sort((current, next) => next.price - current.price) as IProduct[];
 
-export const getSortedValues = (sorting: string, products: IProduct[]) => {
-  console.log("sorting", sorting);
+export const getSortedValues = (sorting: string, productList: IProduct[]) => {
+  const products = [...productList];
   switch (sorting) {
     case "ratingASC":
       return getSortedAscRating(products);

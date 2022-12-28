@@ -3,11 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import "./App.scss";
 
 import Header from "../Header";
-import Home from "../Home";
 import Products from "../Products";
-import About from "../About";
 import Footer from "../Footer";
 import Product from "../Product";
+import Cart from "../Cart";
+import NotFound from "../NotFound";
 
 const App = () => {
   // const [inShoppingCart, setInShoppinfCart] = useState([2]);
@@ -38,7 +38,7 @@ const App = () => {
     <>
       <Header shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
         <Route
           path="/product/:productId"
           element={
@@ -57,7 +57,7 @@ const App = () => {
             />
           }
         />
-        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </>
