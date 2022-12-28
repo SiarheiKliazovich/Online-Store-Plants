@@ -16,7 +16,7 @@ const Header: FunctionComponent<HeaderType> = ({
           </Link>
           <div className="header__sum">
             <span className="header__sum_title"> Cart total: </span>
-            {sumPrices}
+            <span className="header__sum_number">{sumPrices}</span>
           </div>
           <Link className="header__link" to="/cart">
             <div className="header__cart">
