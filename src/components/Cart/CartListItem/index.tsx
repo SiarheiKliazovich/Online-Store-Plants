@@ -2,20 +2,26 @@ import { FunctionComponent, useState, useEffect } from "react";
 
 import { IProduct } from "../../../interfaces/product";
 import { countTotalByItem } from "../../../helpers/countTotalByItem";
+import { CartType } from "../../../types";
 
 import "./cartListItem.scss";
 
 interface P extends IProduct {
   i: number;
+  deleteItem: (id: number) => void;
+  updateCart: (id: number, counter: number) => void;
 }
 
 const CartListItem: FunctionComponent<P> = ({
   i,
+  id,
   name,
   thumbnail,
   category,
   stock,
   price,
+  deleteItem,
+  updateCart,
 }) => {
   const [counter, setCounter] = useState(1);
   const [total, setTotal] = useState(price);
@@ -34,6 +40,10 @@ const CartListItem: FunctionComponent<P> = ({
 
   useEffect(() => {
     setTotal(countTotalByItem(counter, price));
+    updateCart(id, counter);
+    if (counter === 0) {
+      deleteItem(id);
+    }
   }, [counter]);
 
   return (

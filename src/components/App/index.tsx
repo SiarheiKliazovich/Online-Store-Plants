@@ -22,8 +22,11 @@ const App = () => {
   };
 
   // это временно для отображения данных в корзине
-  const cart = { "1": 3, "2": 6 };
-  localStorage.setItem("cart", JSON.stringify(cart));
+  const shopCart = [
+    { id: 1, count: 1 },
+    { id: 2, count: 1 },
+  ];
+  localStorage.setItem("cart", JSON.stringify(shopCart));
 
   return (
     <>
