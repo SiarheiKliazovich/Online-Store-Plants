@@ -3,17 +3,16 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import BannerTitle from "../BannerTitle";
 import { IProduct } from "../../interfaces/product";
-import { IProductPage } from "../../interfaces/productPage";
+import { ProductPageType } from "../../types";
 import products from "../../data/products";
 import { ButtonCart } from "./ButtonCart";
 
 import "./product.scss";
 
-const Product: FunctionComponent<IProductPage> = ({
-  inShoppingCart,
-  addInShoppingCart,
-}) => {
-  console.log(inShoppingCart);
+const Product: FunctionComponent<ProductPageType> = ({
+  shoppingCart,
+  addToShoppingCart,
+}: ProductPageType) => {
   const { productId } = useParams();
   const product = products.find(
     (product: IProduct) => product.id.toString() === productId
@@ -54,12 +53,6 @@ const Product: FunctionComponent<IProductPage> = ({
   });
 
   const buyNow = (): void => {
-    if (inShoppingCart.indexOf(id) === -1) {
-      console.log("Товара в корзине нет");
-    } else {
-      console.log("Товар в корзине есть");
-    }
-
     setTimeout(() => navigate("/cart", { state: { show: true } }), 2000);
   };
 
@@ -98,9 +91,9 @@ const Product: FunctionComponent<IProductPage> = ({
           <div className="product__order"></div>
           <div className="product__buttons hl">
             <ButtonCart
-              cart={inShoppingCart}
+              shoppingCart={shoppingCart}
               id={id}
-              addInShoppingCart={addInShoppingCart}
+              addToShoppingCart={addToShoppingCart}
             />
             <button className="product__button" onClick={buyNow}>
               Buy Now
