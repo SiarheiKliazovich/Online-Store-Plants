@@ -16,6 +16,7 @@ const CartList = () => {
   const [selectValue, setSelectValue] = useState(3);
   const [code, setCode] = useState("");
 
+
   const updateCart = (id: number, counter: number): void => {
     parseCart = getUpdateStotage();
     const newArrayItems = parseCart.map((item) => {
@@ -118,7 +119,7 @@ const CartList = () => {
           <button className="promo__button">Check</button>
         </div>
       </div>
-    </>
+    </>  
   );
 };
 

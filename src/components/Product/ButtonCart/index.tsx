@@ -1,29 +1,24 @@
 import { FunctionComponent } from "react";
+import { IShoppingCart } from "../../../interfaces/shoppingCart";
 
 import "./buttonCart.scss";
 
 interface IProps {
-  cart: number[];
+  shoppingCart: IShoppingCart[];
   id: number;
-  addInShoppingCart: (id: number) => void;
+  addToShoppingCart: (id: number) => void;
 }
 
 export const ButtonCart: FunctionComponent<IProps> = ({
-  cart,
+  shoppingCart,
   id,
-  addInShoppingCart,
+  addToShoppingCart,
 }) => {
-  if (cart.indexOf(id) > -1) {
-    return (
-      <button className="product__button" disabled>
-        In Cart
-      </button>
-    );
-  } else {
-    return (
-      <button className="product__button" onClick={() => addInShoppingCart(id)}>
-        Add To Cart
-      </button>
-    );
-  }
+  const prodInShoppingCart = (id: number) =>
+    shoppingCart.filter((product) => product.id === id);
+  return (
+    <button className="product__button" onClick={() => addToShoppingCart(id)}>
+      {prodInShoppingCart(id).length === 0 ? "Add to cart" : "Drop from cart"}
+    </button>
+  );
 };

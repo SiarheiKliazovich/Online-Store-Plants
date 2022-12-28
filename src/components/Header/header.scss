@@ -22,7 +22,6 @@
 
 .header__link {
   @include media-mobile {
-    width: 50%;
     margin-bottom: 5px;
 
     &:last-child {
@@ -48,13 +47,22 @@
 .header__sum {
   align-self: center;
   font-size: $font-size-llg;
-
+  font-family: $font-family-primary;
+  
+  
   @include media-mobile {
     font-size: $font-size-lg;
-    order: 1;
     width: 100%;
     text-align: center;
   }
+}
+.header__sum_title {
+  font-family: $font-family-primary;
+  color: $color-green-hover;
+}
+
+.header__sum_number {
+  color: $color-green-black;
 }
 
 .header__cart {
