@@ -1,0 +1,63 @@
+import { FunctionComponent, useState, useEffect } from "react";
+
+import { IProduct } from "../../../interfaces/product";
+import { countTotalByItem } from "../../../helpers/countTotalByItem";
+
+import "./cartListItem.scss";
+
+interface P extends IProduct {
+  i: number;
+}
+
+const CartListItem: FunctionComponent<P> = ({
+  i,
+  name,
+  thumbnail,
+  category,
+  stock,
+  price,
+}) => {
+  const [counter, setCounter] = useState(1);
+  const [total, setTotal] = useState(price);
+
+  const incCounter = () => {
+    if (counter < stock) {
+      setCounter((counter) => counter + 1);
+    }
+  };
+
+  const decCounter = () => {
+    if (counter > 0) {
+      setCounter((counter) => counter - 1);
+    }
+  };
+
+  useEffect(() => {
+    setTotal(countTotalByItem(counter, price));
+  }, [counter]);
+
+  return (
+    <li className="cart__item">
+      <div className="cart__item-number">{i + 1}</div>
+      <img src={thumbnail} alt={name} className="product__mini-img" />
+      <div className="cart__item-text">
+        <div className="cart__item-name">{name}</div>
+        <div className="cart__item-category">{category}</div>
+        <div className="cart__item-stock">In stock: {stock}</div>
+      </div>
+      <div className="cart__price">{price} $</div>
+      <div className="cart__counter">
+        <button onClick={decCounter} className="mini-button">
+          -
+        </button>
+        <div className="counter">{counter}</div>
+        <button onClick={incCounter} className="mini-button">
+          +
+        </button>
+      </div>
+      <div className="cart__total">{total} $</div>
+    </li>
+  );
+};
+
+export default CartListItem;
