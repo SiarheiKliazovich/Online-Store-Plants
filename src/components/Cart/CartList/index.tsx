@@ -14,6 +14,7 @@ const CartList: FunctionComponent<CartListType> = ({
   setShowModal,
 }: CartListType) => {
   const [selectValue, setSelectValue] = useState(3);
+
   const [code, setCode] = useState("");
   const [messageCode, setMessageCode] = useState("");
 
@@ -101,10 +102,9 @@ const CartList: FunctionComponent<CartListType> = ({
                 value={code}
                 onChange={(e) => codeHandler(e)}
               />
-              {showAvailableCode ? <div>{messageCode}</div> : ""}
+              {messageCode && <div className="promo__msg">{messageCode}</div>}
             </div>
             <div className="promo__codes">Promo for test: 'RS', 'EPM'</div>
-            <button className="promo__button">Check</button>
           </div>
           <button className="cart__button" onClick={() => setShowModal(true)}>
             Buy
