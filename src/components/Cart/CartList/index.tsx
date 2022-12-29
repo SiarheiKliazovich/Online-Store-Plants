@@ -9,13 +9,14 @@ const CartList: FunctionComponent<CartListType> = ({
   shoppingCart,
   updateCart,
   deleteFromCart,
+  sumPrices,
+  sumCount,
+  setShowModal,
 }: CartListType) => {
-
   const [selectValue, setSelectValue] = useState(3);
   const [code, setCode] = useState("");
   const [messageCode, setMessageCode] = useState("");
 
- 
   const handleChangeSelect = (
     e: React.ChangeEvent<HTMLSelectElement>
   ): void => {
@@ -32,7 +33,6 @@ const CartList: FunctionComponent<CartListType> = ({
   const checkPromoCode = (value: string) => {
     promoCodes.map((item, i) => {
       if (item.code === value.toLowerCase()) {
-        
         showAvailableCode = true;
         console.log(showAvailableCode);
         setMessageCode(promoCodes[i].name);
@@ -90,8 +90,8 @@ const CartList: FunctionComponent<CartListType> = ({
       )}
       <div className="cart__summary">
         <div className="summary__title">Summary</div>
-        <div className="summary__items">Products: {totalItems}</div>
-        <div className="summary__amount">Total: {totalAmount} $</div>
+        <div className="summary__items">Products: {sumCount}</div>
+        <div className="summary__amount">Total: {sumPrices}$</div>
         <div className="summary__promo">
           <div className="promo__input">
             <input
@@ -105,6 +105,9 @@ const CartList: FunctionComponent<CartListType> = ({
           <div className="promo__codes">Promo for test: 'RS', 'EPM'</div>
           <button className="promo__button">Check</button>
         </div>
+        <button className="cart__button" onClick={() => setShowModal(true)}>
+          Buy
+        </button>
       </div>
     </>
   );
