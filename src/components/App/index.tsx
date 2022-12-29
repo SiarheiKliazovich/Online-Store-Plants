@@ -17,11 +17,25 @@ const App: FunctionComponent = () => {
 
   const [shoppingCart, setShoppingCart] = useState<IShoppingCart[]>(cartObj);
 
-  const addToShoppingCart = (id: number): void => {
+  const updateCart = (id: number, count: number): void => {
+    const cart = shoppingCart.map((product) => {
+      if (product.id === id) {
+        return { ...product, count };
+      }
+      return product;
+    });
+    setShoppingCart(cart);
+  };
+
+  const deleteFromCart = (id: number): void => {
+    const cart = shoppingCart.filter((item) => item.id !== id);
+    setShoppingCart(cart);
+  };
+
+  const addToShoppingCart = (id: number, count = 1): void => {
     const prodInShoppingCart = shoppingCart.filter(
       (product: IShoppingCart) => product.id === id
     );
-
     if (prodInShoppingCart.length > 0) {
       setShoppingCart(
         shoppingCart.filter((product: IShoppingCart) => product.id !== id)
@@ -31,25 +45,24 @@ const App: FunctionComponent = () => {
         ...shoppingCart,
         {
           id,
-          count: 1,
+          count,
         },
       ]);
     }
   };
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(shoppingCart));
-  }, [shoppingCart]);
-
   const sumPrices = (): number => {
     const prodToCart: IProduct[] = [];
     shoppingCart.forEach((prod) =>
       prodToCart.push(
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         products.find((product: IProduct) => product.id === prod.id)!
       )
     );
     return prodToCart.reduce((prev, curr) => {
-      return prev + curr.price;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const product = shoppingCart.find((prod) => prod.id === curr.id)!;
+      return prev + curr.price * product.count;
     }, 0);
   };
 
@@ -58,6 +71,10 @@ const App: FunctionComponent = () => {
       return prev + curr.count;
     }, 0);
   };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(shoppingCart));
+  }, [shoppingCart]);
 
   return (
     <>
@@ -82,7 +99,16 @@ const App: FunctionComponent = () => {
             />
           }
         />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              shoppingCart={shoppingCart}
+              updateCart={updateCart}
+              deleteFromCart={deleteFromCart}
+            />
+          }
+        />
       </Routes>
       <Footer />
     </>
