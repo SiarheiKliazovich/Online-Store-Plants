@@ -1,5 +1,4 @@
-import { FunctionComponent, useState } from "react";
-
+import { FunctionComponent, useState, useEffect } from "react";
 import { CartListType } from "../../../types";
 import products from "../../../data/products";
 import CartListItem from "../CartListItem";
@@ -13,6 +12,52 @@ const CartList: FunctionComponent<CartListType> = ({
   sumCount,
   setShowModal,
 }: CartListType) => {
+  const [limitValue, setlimitValue] = useState(3);
+  const [page, setPage] = useState(1);
+  const [cart, setCart] = useState(shoppingCart.slice(0, page * limitValue));
+
+  const updateViewCart = (): void => {
+    if (page * limitValue - limitValue <= 0) {
+      setCart(shoppingCart.slice(0, page * limitValue));
+    } else if (page * limitValue >= shoppingCart.length) {
+      setCart(
+        shoppingCart.slice(page * limitValue - limitValue, page * limitValue)
+      );
+    } else {
+      setCart(
+        shoppingCart.slice(page * limitValue - limitValue, page * limitValue)
+      );
+    }
+  };
+
+  const handleLimitValue = (value: string): void => {
+    setlimitValue(+value);
+    if (page * parseInt(value, 10) > shoppingCart.length) {
+      setPage((page) => page - 1);
+    }
+  };
+
+  const nextPage = (): void => {
+    if (page < Math.ceil(shoppingCart.length / limitValue)) {
+      setPage((page) => page + 1);
+    }
+  };
+
+  const prevPage = (): void => {
+    if (page > 1) {
+      setPage((page) => page - 1);
+    }
+  };
+
+  useEffect(() => {
+    updateViewCart();
+  }, [limitValue, page]);
+
+  useEffect(() => {
+    if (cart.length === 0) {
+      setPage((page) => page - 1);
+    }
+  }, [shoppingCart]);
   const [selectValue, setSelectValue] = useState(3);
   const [code, setCode] = useState("");
   const [messageCode, setMessageCode] = useState("");
@@ -49,20 +94,28 @@ const CartList: FunctionComponent<CartListType> = ({
     <>
       {shoppingCart.length !== 0 && (
         <div className="cart__content">
-          <div className="cart__pag">
-            <div className="pag___items">
-              <label className="pag__label">
-                Items:
-                <select
-                  className="pag__select"
-                  value={selectValue}
-                  onChange={handleChangeSelect}
-                >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
-              </label>
+          <div className="pagination__wrapper">
+            <div className="cart__title">Products In Cart</div>
+            <div className="cart__pag">
+              Limit:
+              <input
+                className="pag__input"
+                type="number"
+                value={limitValue}
+                min={1}
+                max={shoppingCart.length}
+                onChange={(e) => handleLimitValue(e.target.value)}
+              />
+            </div>
+            <div className="page__number">
+              Page:
+              <button onClick={prevPage} className="next__page">
+                {"<"}
+              </button>
+              <span className="numder-page">{page}</span>
+              <button onClick={nextPage} className="prev__page">
+                {">"}
+              </button>
             </div>
           </div>
           <div className="cart__header">
@@ -72,7 +125,7 @@ const CartList: FunctionComponent<CartListType> = ({
             <div className="header__total">Total</div>
           </div>
           <div className="cart__items">
-            {shoppingCart.map((item, i) => (
+            {cart.map((item, i) => (
               <CartListItem
                 key={item.id}
                 {...products[item.id - 1]}
