@@ -10,6 +10,8 @@ const Cart: FunctionComponent<CartNewType> = ({
   shoppingCart,
   updateCart,
   deleteFromCart,
+  sumPrices,
+  sumCount,
 }: CartNewType) => {
   const location = useLocation();
 
@@ -27,6 +29,9 @@ const Cart: FunctionComponent<CartNewType> = ({
             shoppingCart={shoppingCart}
             updateCart={updateCart}
             deleteFromCart={deleteFromCart}
+            sumPrices={sumPrices}
+            sumCount={sumCount}
+            setShowModal={setShowModal}
           />
         }
       </div>

@@ -8,6 +8,9 @@ const CartList: FunctionComponent<CartListType> = ({
   shoppingCart,
   updateCart,
   deleteFromCart,
+  sumPrices,
+  sumCount,
+  setShowModal,
 }: CartListType) => {
   const [limitValue, setlimitValue] = useState(3);
   const [page, setPage] = useState(1);
@@ -55,6 +58,37 @@ const CartList: FunctionComponent<CartListType> = ({
       setPage((page) => page - 1);
     }
   }, [shoppingCart]);
+  const [selectValue, setSelectValue] = useState(3);
+  const [code, setCode] = useState("");
+  const [messageCode, setMessageCode] = useState("");
+
+  const handleChangeSelect = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ): void => {
+    setSelectValue(+e.target.value);
+  };
+
+  const promoCodes = [
+    { code: "rs", name: "Rolling Scopes School", amount: 10 },
+    { code: "epm", name: "EPAM Systems", amount: 10 },
+  ];
+
+  let showAvailableCode = false;
+  let availableCode: number;
+  const checkPromoCode = (value: string) => {
+    promoCodes.map((item, i) => {
+      if (item.code === value.toLowerCase()) {
+        showAvailableCode = true;
+        console.log(showAvailableCode);
+        setMessageCode(promoCodes[i].name);
+      }
+    });
+  };
+
+  const codeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setCode(e.target.value);
+    checkPromoCode(e.target.value);
+  };
 
   return (
     <>
@@ -105,7 +139,30 @@ const CartList: FunctionComponent<CartListType> = ({
         </div>
       )}
       {shoppingCart.length === 0 && (
-        <div className="cart__text">Cart is empty</div>
+        <div className="cart__msg">Cart is empty</div>
+      )}
+      {shoppingCart.length !== 0 && (
+        <div className="cart__summary">
+          <div className="summary__title">Summary</div>
+          <div className="summary__items">Products: {sumCount}</div>
+          <div className="summary__amount">Total: {sumPrices}$</div>
+          <div className="summary__promo">
+            <div className="promo__input">
+              <input
+                type="text"
+                id="code"
+                value={code}
+                onChange={(e) => codeHandler(e)}
+              />
+              {showAvailableCode ? <div>{messageCode}</div> : ""}
+            </div>
+            <div className="promo__codes">Promo for test: 'RS', 'EPM'</div>
+            <button className="promo__button">Check</button>
+          </div>
+          <button className="cart__button" onClick={() => setShowModal(true)}>
+            Buy
+          </button>
+        </div>
       )}
     </>
   );
