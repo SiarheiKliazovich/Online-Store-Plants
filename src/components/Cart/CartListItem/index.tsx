@@ -2,14 +2,15 @@ import { FunctionComponent, useState, useEffect } from "react";
 
 import { IProduct } from "../../../interfaces/product";
 import { countTotalByItem } from "../../../helpers/countTotalByItem";
-import { CartType } from "../../../types";
+// import { CartType } from "../../../types";
 
 import "./cartListItem.scss";
 
 interface P extends IProduct {
   i: number;
-  deleteItem: (id: number) => void;
-  updateCart: (id: number, counter: number) => void;
+  count: number;
+  updateCart: (id: number, count: number) => void;
+  deleteFromCart: (id: number) => void;
 }
 
 const CartListItem: FunctionComponent<P> = ({
@@ -20,10 +21,11 @@ const CartListItem: FunctionComponent<P> = ({
   category,
   stock,
   price,
-  deleteItem,
+  count,
   updateCart,
+  deleteFromCart,
 }) => {
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(count);
   const [total, setTotal] = useState(price);
 
   const incCounter = () => {
@@ -42,7 +44,7 @@ const CartListItem: FunctionComponent<P> = ({
     setTotal(countTotalByItem(counter, price));
     updateCart(id, counter);
     if (counter === 0) {
-      deleteItem(id);
+      deleteFromCart(id);
     }
   }, [counter]);
 

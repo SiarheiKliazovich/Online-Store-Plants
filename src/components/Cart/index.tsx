@@ -1,12 +1,16 @@
 import { useState, FunctionComponent } from "react";
 import { useLocation } from "react-router-dom";
-
+import { CartNewType } from "../../types";
 import Modal from "../Modal";
 import CartList from "./CartList";
 
 import "./cart.scss";
 
-const Cart: FunctionComponent = () => {
+const Cart: FunctionComponent<CartNewType> = ({
+  shoppingCart,
+  updateCart,
+  deleteFromCart,
+}: CartNewType) => {
   const location = useLocation();
 
   let stateShowModal = false;
@@ -15,20 +19,16 @@ const Cart: FunctionComponent = () => {
   }
 
   const [showModal, setShowModal] = useState(stateShowModal);
-
-  const cart = localStorage.getItem("cart");
-
-  let parseCart;
-  if (typeof cart === "string") {
-    parseCart = JSON.parse(cart);
-  }
-
-  const textMessage = <div className="cart__text">Cart is empty</div>;
-
   return (
     <>
       <div className="cart__wrapper container">
-        {parseCart ? <CartList /> : textMessage}
+        {
+          <CartList
+            shoppingCart={shoppingCart}
+            updateCart={updateCart}
+            deleteFromCart={deleteFromCart}
+          />
+        }
       </div>
       {/* <button onClick={() => setShowModal(true)}>Show modal</button> */}
       <Modal onClose={() => setShowModal(false)} show={showModal} />
