@@ -86,29 +86,31 @@ const CartList: FunctionComponent<CartListType> = ({
         </div>
       )}
       {shoppingCart.length === 0 && (
-        <div className="cart__text">Cart is empty</div>
+        <div className="cart__msg">Cart is empty</div>
       )}
-      <div className="cart__summary">
-        <div className="summary__title">Summary</div>
-        <div className="summary__items">Products: {sumCount}</div>
-        <div className="summary__amount">Total: {sumPrices}$</div>
-        <div className="summary__promo">
-          <div className="promo__input">
-            <input
-              type="text"
-              id="code"
-              value={code}
-              onChange={(e) => codeHandler(e)}
-            />
-            {showAvailableCode ? <div>{messageCode}</div> : ""}
+      {shoppingCart.length !== 0 && (
+        <div className="cart__summary">
+          <div className="summary__title">Summary</div>
+          <div className="summary__items">Products: {sumCount}</div>
+          <div className="summary__amount">Total: {sumPrices}$</div>
+          <div className="summary__promo">
+            <div className="promo__input">
+              <input
+                type="text"
+                id="code"
+                value={code}
+                onChange={(e) => codeHandler(e)}
+              />
+              {showAvailableCode ? <div>{messageCode}</div> : ""}
+            </div>
+            <div className="promo__codes">Promo for test: 'RS', 'EPM'</div>
+            <button className="promo__button">Check</button>
           </div>
-          <div className="promo__codes">Promo for test: 'RS', 'EPM'</div>
-          <button className="promo__button">Check</button>
+          <button className="cart__button" onClick={() => setShowModal(true)}>
+            Buy
+          </button>
         </div>
-        <button className="cart__button" onClick={() => setShowModal(true)}>
-          Buy
-        </button>
-      </div>
+      )}
     </>
   );
 };

@@ -52,6 +52,12 @@
 	flex-direction: column;
 }
 
+.cart__msg {
+	font-size: $font-size-xxlg;
+	padding-top: 80px;
+	margin: 0 auto;
+}
+
 .cart__summary {
 	width: 30%;
 	background-color: $color-grey;
