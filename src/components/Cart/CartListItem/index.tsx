@@ -2,7 +2,6 @@ import { FunctionComponent, useState, useEffect } from "react";
 
 import { IProduct } from "../../../interfaces/product";
 import { countTotalByItem } from "../../../helpers/countTotalByItem";
-// import { CartType } from "../../../types";
 
 import "./cartListItem.scss";
 
@@ -50,7 +49,7 @@ const CartListItem: FunctionComponent<P> = ({
 
   return (
     <li className="cart__item">
-      <div className="cart__item-number">{i + 1}</div>
+      <div className="cart__item-number">{id}</div>
       <img src={thumbnail} alt={name} className="product__mini-img" />
       <div className="cart__item-text">
         <div className="cart__item-name">{name}</div>
