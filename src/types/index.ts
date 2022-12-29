@@ -71,3 +71,15 @@ export type CartType = {
   id: number;
   count: number;
 };
+
+export type CartListType = {
+  shoppingCart: IShoppingCart[];
+  updateCart: (id: number, count: number) => void;
+  deleteFromCart: (id: number) => void;
+};
+
+export type CartNewType = {
+  shoppingCart: IShoppingCart[];
+  updateCart: (id: number, count: number) => void;
+  deleteFromCart: (id: number) => void;
+};
