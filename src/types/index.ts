@@ -76,10 +76,15 @@ export type CartListType = {
   shoppingCart: IShoppingCart[];
   updateCart: (id: number, count: number) => void;
   deleteFromCart: (id: number) => void;
+  sumPrices: number;
+  sumCount: number;
+  setShowModal: (value: boolean) => void;
 };
 
 export type CartNewType = {
   shoppingCart: IShoppingCart[];
   updateCart: (id: number, count: number) => void;
   deleteFromCart: (id: number) => void;
+  sumPrices: number;
+  sumCount: number;
 };
