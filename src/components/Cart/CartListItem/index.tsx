@@ -1,13 +1,10 @@
 import { FunctionComponent, useState, useEffect } from "react";
-
-import { IProduct } from "../../../interfaces/product";
 import { countTotalByItem } from "../../../helpers/countTotalByItem";
 import { ICartListItem } from "../../../interfaces/cartListItem";
 
 import "./cartListItem.scss";
 
 const CartListItem: FunctionComponent<ICartListItem> = ({
-  i,
   id,
   name,
   thumbnail,

@@ -2,6 +2,7 @@ import { FunctionComponent, useState, useEffect } from "react";
 import { CartListType } from "../../../types";
 import products from "../../../data/products";
 import CartListItem from "../CartListItem";
+import { useSearchParams } from "react-router-dom";
 import "./cartList.scss";
 
 const CartList: FunctionComponent<CartListType> = ({
@@ -12,8 +13,14 @@ const CartList: FunctionComponent<CartListType> = ({
   sumCount,
   setShowModal,
 }: CartListType) => {
-  const [limitValue, setlimitValue] = useState(3);
-  const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const URLParams = Object.fromEntries([...searchParams]);
+  const [limitValue, setlimitValue] = useState(
+    URLParams.limit ? parseInt(URLParams.limit, 10) : 3
+  );
+  const [page, setPage] = useState(
+    URLParams.page ? parseInt(URLParams.page, 10) : 1
+  );
   const [cart, setCart] = useState(shoppingCart.slice(0, page * limitValue));
 
   const updateViewCart = (): void => {
@@ -54,19 +61,36 @@ const CartList: FunctionComponent<CartListType> = ({
   }, [limitValue, page]);
 
   useEffect(() => {
+    if (shoppingCart.length === limitValue && cart.length === 0) {
+      setPage((page) => page - 1);
+    }
+  }, [cart, shoppingCart]);
+
+  useEffect(() => {
     if (cart.length === 0) {
       setPage((page) => page - 1);
     }
+    updateViewCart();
   }, [shoppingCart]);
-  const [selectValue, setSelectValue] = useState(3);
+
+  useEffect(() => {
+    const params = Object.fromEntries([...searchParams]);
+    setSearchParams({
+      ...params,
+      page: page.toString(),
+    });
+  }, [page]);
+
+  useEffect(() => {
+    const params = Object.fromEntries([...searchParams]);
+    setSearchParams({
+      ...params,
+      limit: limitValue.toString(),
+    });
+  }, [limitValue]);
+
   const [code, setCode] = useState("");
   const [messageCode, setMessageCode] = useState("");
-
-  const handleChangeSelect = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ): void => {
-    setSelectValue(+e.target.value);
-  };
 
   const promoCodes = [
     { code: "rs", name: "Rolling Scopes School", amount: 10 },
@@ -74,7 +98,6 @@ const CartList: FunctionComponent<CartListType> = ({
   ];
 
   let showAvailableCode = false;
-  let availableCode: number;
   const checkPromoCode = (value: string) => {
     promoCodes.map((item, i) => {
       if (item.code === value.toLowerCase()) {
@@ -125,11 +148,10 @@ const CartList: FunctionComponent<CartListType> = ({
             <div className="header__total">Total</div>
           </div>
           <div className="cart__items">
-            {cart.map((item, i) => (
+            {cart.map((item) => (
               <CartListItem
                 key={item.id}
                 {...products[item.id - 1]}
-                i={i}
                 count={item.count}
                 updateCart={updateCart}
                 deleteFromCart={deleteFromCart}
