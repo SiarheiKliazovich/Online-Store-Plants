@@ -88,3 +88,9 @@ export type CartNewType = {
   sumPrices: number;
   sumCount: number;
 };
+
+export type PromoCodeType = {
+  id: string;
+  name: string;
+  disc: number;
+};

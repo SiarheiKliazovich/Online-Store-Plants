@@ -1,7 +1,8 @@
 import { FunctionComponent, useState, useEffect } from "react";
-import { CartListType } from "../../../types";
+import { CartListType, PromoCodeType } from "../../../types";
 import products from "../../../data/products";
 import CartListItem from "../CartListItem";
+import { sumPricesDisc } from "../../../helpers/sumPricesDisc";
 import { useSearchParams } from "react-router-dom";
 import "./cartList.scss";
 
@@ -72,6 +73,7 @@ const CartList: FunctionComponent<CartListType> = ({
     }
     updateViewCart();
   }, [shoppingCart]);
+
   useEffect(() => {
     const params = Object.fromEntries([...searchParams]);
     setSearchParams({
@@ -88,30 +90,79 @@ const CartList: FunctionComponent<CartListType> = ({
     });
   }, [limitValue]);
 
-  const [selectValue, setSelectValue] = useState(3);
   const [code, setCode] = useState("");
   const [messageCode, setMessageCode] = useState("");
 
+  const codes = localStorage.getItem("promo");
+  const codesParseObj = codes ? JSON.parse(codes) : [];
+  const [appliedCodes, setAppliedCodes] = useState(codesParseObj);
+
+  const [showAppliedCodes, setShowAppliedCodes] = useState(
+    appliedCodes.length === 0 ? false : true
+  );
+
+  const [showButtonAdd, setShowButtonAdd] = useState(true);
+
   const promoCodes = [
-    { code: "rs", name: "Rolling Scopes School", amount: 10 },
-    { code: "epm", name: "EPAM Systems", amount: 10 },
+    { id: "rs", name: "Rolling Scopes School", disc: 10 },
+    { id: "epm", name: "EPAM Systems", disc: 10 },
   ];
 
-  let showAvailableCode = false;
-  const checkPromoCode = (value: string) => {
-    promoCodes.map((item, i) => {
-      if (item.code === value.toLowerCase()) {
-        showAvailableCode = true;
-        console.log(showAvailableCode);
-        setMessageCode(promoCodes[i].name);
+  const isShowButtonAdd = (id: string): void => {
+    appliedCodes.forEach((item: PromoCodeType) => {
+      if (item.id === id) {
+        setShowButtonAdd(false);
       }
     });
   };
+
+  const checkPromoCode = (value: string): void => {
+    setMessageCode("");
+    setShowButtonAdd(true);
+    promoCodes.forEach((item) => {
+      if (item.id === value.toLowerCase()) {
+        isShowButtonAdd(item.id);
+        setMessageCode(item.id);
+      }
+    });
+  };
+
+  useEffect(() => {
+    localStorage.setItem("promo", JSON.stringify(appliedCodes));
+    if (appliedCodes.length === 0) {
+      setShowAppliedCodes(false);
+    } else {
+      setShowAppliedCodes(true);
+    }
+  }, [appliedCodes]);
 
   const codeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setCode(e.target.value);
     checkPromoCode(e.target.value);
   };
+
+  const applyCode = (): void => {
+    promoCodes.forEach((item) => {
+      if (messageCode === item.id) {
+        setAppliedCodes([...appliedCodes, item]);
+      }
+    });
+    setShowButtonAdd(false);
+  };
+
+  const dropCode = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    const id = e.currentTarget.dataset.id;
+    setAppliedCodes(
+      appliedCodes.filter((item: PromoCodeType) => item.id !== id)
+    );
+    if (typeof id === "string" && messageCode === id) {
+      setShowButtonAdd(true);
+    }
+  };
+
+  const nameCode = promoCodes
+    .filter((item) => item.id === messageCode)
+    .map((item) => item.name);
 
   return (
     <>
@@ -167,16 +218,57 @@ const CartList: FunctionComponent<CartListType> = ({
         <div className="cart__summary">
           <div className="summary__title">Summary</div>
           <div className="summary__items">Products: {sumCount}</div>
-          <div className="summary__amount">Total: {sumPrices}$</div>
+          <div
+            className={
+              showAppliedCodes ? "summary__amount crossed" : "summary__amount"
+            }
+          >
+            Total: {sumPrices}$
+          </div>
+          {showAppliedCodes && (
+            <div className="summary__amount">
+              Total: {sumPricesDisc(appliedCodes, sumPrices)}$
+            </div>
+          )}
           <div className="summary__promo">
+            {showAppliedCodes && (
+              <div className="promo__active">
+                <div className="promo__active-title">Applied codes:</div>
+                <div className="promo__active-codes">
+                  {appliedCodes.map((item: PromoCodeType, i: number) => {
+                    return (
+                      <div key={i} className="promo__active-code">
+                        <div className="promo__active-name">{item.name}</div>
+                        <button
+                          className="promo__active-button"
+                          onClick={(e) => dropCode(e)}
+                          data-id={item.id}
+                        >
+                          Drop
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
             <div className="promo__input">
               <input
-                type="text"
+                type="search"
                 id="code"
                 value={code}
                 onChange={(e) => codeHandler(e)}
               />
-              {messageCode && <div className="promo__msg">{messageCode}</div>}
+              {messageCode && (
+                <>
+                  <div className="promo__msg">{nameCode} - 10%</div>
+                  {showButtonAdd && (
+                    <button className="promo__button" onClick={applyCode}>
+                      Add
+                    </button>
+                  )}
+                </>
+              )}
             </div>
             <div className="promo__codes">Promo for test: 'RS', 'EPM'</div>
           </div>

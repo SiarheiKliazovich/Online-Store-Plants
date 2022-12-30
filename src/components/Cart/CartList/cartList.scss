@@ -33,16 +33,6 @@
 	width: 100%;
 }
 
-
-// .pag__label {
-// 	font-size: $font-size-lg;
-// 	margin-left: 10px;
-// }
-
-// .pag__select {
-// 	margin: 0 10px;
-// }
-
 .page__number {
 	display: flex;
 	align-items: flex-start;
@@ -71,8 +61,6 @@
 	cursor: pointer;
 	border: 1px solid $color-black;
 }
-
-
 
 .cart__header {
 	display: flex;
@@ -138,6 +126,10 @@
 	margin-bottom: 20px;
 }
 
+.crossed {
+	text-decoration: line-through;
+}
+
 .promo__input {
 	border-radius: 5px;
 }
@@ -146,23 +138,67 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-bottom: 20px;
 }
 
 .promo__input {
 	margin-bottom: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .promo__codes {
 	margin-bottom: 5px;
 }
 
-.summary__promo {
-	margin-bottom: 20px;
+.promo__active {
+	width: 100%;
+	margin-bottom: 15px;
+	border: 2px solid $color-green-black;
+	border-radius: 5px;
+	padding: 5px 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;	
+}
+
+.promo__active-title {
+	font-size: $font-size-xlg;
+}
+
+.promo__active-code {
+	display: flex;
+}
+
+.promo__active-button,
+.promo__button {
+	margin-left: 5px;
+	background-color: $color-green-black;
+	color: $color-white;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+	transition: 0.5s;
+
+	&:hover {
+		background-color: $color-green-hover;
+	}
 }
 
 .cart__button {
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 	width: 100px;
 	height: 40px;
 	font-size: $font-size-xlg;
+	background-color: $color-green-black;
+	color: $color-white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.5s;
+
+	&:hover {
+		background-color: $color-green-hover;
+	}
 }
