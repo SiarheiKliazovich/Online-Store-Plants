@@ -3,8 +3,18 @@
 
 .cart__item {
   display: flex;
-	align-content: center;
+	align-items: center;
+	justify-content: space-between;
 	border-bottom: 1px solid $color-dark-grey;
+
+	@include media-tablet {
+		display: flex;
+		align-items: center;
+	}
+
+	@include media-mobile {
+		width: 100%;
+	}
 }
 
 .cart__item-number {
@@ -12,6 +22,40 @@
 	width: 30px;
 	align-self: center;
 	text-align: center;
+	margin-left: 5px;
+
+	@include media-tablet {
+		width: 20px;
+	}
+}
+
+.cart__item-img {
+	width: 128px;
+  height: 128px;
+
+	@include media-tablet {
+		width: 110px;
+  	height: 110px;
+	}
+
+	@include media-mobile {
+		width: 100px;
+  	height: 100px;
+	}
+}
+
+.cart__item-desc {
+	display: flex;
+	justify-content: space-between;
+
+	@include media-tablet {
+		width: calc(100% - 120px);
+	}
+
+	@include media-mobile {
+		flex-direction: column;
+		width: calc(100% - 100px);
+	}
 }
 
 .cart__item-text {
@@ -20,17 +64,44 @@
 	flex-direction: column;
 	align-self: center;
 	padding: 5px;
+
+	@include media-tablet {
+		width: 150px;
+	}
+
+	@include media-mobile {
+		width: 100%;
+	}
 }
 
 .cart__item-name {
 	font-size: $font-size-lg;
 	margin-bottom: 5px;
+
+	@include media-tablet {
+		font-size: $font-size-md;
+		margin-bottom: 3px;
+	}
+
+	@include media-mobile {
+		text-align: center;
+	}
 }
 
 .cart__item-category {
 	font-size: $font-size-md;
 	font-style: italic;
 	margin-bottom: 5px;
+
+	@include media-mobile {
+		text-align: center;
+	}
+}
+
+.cart__item-stock {
+	@include media-mobile {
+		text-align: center;
+	}
 }
 
 .cart__price {
@@ -39,12 +110,21 @@
 	font-size: $font-size-llg;
 	align-self: center;
 	text-align: center;
+
+	@include media-tablet {
+		font-size: $font-size-lg;
+		margin: 0 3px;
+	}
 }
 
 .cart__counter {
 	margin: 5px 20px;
 	align-self: center;
 	display: flex;
+
+	@include media-tablet {
+		margin: 5px 3px;
+	}
 }
 
 .mini-button {
@@ -67,6 +147,11 @@
 	margin: 0 10px;
 	width: 16px;
 	text-align: center;
+
+	@include media-tablet {
+		margin: 0 5px;
+		font-size: $font-size-lg;
+	}
 }
 
 .cart__total {
@@ -74,4 +159,10 @@
 	margin: 0 15px;
 	align-self: center;
 	font-size: $font-size-llg;
+	text-align: center;
+
+	@include media-tablet {
+		margin: 0 10px;
+		font-size: $font-size-lg;
+	}
 }

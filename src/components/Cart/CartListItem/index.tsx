@@ -43,24 +43,26 @@ const CartListItem: FunctionComponent<ICartListItem> = ({
 
   return (
     <li className="cart__item">
-      <div className="cart__item-number">{(i + 1) + limit * (page - 1)}</div>
-      <img src={thumbnail} alt={name} className="product__mini-img" />
-      <div className="cart__item-text">
-        <div className="cart__item-name">{name}</div>
-        <div className="cart__item-category">{category}</div>
-        <div className="cart__item-stock">In stock: {stock}</div>
+      <div className="cart__item-number">{i + 1 + limit * (page - 1)}</div>
+      <img src={thumbnail} alt={name} className="cart__item-img" />
+      <div className="cart__item-desc">
+        <div className="cart__item-text">
+          <div className="cart__item-name">{name}</div>
+          <div className="cart__item-category">{category}</div>
+          <div className="cart__item-stock">In stock: {stock}</div>
+        </div>
+        <div className="cart__price">{price} $</div>
+        <div className="cart__counter">
+          <button onClick={decCounter} className="mini-button">
+            -
+          </button>
+          <div className="counter">{counter}</div>
+          <button onClick={incCounter} className="mini-button">
+            +
+          </button>
+        </div>
+        <div className="cart__total">{total} $</div>
       </div>
-      <div className="cart__price">{price} $</div>
-      <div className="cart__counter">
-        <button onClick={decCounter} className="mini-button">
-          -
-        </button>
-        <div className="counter">{counter}</div>
-        <button onClick={incCounter} className="mini-button">
-          +
-        </button>
-      </div>
-      <div className="cart__total">{total} $</div>
     </li>
   );
 };

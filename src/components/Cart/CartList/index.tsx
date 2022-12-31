@@ -241,7 +241,9 @@ const CartList: FunctionComponent<CartListType> = ({
                   {appliedCodes.map((item: PromoCodeType, i: number) => {
                     return (
                       <div key={i} className="promo__active-code">
-                        <div className="promo__active-name">{item.name}</div>
+                        <div className="promo__active-name">
+                          {item.name} - 10%
+                        </div>
                         <button
                           className="promo__active-button"
                           onClick={(e) => dropCode(e)}
