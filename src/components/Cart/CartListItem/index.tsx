@@ -5,6 +5,9 @@ import { ICartListItem } from "../../../interfaces/cartListItem";
 import "./cartListItem.scss";
 
 const CartListItem: FunctionComponent<ICartListItem> = ({
+  i,
+  page,
+  limit,
   id,
   name,
   thumbnail,
@@ -40,7 +43,7 @@ const CartListItem: FunctionComponent<ICartListItem> = ({
 
   return (
     <li className="cart__item">
-      <div className="cart__item-number">{id}</div>
+      <div className="cart__item-number">{(i + 1) + limit * (page - 1)}</div>
       <img src={thumbnail} alt={name} className="product__mini-img" />
       <div className="cart__item-text">
         <div className="cart__item-name">{name}</div>

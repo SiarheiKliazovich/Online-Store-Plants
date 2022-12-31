@@ -199,8 +199,11 @@ const CartList: FunctionComponent<CartListType> = ({
             <div className="header__total">Total</div>
           </div>
           <div className="cart__items">
-            {cart.map((item) => (
+            {cart.map((item, i) => (
               <CartListItem
+                page={page}
+                limit={limitValue}
+                i={i}
                 key={item.id}
                 {...products[item.id - 1]}
                 count={item.count}
