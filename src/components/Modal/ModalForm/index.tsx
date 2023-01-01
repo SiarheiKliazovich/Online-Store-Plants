@@ -140,6 +140,7 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
   };
 
   const cardNumberHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    e.target.value = e.target.value.replace(/[A-Za-zА-Яа-яЁё]/g, "");
     e.target.value = e.target.value.slice(0, 19);
 
     if (
