@@ -78,7 +78,7 @@ const Product: FunctionComponent<ProductPageType> = ({
             <p className="product__availability">
               <span>Availability:</span> {availability}
             </p>
-            <p className="product__availability">
+            <p className="product__size">
               <span>Size:</span> {size}
             </p>
           </div>
