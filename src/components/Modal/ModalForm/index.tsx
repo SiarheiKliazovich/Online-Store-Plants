@@ -6,7 +6,10 @@ import { validateDate } from "../../../helpers/validateDate";
 
 import "./modalForm.scss";
 
-const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
+const ModalForm: FunctionComponent<IModalForm> = ({
+  setModalContent,
+  setShoppingCart,
+}) => {
   const navigate = useNavigate();
 
   const [name, setName] = useState<string>("");
@@ -104,6 +107,7 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
   };
 
   const phoneNumberHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    e.target.value = e.target.value.replace(/[A-Za-zА-Яа-яЁё/ ]/g, "");
     setPhoneNumber(e.target.value);
     const re = /\+?[0-9]{9,}/;
 
@@ -250,7 +254,9 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
 
     if (formValid) {
       setModalContent(false);
-      setTimeout(() => navigate("/products"), 5000);
+      localStorage.removeItem("cart");
+      setTimeout(() => navigate("/"), 3000);
+      setShoppingCart([]);
     }
   };
 

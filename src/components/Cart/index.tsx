@@ -12,6 +12,7 @@ const Cart: FunctionComponent<CartNewType> = ({
   deleteFromCart,
   sumPrices,
   sumCount,
+  setShoppingCart,
 }: CartNewType) => {
   const location = useLocation();
 
@@ -35,7 +36,11 @@ const Cart: FunctionComponent<CartNewType> = ({
           />
         }
       </div>
-      <Modal onClose={() => setShowModal(false)} show={showModal} />
+      <Modal
+        onClose={() => setShowModal(false)}
+        show={showModal}
+        setShoppingCart={setShoppingCart}
+      />
     </>
   );
 };

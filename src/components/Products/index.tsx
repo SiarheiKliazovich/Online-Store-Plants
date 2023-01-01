@@ -30,7 +30,7 @@ const Products: FunctionComponent<ProductsType> = ({
   const [searchQuery, setSearchQuery] = useState<string>(
     URLParams.search ? URLParams.search : ""
   );
-  const [productList, setProductList] = useState<Array<IProduct>>(products);
+  const [productList, setProductList] = useState<IProduct[]>(products);
 
   const productFilters = getFilters(products);
   const filterList = getFilters(productList);

@@ -23,7 +23,7 @@ const CartList: FunctionComponent<CartListType> = ({
   const [page, setPage] = useState<number>(
     URLParams.page ? parseInt(URLParams.page, 10) : 1
   );
-  const [cart, setCart] = useState<Array<IShoppingCart>>(
+  const [cart, setCart] = useState<IShoppingCart[]>(
     shoppingCart.slice(0, page * limitValue)
   );
 
@@ -99,7 +99,7 @@ const CartList: FunctionComponent<CartListType> = ({
   const codes = localStorage.getItem("promo");
   const codesParseObj = codes ? JSON.parse(codes) : [];
   const [appliedCodes, setAppliedCodes] =
-    useState<Array<PromoCodeType>>(codesParseObj);
+    useState<PromoCodeType[]>(codesParseObj);
 
   const [showAppliedCodes, setShowAppliedCodes] = useState<boolean>(
     appliedCodes.length === 0 ? false : true
