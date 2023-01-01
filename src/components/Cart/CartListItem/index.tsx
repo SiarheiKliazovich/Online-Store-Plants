@@ -1,4 +1,5 @@
 import { FunctionComponent, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { countTotalByItem } from "../../../helpers/countTotalByItem";
 import { ICartListItem } from "../../../interfaces/cartListItem";
 
@@ -44,7 +45,9 @@ const CartListItem: FunctionComponent<ICartListItem> = ({
   return (
     <li className="cart__item">
       <div className="cart__item-number">{i + 1 + limit * (page - 1)}</div>
-      <img src={thumbnail} alt={name} className="cart__item-img" />
+      <Link to={`/product/${id}`}>
+        <img src={thumbnail} alt={name} className="cart__item-img" />
+      </Link>
       <div className="cart__item-desc">
         <div className="cart__item-text">
           <div className="cart__item-name">{name}</div>
