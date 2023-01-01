@@ -53,6 +53,7 @@
     font-size: $font-size-lg;
     width: 100%;
     text-align: center;
+    order: 1;
   }
 }
 
@@ -67,8 +68,11 @@
 
 .header__cart {
   display: flex;
-  cursor: pointer;
-  transition: 1s;
+  cursor: pointer;  
+
+  .cart__image {
+    transition: 0.5s;
+  }
 
   &:hover,
   &:active {

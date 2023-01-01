@@ -60,6 +60,8 @@
 
 	@include media-mobile {
 		align-self: center;	
+		flex-wrap: wrap;
+		justify-content: center;
 	}
 }
 
@@ -72,6 +74,13 @@
 
 	&:last-child {
 		margin-right: 0;
+	}
+
+	@include media-mobile {
+		margin-bottom: 5px;
+		&:last-child {
+			margin-right: 10px;
+		}
 	}
 }
 

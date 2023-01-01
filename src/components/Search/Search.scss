@@ -1,9 +1,15 @@
 @import "../../sass/variables";
+@import "../../sass/mixins";
 
 .search__wrapper {
   font-family: $font-family-primary;
   word-wrap: break-word;
   width: 45%;
+
+  @include media-small-mobile {
+    width: calc(100% - 10px);
+    margin-bottom: 10px;
+  }
 }
 
 .input-search {
@@ -15,4 +21,20 @@
   font-size: 100%;
   text-align: center;
   height: 38px;
+
+  @include media-tablet {
+    width: calc(100% - 10px);
+    margin-right: 10px;
+  }
+
+  @include media-mobile {
+    width: 100%;
+    min-width: 150px;
+    margin-right: 0;
+  }
+
+  @include media-small-mobile {
+    width: calc(100% - 10px);
+    margin-right: 10px;
+  }
 }

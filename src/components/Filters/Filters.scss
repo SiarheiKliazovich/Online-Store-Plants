@@ -21,6 +21,7 @@
   color: $color-white;
   border-radius: 5px;
   text-transform: uppercase;
+  transition: 0.5s;
 
   &:hover {
     background-color: $color-green-hover;
@@ -38,6 +39,7 @@
   color: $color-white;
   border-radius: 5px;
   text-transform: uppercase;
+  transition: 0.5s;
   
   &:hover {
     background-color: $color-green-hover;

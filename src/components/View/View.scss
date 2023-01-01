@@ -1,7 +1,16 @@
 @import "../../sass/variables";
+@import "../../sass/mixins";
 
 .view__wrapper {
   display: flex;
+
+  @include media-tablet {
+    margin-right: 10px;
+  }
+
+  @include media-mobile {
+    margin-bottom: 10px;
+  }
 }
 
 .btn__view_column {
