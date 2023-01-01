@@ -13,6 +13,7 @@ import { getProducts } from "./../../helpers/search";
 import { getFilters } from "../../helpers/filter";
 import { FunctionComponent } from "react";
 import { ProductsType } from "../../types";
+import { IProduct } from "../../interfaces/product";
 
 const Products: FunctionComponent<ProductsType> = ({
   shoppingCart,
@@ -20,12 +21,16 @@ const Products: FunctionComponent<ProductsType> = ({
 }: ProductsType) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const URLParams = Object.fromEntries([...searchParams]);
-  const [view, setView] = useState(URLParams.view ? URLParams.view : "grid");
-  const [sorting, setSorting] = useState(URLParams.sort ? URLParams.sort : "");
-  const [searchQuery, setSearchQuery] = useState(
+  const [view, setView] = useState<string>(
+    URLParams.view ? URLParams.view : "grid"
+  );
+  const [sorting, setSorting] = useState<string>(
+    URLParams.sort ? URLParams.sort : ""
+  );
+  const [searchQuery, setSearchQuery] = useState<string>(
     URLParams.search ? URLParams.search : ""
   );
-  const [productList, setProductList] = useState(products);
+  const [productList, setProductList] = useState<Array<IProduct>>(products);
 
   const productFilters = getFilters(products);
   const filterList = getFilters(productList);
@@ -47,7 +52,7 @@ const Products: FunctionComponent<ProductsType> = ({
         ? URLParams.stocks.split(",").map(Number)
         : filterList.stocks,
   });
-  const filterReset = () => {
+  const filterReset = (): void => {
     setSearchParams({ view: view });
     setFilters({
       categories: [],

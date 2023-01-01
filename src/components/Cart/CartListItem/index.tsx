@@ -18,16 +18,16 @@ const CartListItem: FunctionComponent<ICartListItem> = ({
   updateCart,
   deleteFromCart,
 }) => {
-  const [counter, setCounter] = useState(count);
-  const [total, setTotal] = useState(price);
+  const [counter, setCounter] = useState<number>(count);
+  const [total, setTotal] = useState<number>(price);
 
-  const incCounter = () => {
+  const incCounter = (): void => {
     if (counter < stock) {
       setCounter((counter) => counter + 1);
     }
   };
 
-  const decCounter = () => {
+  const decCounter = (): void => {
     if (counter > 0) {
       setCounter((counter) => counter - 1);
     }

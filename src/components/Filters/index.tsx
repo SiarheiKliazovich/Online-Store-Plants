@@ -11,7 +11,7 @@ const Filters: FunctionComponent<FiltersType> = ({
   filterReset,
   productFilters,
 }: FiltersType) => {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<boolean>(false);
   const copy = (): void => {
     const el = document.createElement("input");
     el.value = window.location.href;

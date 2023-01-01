@@ -4,6 +4,7 @@ import products from "../../../data/products";
 import CartListItem from "../CartListItem";
 import { sumPricesDisc } from "../../../helpers/sumPricesDisc";
 import { useSearchParams } from "react-router-dom";
+import { IShoppingCart } from "../../../interfaces/shoppingCart";
 import "./cartList.scss";
 
 const CartList: FunctionComponent<CartListType> = ({
@@ -16,13 +17,15 @@ const CartList: FunctionComponent<CartListType> = ({
 }: CartListType) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const URLParams = Object.fromEntries([...searchParams]);
-  const [limitValue, setlimitValue] = useState(
+  const [limitValue, setlimitValue] = useState<number>(
     URLParams.limit ? parseInt(URLParams.limit, 10) : 3
   );
-  const [page, setPage] = useState(
+  const [page, setPage] = useState<number>(
     URLParams.page ? parseInt(URLParams.page, 10) : 1
   );
-  const [cart, setCart] = useState(shoppingCart.slice(0, page * limitValue));
+  const [cart, setCart] = useState<Array<IShoppingCart>>(
+    shoppingCart.slice(0, page * limitValue)
+  );
 
   const updateViewCart = (): void => {
     if (page * limitValue - limitValue <= 0) {
@@ -90,20 +93,21 @@ const CartList: FunctionComponent<CartListType> = ({
     });
   }, [limitValue]);
 
-  const [code, setCode] = useState("");
-  const [messageCode, setMessageCode] = useState("");
+  const [code, setCode] = useState<string>("");
+  const [messageCode, setMessageCode] = useState<string>("");
 
   const codes = localStorage.getItem("promo");
   const codesParseObj = codes ? JSON.parse(codes) : [];
-  const [appliedCodes, setAppliedCodes] = useState(codesParseObj);
+  const [appliedCodes, setAppliedCodes] =
+    useState<Array<PromoCodeType>>(codesParseObj);
 
-  const [showAppliedCodes, setShowAppliedCodes] = useState(
+  const [showAppliedCodes, setShowAppliedCodes] = useState<boolean>(
     appliedCodes.length === 0 ? false : true
   );
 
-  const [showButtonAdd, setShowButtonAdd] = useState(true);
+  const [showButtonAdd, setShowButtonAdd] = useState<boolean>(true);
 
-  const promoCodes = [
+  const promoCodes: PromoCodeType[] = [
     { id: "rs", name: "Rolling Scopes School", disc: 10 },
     { id: "epm", name: "EPAM Systems", disc: 10 },
   ];
@@ -160,7 +164,7 @@ const CartList: FunctionComponent<CartListType> = ({
     }
   };
 
-  const nameCode = promoCodes
+  const nameCode: string[] = promoCodes
     .filter((item) => item.id === messageCode)
     .map((item) => item.name);
 

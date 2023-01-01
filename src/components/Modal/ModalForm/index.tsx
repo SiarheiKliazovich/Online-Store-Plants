@@ -9,37 +9,39 @@ import "./modalForm.scss";
 const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [nameDirty, setNameDirty] = useState(false);
-  const [nameError, setNameError] = useState("Cannot be empty");
+  const [name, setName] = useState<string>("");
+  const [nameDirty, setNameDirty] = useState<boolean>(false);
+  const [nameError, setNameError] = useState<string>("Cannot be empty");
 
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [phoneNumberDirty, setPhoneNumberDirty] = useState(false);
-  const [phoneNumberError, setPhoneNumberError] = useState("Cannot be empty");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [phoneNumberDirty, setPhoneNumberDirty] = useState<boolean>(false);
+  const [phoneNumberError, setPhoneNumberError] =
+    useState<string>("Cannot be empty");
 
-  const [address, setAddress] = useState("");
-  const [addressDirty, setAddressDirty] = useState(false);
-  const [addressError, setAddressError] = useState("Cannot be empty");
+  const [address, setAddress] = useState<string>("");
+  const [addressDirty, setAddressDirty] = useState<boolean>(false);
+  const [addressError, setAddressError] = useState<string>("Cannot be empty");
 
-  const [email, setEmail] = useState("");
-  const [emailDirty, setEmailDirty] = useState(false);
-  const [emailError, setEmailError] = useState("Cannot be empty");
+  const [email, setEmail] = useState<string>("");
+  const [emailDirty, setEmailDirty] = useState<boolean>(false);
+  const [emailError, setEmailError] = useState<string>("Cannot be empty");
 
-  const [cardNumber, setCardNumber] = useState("");
-  const [cardNumberDirty, setCardNumberDirty] = useState(false);
-  const [cardNumberError, setCardNumberError] = useState("Cannot be empty");
+  const [cardNumber, setCardNumber] = useState<string>("");
+  const [cardNumberDirty, setCardNumberDirty] = useState<boolean>(false);
+  const [cardNumberError, setCardNumberError] =
+    useState<string>("Cannot be empty");
 
-  const [date, setDate] = useState("");
-  const [dateDirty, setDateDirty] = useState(false);
-  const [dateError, setDateError] = useState("Cannot be empty");
+  const [date, setDate] = useState<string>("");
+  const [dateDirty, setDateDirty] = useState<boolean>(false);
+  const [dateError, setDateError] = useState<string>("Cannot be empty");
 
-  const [cvv, setCvv] = useState("");
-  const [cvvDirty, setCvvDirty] = useState(false);
-  const [cvvError, setCvvError] = useState("Cannot be empty");
+  const [cvv, setCvv] = useState<string>("");
+  const [cvvDirty, setCvvDirty] = useState<boolean>(false);
+  const [cvvError, setCvvError] = useState<string>("Cannot be empty");
 
-  const [classImage, setClassImage] = useState("modal__image");
+  const [classImage, setClassImage] = useState<string>("modal__image");
 
-  const [formValid, setFormValid] = useState(false);
+  const [formValid, setFormValid] = useState<boolean>(false);
 
   useEffect(() => {
     if (
@@ -208,7 +210,7 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
     changeModalImage();
   }, [cardNumber]);
 
-  const buttonHadler = () => {
+  const buttonHadler = (): void => {
     if (name.length === 0) {
       setNameError("Cannot be empty");
       setNameDirty(true);

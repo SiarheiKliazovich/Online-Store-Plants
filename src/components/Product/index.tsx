@@ -32,7 +32,7 @@ const Product: FunctionComponent<ProductPageType> = ({
 
   const navigate = useNavigate();
 
-  const [image, setImage] = useState(images[0]);
+  const [image, setImage] = useState<string>(images[0]);
 
   const changeImage = (e: React.MouseEvent<HTMLDivElement>): void => {
     const img = e.target;
