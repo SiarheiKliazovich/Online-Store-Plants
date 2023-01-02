@@ -167,6 +167,7 @@ const ModalForm: FunctionComponent<IModalForm> = ({
   };
 
   const dateHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    e.target.value = e.target.value.replace(/[A-Za-zА-Яа-яЁё]/g, "");
     e.target.value = e.target.value.slice(0, 5);
 
     if (e.target.value.length === 2 && date.length < 3) {
@@ -183,6 +184,7 @@ const ModalForm: FunctionComponent<IModalForm> = ({
   };
 
   const cvvHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    e.target.value = e.target.value.replace(/[A-Za-zА-Яа-яЁё/ ]/g, "");
     e.target.value = e.target.value.slice(0, 3);
     setCvv(e.target.value);
     const re = /\d{3}/;

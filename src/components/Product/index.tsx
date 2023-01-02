@@ -58,7 +58,7 @@ const Product: FunctionComponent<ProductPageType> = ({
 
   return (
     <>
-      <BannerTitle title={`${category} | ${name}`} />
+      <BannerTitle title={`Main | ${category} | ${name}`} />
       <div className="product__wrapper container">
         <div className="product__images">
           <div className="product__main-image">
