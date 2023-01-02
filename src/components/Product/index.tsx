@@ -53,7 +53,14 @@ const Product: FunctionComponent<ProductPageType> = ({
   });
 
   const buyNow = (): void => {
-    setTimeout(() => navigate("/cart", { state: { show: true } }), 2000);
+    const prodInShoppingCart = (id: number) =>
+      shoppingCart.filter((product) => product.id === id);
+
+    if (prodInShoppingCart(id).length === 0) {
+      addToShoppingCart(id);
+    }
+
+    navigate("/cart", { state: { show: true } });
   };
 
   return (
