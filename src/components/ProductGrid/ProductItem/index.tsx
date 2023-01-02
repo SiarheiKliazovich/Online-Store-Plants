@@ -30,19 +30,21 @@ const ProductItem: FunctionComponent<ProductType> = ({
           </Link>
         </div>
         <div className="product__info_wrapper">
-          <div className="product__text_wrapper">
-            <h3 className="product__text-name">{product.name}</h3>
-            <h4 className="product__description_card">
-              {product.description[0]}
-            </h4>
-            <h4 className="product__brand_card">Brand: {product.brand}</h4>
-            <h4 className="product__category_card">
-              Category: {product.category}
-            </h4>
-            <h4 className="product__rating_card">Rating: {product.rating}</h4>
-            <h4 className="product__stock_card">In Stock: {product.stock}</h4>
-            <h4 className="product__price_card">Price: ${product.price}</h4>
-          </div>
+          <Link className="product__img_link" to={`/product/${product.id}`}>
+            <div className="product__text_wrapper">
+              <h3 className="product__text-name">{product.name}</h3>
+              <h4 className="product__description_card">
+                {product.description[0]}
+              </h4>
+              <h4 className="product__brand_card">Brand: {product.brand}</h4>
+              <h4 className="product__category_card">
+                Category: {product.category}
+              </h4>
+              <h4 className="product__rating_card">Rating: {product.rating}</h4>
+              <h4 className="product__stock_card">In Stock: {product.stock}</h4>
+              <h4 className="product__price_card">Price: ${product.price}</h4>
+            </div>
+          </Link>
           <div className="product__quantity">
             <div className="product__btn_wrapper">
               <button

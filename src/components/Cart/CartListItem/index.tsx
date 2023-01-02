@@ -49,11 +49,13 @@ const CartListItem: FunctionComponent<ICartListItem> = ({
         <img src={thumbnail} alt={name} className="cart__item-img" />
       </Link>
       <div className="cart__item-desc">
-        <div className="cart__item-text">
-          <div className="cart__item-name">{name}</div>
-          <div className="cart__item-category">{category}</div>
-          <div className="cart__item-stock">In stock: {stock}</div>
-        </div>
+        <Link to={`/product/${id}`}>
+          <div className="cart__item-text">
+            <div className="cart__item-name">{name}</div>
+            <div className="cart__item-category">{category}</div>
+            <div className="cart__item-stock">In stock: {stock}</div>
+          </div>
+        </Link>
         <div className="cart__price">{price} $</div>
         <div className="cart__counter">
           <button onClick={decCounter} className="mini-button">
