@@ -11,5 +11,5 @@
 }
 
 @mixin media-small-mobile {
-  @media (max-width: 590px) { @content; }
+  @media (max-width: 690px) { @content; }
 }
