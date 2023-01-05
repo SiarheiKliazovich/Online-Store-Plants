@@ -144,18 +144,12 @@ const ModalForm: FunctionComponent<IModalForm> = ({
   };
 
   const cardNumberHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    e.target.value = e.target.value.replace(/[A-Za-zА-Яа-яЁё]/g, "");
     e.target.value = e.target.value.slice(0, 19);
+    e.target.value = e.target.value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{4})+(?!\d))/g, " ");
 
-    if (
-      (e.target.value.length === 4 && cardNumber.length < 5) ||
-      (e.target.value.length === 9 && cardNumber.length < 10) ||
-      (e.target.value.length === 14 && cardNumber.length < 15)
-    ) {
-      setCardNumber(e.target.value + " ");
-    } else {
-      setCardNumber(e.target.value);
-    }
+    setCardNumber(e.target.value);
 
     const re = /[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}/;
 
@@ -176,7 +170,13 @@ const ModalForm: FunctionComponent<IModalForm> = ({
       setDate(e.target.value);
     }
 
-    if (!validateDate(e.target.value) || e.target.value.length < 5) {
+    const re = /\d{2}\/\d{2}/;
+
+    if (
+      !validateDate(e.target.value) ||
+      e.target.value.length < 5 ||
+      !re.test(e.target.value)
+    ) {
       setDateError("Invalid date");
     } else {
       setDateError("");
@@ -184,7 +184,6 @@ const ModalForm: FunctionComponent<IModalForm> = ({
   };
 
   const cvvHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    e.target.value = e.target.value.replace(/[A-Za-zА-Яа-яЁё/ ]/g, "");
     e.target.value = e.target.value.slice(0, 3);
     setCvv(e.target.value);
     const re = /\d{3}/;
@@ -333,7 +332,8 @@ const ModalForm: FunctionComponent<IModalForm> = ({
         <label htmlFor="cvv">CVV: </label>
         {cvvDirty && cvvError && <div className="error">{cvvError}</div>}
         <input
-          type="text"
+          className="cvv-input"
+          type="number"
           id="cvv"
           value={cvv}
           onChange={(e) => cvvHandler(e)}
