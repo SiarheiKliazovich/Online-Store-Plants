@@ -3,6 +3,7 @@ import { FiltersType } from "../../types";
 import { FunctionComponent } from "react";
 import { useState } from "react";
 import FilterRange from "../Filters/FilterRange";
+import classNames from "classnames";
 
 const Filters: FunctionComponent<FiltersType> = ({
   filters,
@@ -61,7 +62,14 @@ const Filters: FunctionComponent<FiltersType> = ({
         <h3 className="title__filter">Category</h3>
         {productFilters.categories.map((category, index) => (
           <div className="filter__list" key={category.title + index}>
-            <div className="checkbox-filter">
+            <div
+              className={classNames("checkbox-filter", {
+                "filter-no-active":
+                  productList.filter(
+                    (product) => product.category === category.title
+                  ).length === 0,
+              })}
+            >
               <input
                 value={category.title}
                 className="input__category"
@@ -104,7 +112,13 @@ const Filters: FunctionComponent<FiltersType> = ({
         <h3 className="title__filter">Brand</h3>
         {productFilters.brands.map((brand, index) => (
           <div className="filter__list" key={brand.title + index}>
-            <div className="checkbox-filter">
+            <div
+              className={classNames("checkbox-filter", {
+                "filter-no-active":
+                  productList.filter((product) => product.brand === brand.title)
+                    .length === 0,
+              })}
+            >
               <input
                 value={brand.title}
                 className="input__filter"

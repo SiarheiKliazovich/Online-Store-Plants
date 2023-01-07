@@ -1,10 +1,13 @@
 import { IProduct } from "../interfaces/product";
 import { getSortedValues } from "./sorting";
 
-export const getSearchProducts = (searchQuery: string, products: IProduct[]) =>
-  products.filter((product: IProduct) =>
-    product.name.includes(searchQuery)
-  ) as IProduct[];
+export const getSearchProducts = (searchQuery: string, product: IProduct) =>
+  product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  product.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  String(product.rating).includes(searchQuery) ||
+  String(product.price).includes(searchQuery) ||
+  String(product.stock).includes(searchQuery);
 
 export const getProducts = (
   searchQuery: string,
@@ -33,7 +36,7 @@ export const getProducts = (
         : product
     )
     .filter((product: IProduct) =>
-      searchQuery ? product.name.includes(searchQuery) : product
+      searchQuery ? getSearchProducts(searchQuery, product) : product
     );
   return getSortedValues(sorting, filteredProducts);
 };

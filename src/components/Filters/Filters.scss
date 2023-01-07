@@ -94,6 +94,10 @@
   margin-left: auto;
 }
 
+.filter-no-active {
+  color: $color-input-grey;
+}
+
 //////////////////////////////////////
 .range_container {
   display: flex;
@@ -129,7 +133,6 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 input[type=range]::-moz-range-thumb {
-  // -webkit-appearance: none;
   pointer-events: all;
   width: 24px;
   height: 24px;
@@ -140,16 +143,16 @@ input[type=range]::-moz-range-thumb {
 }
 
 input[type=range]::-webkit-slider-thumb:hover {
-  background: #f7f7f7;
+  background: $color-white;
 }
 
 input[type=range]::-webkit-slider-thumb:active {
-  box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
-  -webkit-box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
+  box-shadow: inset 0 0 3px $color-blue, 0 0 9px $color-blue;
+  -webkit-box-shadow: inset 0 0 3px $color-blue, 0 0 9px $color-blue;
 }
 
 .input__filter.input[type="number"] {
-  color: #8a8383;
+  color:$color-input-grey;
   width: 50px;
   height: 30px;
   font-size: 20px;
@@ -168,7 +171,7 @@ input[type="range"] {
   height: 2px;
   width: 100%;
   position: absolute;
-  background-color: #C6C6C6;
+  background-color: $color-grey;
   pointer-events: none;
 }
 
