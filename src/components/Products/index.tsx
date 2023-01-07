@@ -158,6 +158,9 @@ const Products: FunctionComponent<ProductsType> = ({
               />
               <Sorting sorting={sorting} setSorting={setSorting} />
             </div>
+            <div className="main__product_total">
+              Total: {productList.length}
+            </div>
             <ProductGrid
               view={view}
               products={productList}
