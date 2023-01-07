@@ -108,6 +108,7 @@ const App: FunctionComponent = () => {
               deleteFromCart={deleteFromCart}
               sumPrices={sumPrices()}
               sumCount={sumCount()}
+              setShoppingCart={setShoppingCart}
             />
           }
         />

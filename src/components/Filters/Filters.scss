@@ -21,6 +21,7 @@
   color: $color-white;
   border-radius: 5px;
   text-transform: uppercase;
+  transition: 0.5s;
 
   &:hover {
     background-color: $color-green-hover;
@@ -38,6 +39,7 @@
   color: $color-white;
   border-radius: 5px;
   text-transform: uppercase;
+  transition: 0.5s;
   
   &:hover {
     background-color: $color-green-hover;
@@ -45,11 +47,11 @@
 }
 
 .filter__panel {
-border: 2px solid $color-grey;
-border-radius: 5px;
-overflow: hidden;
-margin-bottom: 10px;
-display: block;
+  border: 2px solid $color-grey;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .title__filter {
@@ -63,8 +65,7 @@ display: block;
 .filter__list {
   overflow: hidden;
   overflow-y: hidden;
-  overflow-y: auto;
- 
+  overflow-y: auto; 
 }
 
 .checkbox-filter {
@@ -158,7 +159,7 @@ input[type=range]::-webkit-slider-thumb:active {
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {  
-   opacity: 1;
+  opacity: 1;
 }
 
 input[type="range"] {

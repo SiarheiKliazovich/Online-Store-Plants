@@ -32,7 +32,7 @@ const Product: FunctionComponent<ProductPageType> = ({
 
   const navigate = useNavigate();
 
-  const [image, setImage] = useState(images[0]);
+  const [image, setImage] = useState<string>(images[0]);
 
   const changeImage = (e: React.MouseEvent<HTMLDivElement>): void => {
     const img = e.target;
@@ -53,12 +53,19 @@ const Product: FunctionComponent<ProductPageType> = ({
   });
 
   const buyNow = (): void => {
-    setTimeout(() => navigate("/cart", { state: { show: true } }), 2000);
+    const prodInShoppingCart = (id: number) =>
+      shoppingCart.filter((product) => product.id === id);
+
+    if (prodInShoppingCart(id).length === 0) {
+      addToShoppingCart(id);
+    }
+
+    navigate("/cart", { state: { show: true } });
   };
 
   return (
     <>
-      <BannerTitle title={`${category} | ${name}`} />
+      <BannerTitle title={`Main | ${category} | ${name}`} />
       <div className="product__wrapper container">
         <div className="product__images">
           <div className="product__main-image">
@@ -78,7 +85,7 @@ const Product: FunctionComponent<ProductPageType> = ({
             <p className="product__availability">
               <span>Availability:</span> {availability}
             </p>
-            <p className="product__availability">
+            <p className="product__size">
               <span>Size:</span> {size}
             </p>
           </div>

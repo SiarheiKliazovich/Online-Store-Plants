@@ -5,8 +5,8 @@ import "./notFound.scss";
 
 const NotFound: FunctionComponent = () => {
   return (
-    <div className="not-found vh">
-      <Link className="not-found__button" to="/">
+    <div className="not-found-page vh">
+      <Link className="not-found-page__button" to="/">
         Main
       </Link>
     </div>

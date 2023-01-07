@@ -9,3 +9,7 @@
 @mixin media-mobile {
   @media (max-width: 767px) { @content; }
 }
+
+@mixin media-small-mobile {
+  @media (max-width: 690px) { @content; }
+}

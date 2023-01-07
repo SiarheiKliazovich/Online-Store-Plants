@@ -87,6 +87,7 @@ export type CartNewType = {
   deleteFromCart: (id: number) => void;
   sumPrices: number;
   sumCount: number;
+  setShoppingCart: (value: IShoppingCart[]) => void;
 };
 
 export type PromoCodeType = {

@@ -171,6 +171,7 @@ const products = [
       "https://envatopixel.com/wordpress/plantlish/wp-content/uploads/2021/07/21.webp",
     images: [
       "https://envatopixel.com/wordpress/plantlish/wp-content/uploads/2021/07/21.webp",
+      "https://envatopixel.com/wordpress/plantlish/wp-content/uploads/2021/07/19.webp",
     ],
   },
   {
@@ -220,6 +221,7 @@ const products = [
       "https://envatopixel.com/wordpress/plantlish/wp-content/uploads/2021/07/15.webp",
     images: [
       "https://envatopixel.com/wordpress/plantlish/wp-content/uploads/2021/07/15.webp",
+      "https://envatopixel.com/wordpress/plantlish/wp-content/uploads/2021/07/19.webp",
     ],
   },
   {

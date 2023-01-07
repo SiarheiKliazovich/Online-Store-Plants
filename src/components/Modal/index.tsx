@@ -6,7 +6,11 @@ import ModalForm from "./ModalForm";
 
 import "./modal.scss";
 
-const Modal: FunctionComponent<IModal> = ({ onClose, show }) => {
+const Modal: FunctionComponent<IModal> = ({
+  onClose,
+  show,
+  setShoppingCart,
+}) => {
   const [modalContent, setModalContent] = useState(true);
 
   const textMessage = (
@@ -17,7 +21,10 @@ const Modal: FunctionComponent<IModal> = ({ onClose, show }) => {
     <div className={`modal${show ? " show" : ""}`} onClick={onClose}>
       <div className="modal__content" onClick={(e) => e.stopPropagation()}>
         {modalContent ? (
-          <ModalForm setModalContent={setModalContent} />
+          <ModalForm
+            setModalContent={setModalContent}
+            setShoppingCart={setShoppingCart}
+          />
         ) : (
           textMessage
         )}

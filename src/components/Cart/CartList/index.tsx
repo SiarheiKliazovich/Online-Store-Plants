@@ -4,6 +4,7 @@ import products from "../../../data/products";
 import CartListItem from "../CartListItem";
 import { sumPricesDisc } from "../../../helpers/sumPricesDisc";
 import { useSearchParams } from "react-router-dom";
+import { IShoppingCart } from "../../../interfaces/shoppingCart";
 import "./cartList.scss";
 
 const CartList: FunctionComponent<CartListType> = ({
@@ -16,13 +17,15 @@ const CartList: FunctionComponent<CartListType> = ({
 }: CartListType) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const URLParams = Object.fromEntries([...searchParams]);
-  const [limitValue, setlimitValue] = useState(
+  const [limitValue, setlimitValue] = useState<number>(
     URLParams.limit ? parseInt(URLParams.limit, 10) : 3
   );
-  const [page, setPage] = useState(
+  const [page, setPage] = useState<number>(
     URLParams.page ? parseInt(URLParams.page, 10) : 1
   );
-  const [cart, setCart] = useState(shoppingCart.slice(0, page * limitValue));
+  const [cart, setCart] = useState<IShoppingCart[]>(
+    shoppingCart.slice(0, page * limitValue)
+  );
 
   const updateViewCart = (): void => {
     if (page * limitValue - limitValue <= 0) {
@@ -90,20 +93,21 @@ const CartList: FunctionComponent<CartListType> = ({
     });
   }, [limitValue]);
 
-  const [code, setCode] = useState("");
-  const [messageCode, setMessageCode] = useState("");
+  const [code, setCode] = useState<string>("");
+  const [messageCode, setMessageCode] = useState<string>("");
 
   const codes = localStorage.getItem("promo");
   const codesParseObj = codes ? JSON.parse(codes) : [];
-  const [appliedCodes, setAppliedCodes] = useState(codesParseObj);
+  const [appliedCodes, setAppliedCodes] =
+    useState<PromoCodeType[]>(codesParseObj);
 
-  const [showAppliedCodes, setShowAppliedCodes] = useState(
+  const [showAppliedCodes, setShowAppliedCodes] = useState<boolean>(
     appliedCodes.length === 0 ? false : true
   );
 
-  const [showButtonAdd, setShowButtonAdd] = useState(true);
+  const [showButtonAdd, setShowButtonAdd] = useState<boolean>(true);
 
-  const promoCodes = [
+  const promoCodes: PromoCodeType[] = [
     { id: "rs", name: "Rolling Scopes School", disc: 10 },
     { id: "epm", name: "EPAM Systems", disc: 10 },
   ];
@@ -160,7 +164,7 @@ const CartList: FunctionComponent<CartListType> = ({
     }
   };
 
-  const nameCode = promoCodes
+  const nameCode: string[] = promoCodes
     .filter((item) => item.id === messageCode)
     .map((item) => item.name);
 
@@ -199,8 +203,11 @@ const CartList: FunctionComponent<CartListType> = ({
             <div className="header__total">Total</div>
           </div>
           <div className="cart__items">
-            {cart.map((item) => (
+            {cart.map((item, i) => (
               <CartListItem
+                page={page}
+                limit={limitValue}
+                i={i}
                 key={item.id}
                 {...products[item.id - 1]}
                 count={item.count}
@@ -238,7 +245,9 @@ const CartList: FunctionComponent<CartListType> = ({
                   {appliedCodes.map((item: PromoCodeType, i: number) => {
                     return (
                       <div key={i} className="promo__active-code">
-                        <div className="promo__active-name">{item.name}</div>
+                        <div className="promo__active-name">
+                          {item.name} - 10%
+                        </div>
                         <button
                           className="promo__active-button"
                           onClick={(e) => dropCode(e)}

@@ -84,3 +84,8 @@
 .error {
 	color: $color-red;
 }
+
+.cvv-input::-webkit-outer-spin-button,
+.cvv-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

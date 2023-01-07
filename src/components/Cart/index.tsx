@@ -12,6 +12,7 @@ const Cart: FunctionComponent<CartNewType> = ({
   deleteFromCart,
   sumPrices,
   sumCount,
+  setShoppingCart,
 }: CartNewType) => {
   const location = useLocation();
 
@@ -20,7 +21,7 @@ const Cart: FunctionComponent<CartNewType> = ({
     stateShowModal = location.state.show;
   }
 
-  const [showModal, setShowModal] = useState(stateShowModal);
+  const [showModal, setShowModal] = useState<boolean>(stateShowModal);
   return (
     <>
       <div className="cart__wrapper container">
@@ -35,8 +36,11 @@ const Cart: FunctionComponent<CartNewType> = ({
           />
         }
       </div>
-      {/* <button onClick={() => setShowModal(true)}>Show modal</button> */}
-      <Modal onClose={() => setShowModal(false)} show={showModal} />
+      <Modal
+        onClose={() => setShowModal(false)}
+        show={showModal}
+        setShoppingCart={setShoppingCart}
+      />
     </>
   );
 };

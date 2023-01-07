@@ -8,5 +8,6 @@
 
 	@include media-mobile {
 		min-height: calc(100vh - 220px);
+		flex-direction: column;
 	}
 }

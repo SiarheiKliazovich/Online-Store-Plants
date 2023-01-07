@@ -6,40 +6,45 @@ import { validateDate } from "../../../helpers/validateDate";
 
 import "./modalForm.scss";
 
-const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
+const ModalForm: FunctionComponent<IModalForm> = ({
+  setModalContent,
+  setShoppingCart,
+}) => {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [nameDirty, setNameDirty] = useState(false);
-  const [nameError, setNameError] = useState("Cannot be empty");
+  const [name, setName] = useState<string>("");
+  const [nameDirty, setNameDirty] = useState<boolean>(false);
+  const [nameError, setNameError] = useState<string>("Cannot be empty");
 
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [phoneNumberDirty, setPhoneNumberDirty] = useState(false);
-  const [phoneNumberError, setPhoneNumberError] = useState("Cannot be empty");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [phoneNumberDirty, setPhoneNumberDirty] = useState<boolean>(false);
+  const [phoneNumberError, setPhoneNumberError] =
+    useState<string>("Cannot be empty");
 
-  const [address, setAddress] = useState("");
-  const [addressDirty, setAddressDirty] = useState(false);
-  const [addressError, setAddressError] = useState("Cannot be empty");
+  const [address, setAddress] = useState<string>("");
+  const [addressDirty, setAddressDirty] = useState<boolean>(false);
+  const [addressError, setAddressError] = useState<string>("Cannot be empty");
 
-  const [email, setEmail] = useState("");
-  const [emailDirty, setEmailDirty] = useState(false);
-  const [emailError, setEmailError] = useState("Cannot be empty");
+  const [email, setEmail] = useState<string>("");
+  const [emailDirty, setEmailDirty] = useState<boolean>(false);
+  const [emailError, setEmailError] = useState<string>("Cannot be empty");
 
-  const [cardNumber, setCardNumber] = useState("");
-  const [cardNumberDirty, setCardNumberDirty] = useState(false);
-  const [cardNumberError, setCardNumberError] = useState("Cannot be empty");
+  const [cardNumber, setCardNumber] = useState<string>("");
+  const [cardNumberDirty, setCardNumberDirty] = useState<boolean>(false);
+  const [cardNumberError, setCardNumberError] =
+    useState<string>("Cannot be empty");
 
-  const [date, setDate] = useState("");
-  const [dateDirty, setDateDirty] = useState(false);
-  const [dateError, setDateError] = useState("Cannot be empty");
+  const [date, setDate] = useState<string>("");
+  const [dateDirty, setDateDirty] = useState<boolean>(false);
+  const [dateError, setDateError] = useState<string>("Cannot be empty");
 
-  const [cvv, setCvv] = useState("");
-  const [cvvDirty, setCvvDirty] = useState(false);
-  const [cvvError, setCvvError] = useState("Cannot be empty");
+  const [cvv, setCvv] = useState<string>("");
+  const [cvvDirty, setCvvDirty] = useState<boolean>(false);
+  const [cvvError, setCvvError] = useState<string>("Cannot be empty");
 
-  const [classImage, setClassImage] = useState("modal__image");
+  const [classImage, setClassImage] = useState<string>("modal__image");
 
-  const [formValid, setFormValid] = useState(false);
+  const [formValid, setFormValid] = useState<boolean>(false);
 
   useEffect(() => {
     if (
@@ -102,6 +107,7 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
   };
 
   const phoneNumberHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    e.target.value = e.target.value.replace(/[A-Za-zА-Яа-яЁё/ ]/g, "");
     setPhoneNumber(e.target.value);
     const re = /\+?[0-9]{9,}/;
 
@@ -139,16 +145,11 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
 
   const cardNumberHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     e.target.value = e.target.value.slice(0, 19);
+    e.target.value = e.target.value
+      .replace(/\D/g, "")
+      .replace(/\B(?=(\d{4})+(?!\d))/g, " ");
 
-    if (
-      (e.target.value.length === 4 && cardNumber.length < 5) ||
-      (e.target.value.length === 9 && cardNumber.length < 10) ||
-      (e.target.value.length === 14 && cardNumber.length < 15)
-    ) {
-      setCardNumber(e.target.value + " ");
-    } else {
-      setCardNumber(e.target.value);
-    }
+    setCardNumber(e.target.value);
 
     const re = /[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}/;
 
@@ -160,6 +161,7 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
   };
 
   const dateHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    e.target.value = e.target.value.replace(/[A-Za-zА-Яа-яЁё]/g, "");
     e.target.value = e.target.value.slice(0, 5);
 
     if (e.target.value.length === 2 && date.length < 3) {
@@ -168,7 +170,13 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
       setDate(e.target.value);
     }
 
-    if (!validateDate(e.target.value) || e.target.value.length < 5) {
+    const re = /\d{2}\/\d{2}/;
+
+    if (
+      !validateDate(e.target.value) ||
+      e.target.value.length < 5 ||
+      !re.test(e.target.value)
+    ) {
       setDateError("Invalid date");
     } else {
       setDateError("");
@@ -208,7 +216,7 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
     changeModalImage();
   }, [cardNumber]);
 
-  const buttonHadler = () => {
+  const buttonHadler = (): void => {
     if (name.length === 0) {
       setNameError("Cannot be empty");
       setNameDirty(true);
@@ -247,7 +255,9 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
 
     if (formValid) {
       setModalContent(false);
-      setTimeout(() => navigate("/products"), 5000);
+      localStorage.removeItem("cart");
+      setTimeout(() => navigate("/"), 3000);
+      setShoppingCart([]);
     }
   };
 
@@ -322,7 +332,8 @@ const ModalForm: FunctionComponent<IModalForm> = ({ setModalContent }) => {
         <label htmlFor="cvv">CVV: </label>
         {cvvDirty && cvvError && <div className="error">{cvvError}</div>}
         <input
-          type="text"
+          className="cvv-input"
+          type="number"
           id="cvv"
           value={cvv}
           onChange={(e) => cvvHandler(e)}
