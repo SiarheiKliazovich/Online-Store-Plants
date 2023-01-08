@@ -1,4 +1,4 @@
-import { PromoCodeType } from "../types";
+import { PromoCodeType } from "../../types";
 
 export const sumPricesDisc = (
   array: PromoCodeType[],

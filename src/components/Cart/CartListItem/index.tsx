@@ -1,6 +1,6 @@
 import { FunctionComponent, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { countTotalByItem } from "../../../helpers/countTotalByItem";
+import { countTotalByItem } from "../../../helpers/countTotalByItem/countTotalByItem";
 import { ICartListItem } from "../../../interfaces/cartListItem";
 
 import "./cartListItem.scss";

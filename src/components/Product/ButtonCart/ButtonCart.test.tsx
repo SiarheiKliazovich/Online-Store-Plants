@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { MemoryRouter as Router } from "react-router-dom";
-import { ButtonCart } from "../components/Product/ButtonCart";
+import { ButtonCart } from ".";
 
 it("renders buttons", () => {
   const shoppingCart = [{ id: 1, count: 1 }];

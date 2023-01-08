@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { MemoryRouter as Router } from "react-router-dom";
-import Header from "../components/Header";
+import Header from ".";
 
 it("renders header", () => {
   const sumPrices = 3000;
