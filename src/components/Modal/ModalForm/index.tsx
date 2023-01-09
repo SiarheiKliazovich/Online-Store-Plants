@@ -2,7 +2,7 @@ import React, { useState, useEffect, FunctionComponent } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { IModalForm } from "../../../interfaces/modalForm";
-import { validateDate } from "../../../helpers/validateDate";
+import { validateDate } from "../../../helpers/validateDate/validateDate";
 
 import "./modalForm.scss";
 

@@ -94,8 +94,9 @@ Object {
             CVV: 
           </label>
           <input
+            class="cvv-input"
             id="cvv"
-            type="text"
+            type="number"
             value=""
           />
         </fieldset>
@@ -198,8 +199,9 @@ Object {
           CVV: 
         </label>
         <input
+          class="cvv-input"
           id="cvv"
-          type="text"
+          type="number"
           value=""
         />
       </fieldset>

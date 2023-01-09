@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { MemoryRouter as Router } from "react-router-dom";
-import ModalForm from "../components/Modal/ModalForm";
+import ModalForm from ".";
 
 it("renders modal form", () => {
   const setModalContent = jest.fn();

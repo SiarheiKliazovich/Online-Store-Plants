@@ -2,7 +2,7 @@ import { FunctionComponent, useState, useEffect } from "react";
 import { CartListType, PromoCodeType } from "../../../types";
 import products from "../../../data/products";
 import CartListItem from "../CartListItem";
-import { sumPricesDisc } from "../../../helpers/sumPricesDisc";
+import { sumPricesDisc } from "../../../helpers/sumPricesDisc/sumPricesDisc";
 import { useSearchParams } from "react-router-dom";
 import { IShoppingCart } from "../../../interfaces/shoppingCart";
 import "./cartList.scss";
