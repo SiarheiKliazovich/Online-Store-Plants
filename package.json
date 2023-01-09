@@ -1,6 +1,7 @@
 {
   "name": "online-store",
   "version": "0.1.0",
+  "homepage": "https://siarheikliazovich.github.io/Online-Store-Plants",
   "private": true,
   "dependencies": {
     "@types/jest": "^27.5.2",

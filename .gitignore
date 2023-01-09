@@ -106,3 +106,5 @@ dist
 *.css.map
 
 *.css
+
+build
