@@ -1,5 +1,5 @@
 import { useState, FunctionComponent, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.scss";
 import { IShoppingCart } from "../../interfaces/shoppingCart";
 import Header from "../Header";
@@ -77,8 +77,9 @@ const App: FunctionComponent = () => {
   }, [shoppingCart]);
 
   return (
-    <>
+    <BrowserRouter>
       <Header sumPrices={sumPrices()} sumCount={sumCount()} />
+
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route
@@ -114,7 +115,7 @@ const App: FunctionComponent = () => {
         />
       </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 };
 
