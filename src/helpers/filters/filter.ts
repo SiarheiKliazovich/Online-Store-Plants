@@ -1,5 +1,5 @@
-import { IProdFilter } from "../interfaces/productFilters";
-import { IProduct } from "../interfaces/product";
+import { IProdFilter } from "../../interfaces/productFilters";
+import { IProduct } from "../../interfaces/product";
 
 export const getFilters = (products: IProduct[]): IProdFilter => {
   const newBrand: string[] = [];

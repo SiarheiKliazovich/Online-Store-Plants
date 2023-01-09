@@ -1,72 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders app 1`] = `
+exports[`Products component  1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
-        class="header"
-      >
-        <div
-          class="container"
-        >
-          <div
-            class="header__wrapper"
-          >
-            <a
-              class="header__link"
-              href="/"
-            >
-              <div
-                class="header__logo"
-              />
-            </a>
-            <div
-              class="header__sum"
-            >
-              <span
-                class="header__sum_title"
-              >
-                 Cart total: 
-              </span>
-              <span
-                class="header__sum_number"
-              >
-                0
-                $
-              </span>
-            </div>
-            <a
-              class="header__link"
-              href="/cart"
-            >
-              <div
-                class="header__cart"
-              >
-                <span
-                  class="cart__image"
-                />
-                <div
-                  class="cart__text"
-                >
-                  <p
-                    class="cart__name"
-                  >
-                    My Cart
-                  </p>
-                  <p
-                    class="cart__count"
-                  >
-                    0
-                     Items
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
       <main
         class="main"
       >
@@ -564,7 +502,7 @@ Object {
                   class="container-inner"
                 >
                   <div
-                    class="product-block-inner"
+                    class="product-block-inner product-active"
                   >
                     <div
                       class="img-prod_wrapper"
@@ -641,7 +579,7 @@ Object {
                           <button
                             class="product__btn"
                           >
-                            Add to cart
+                            Drop from cart
                           </button>
                         </div>
                       </div>
@@ -4085,107 +4023,9 @@ Object {
           </div>
         </div>
       </main>
-      <footer
-        class="footer"
-      >
-        <div
-          class="container"
-        >
-          <div
-            class="footer__wrapper"
-          >
-            <div
-              class="footer__github"
-            >
-              <a
-                class="footer__github-link"
-                href="https://github.com/SiarheiKliazovich"
-                target="_blank"
-              />
-              <a
-                class="footer__github-link"
-                href="https://github.com/anast-ananko"
-                target="_blank"
-              />
-            </div>
-            <div
-              class="footer__year"
-            >
-              2023
-            </div>
-            <a
-              class="footer__rs"
-              href="https://rs.school/js/"
-              target="_blank"
-            />
-          </div>
-        </div>
-      </footer>
     </div>
   </body>,
   "container": <div>
-    <div
-      class="header"
-    >
-      <div
-        class="container"
-      >
-        <div
-          class="header__wrapper"
-        >
-          <a
-            class="header__link"
-            href="/"
-          >
-            <div
-              class="header__logo"
-            />
-          </a>
-          <div
-            class="header__sum"
-          >
-            <span
-              class="header__sum_title"
-            >
-               Cart total: 
-            </span>
-            <span
-              class="header__sum_number"
-            >
-              0
-              $
-            </span>
-          </div>
-          <a
-            class="header__link"
-            href="/cart"
-          >
-            <div
-              class="header__cart"
-            >
-              <span
-                class="cart__image"
-              />
-              <div
-                class="cart__text"
-              >
-                <p
-                  class="cart__name"
-                >
-                  My Cart
-                </p>
-                <p
-                  class="cart__count"
-                >
-                  0
-                   Items
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
     <main
       class="main"
     >
@@ -4683,7 +4523,7 @@ Object {
                 class="container-inner"
               >
                 <div
-                  class="product-block-inner"
+                  class="product-block-inner product-active"
                 >
                   <div
                     class="img-prod_wrapper"
@@ -4760,7 +4600,7 @@ Object {
                         <button
                           class="product__btn"
                         >
-                          Add to cart
+                          Drop from cart
                         </button>
                       </div>
                     </div>
@@ -8204,42 +8044,6 @@ Object {
         </div>
       </div>
     </main>
-    <footer
-      class="footer"
-    >
-      <div
-        class="container"
-      >
-        <div
-          class="footer__wrapper"
-        >
-          <div
-            class="footer__github"
-          >
-            <a
-              class="footer__github-link"
-              href="https://github.com/SiarheiKliazovich"
-              target="_blank"
-            />
-            <a
-              class="footer__github-link"
-              href="https://github.com/anast-ananko"
-              target="_blank"
-            />
-          </div>
-          <div
-            class="footer__year"
-          >
-            2023
-          </div>
-          <a
-            class="footer__rs"
-            href="https://rs.school/js/"
-            target="_blank"
-          />
-        </div>
-      </div>
-    </footer>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

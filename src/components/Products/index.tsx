@@ -8,9 +8,10 @@ import ProductGrid from "../ProductGrid";
 import Sorting from "../Sorting";
 import View from "../View";
 import Search from "../Search";
+import { isInfinity } from "../../helpers/isInfinity/isInfinity";
 import { IFilter } from "./../../interfaces/filter";
-import { getProducts } from "./../../helpers/search";
-import { getFilters } from "../../helpers/filter";
+import { getProducts } from "../../helpers/search/search";
+import { getFilters } from "../../helpers/filters/filter";
 import { FunctionComponent } from "react";
 import { ProductsType } from "../../types";
 import { IProduct } from "../../interfaces/product";
@@ -114,17 +115,29 @@ const Products: FunctionComponent<ProductsType> = ({
       search: searchQuery,
     });
 
-    setProductList(
-      getProducts(
-        searchQuery,
-        sorting,
-        filters.categories,
-        filters.brands,
-        filters.prices,
-        filters.stocks,
-        products
-      )
+    const productsList = getProducts(
+      searchQuery,
+      sorting,
+      filters.categories,
+      filters.brands,
+      filters.prices,
+      filters.stocks,
+      products
     );
+
+    setProductList(productsList);
+    const list = getFilters(productsList);
+    setFilters({
+      ...filters,
+      prices: [
+        !isInfinity(list.prices[0]) ? list.prices[0] : 0,
+        !isInfinity(list.prices[1]) ? list.prices[1] : 0,
+      ],
+      stocks: [
+        !isInfinity(list.stocks[0]) ? list.stocks[0] : 0,
+        !isInfinity(list.stocks[1]) ? list.stocks[1] : 0,
+      ],
+    });
   }, [searchQuery]);
 
   useEffect(() => {
