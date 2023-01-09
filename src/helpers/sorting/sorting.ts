@@ -1,4 +1,4 @@
-import { IProduct } from "../interfaces/product";
+import { IProduct } from "../../interfaces/product";
 
 export const getSortedAscRating = (products: IProduct[]) =>
   products.sort((current, next) => current.rating - next.rating) as IProduct[];

@@ -1,0 +1,456 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filters component 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="filter"
+      >
+        <div
+          class="filter__btn_wrapper"
+        >
+          <button
+            class="btn__filters-reset"
+          >
+            Reset Filters
+          </button>
+          <button
+            class="btn__copy-link"
+          >
+            Copy link
+          </button>
+        </div>
+        <div
+          class="filter__panel"
+        >
+          <h3
+            class="title__filter"
+          >
+            Category
+          </h3>
+          <div
+            class="filter__list"
+          >
+            <div
+              class="checkbox-filter"
+            >
+              <input
+                checked=""
+                class="input__category"
+                id="Aeonium"
+                type="checkbox"
+                value="Aeonium"
+              />
+              <label
+                class="label__filter"
+                for="Aeonium"
+              >
+                Aeonium
+              </label>
+              <span
+                class="span__filter"
+              >
+                (
+                1
+                /
+                4
+                )
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="filter__panel"
+        >
+          <h3
+            class="title__filter"
+          >
+            Brand
+          </h3>
+          <div
+            class="filter__list"
+          >
+            <div
+              class="checkbox-filter"
+            >
+              <input
+                checked=""
+                class="input__filter"
+                id="London-Plants&Co"
+                type="checkbox"
+                value="London-Plants&Co"
+              />
+              <label
+                class="label__filter"
+                for="London-Plants&Co"
+              >
+                London-Plants&Co
+              </label>
+              <span
+                class="span__filter"
+              >
+                (
+                1
+                /
+                4
+                )
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="filter__panel"
+        >
+          <h3
+            class="title__filter"
+          >
+            Price
+          </h3>
+          <div
+            class="filter__list"
+          >
+            <div
+              class="form_control"
+            >
+              <div
+                class="form_control_container__time"
+              >
+                22
+              </div>
+              ⟷
+              <div
+                class="form_control_container__time"
+              >
+                30
+              </div>
+            </div>
+            <div
+              class="range_container"
+            >
+              <div
+                class="sliders_control"
+              >
+                <input
+                  id="fromSlider"
+                  max="30"
+                  min="22"
+                  type="range"
+                  value="22"
+                />
+                <input
+                  id="toSlider"
+                  max="30"
+                  min="22"
+                  type="range"
+                  value="30"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="filter__panel"
+        >
+          <h3
+            class="title__filter"
+          >
+            Stock
+          </h3>
+          <div
+            class="filter__list"
+          >
+            <div
+              class="form_control"
+            >
+              <div
+                class="form_control_container__time"
+              >
+                45
+              </div>
+              ⟷
+              <div
+                class="form_control_container__time"
+              >
+                68
+              </div>
+            </div>
+            <div
+              class="range_container"
+            >
+              <div
+                class="sliders_control"
+              >
+                <input
+                  id="fromSlider"
+                  max="50"
+                  min="45"
+                  type="range"
+                  value="45"
+                />
+                <input
+                  id="toSlider"
+                  max="50"
+                  min="45"
+                  type="range"
+                  value="68"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="filter"
+    >
+      <div
+        class="filter__btn_wrapper"
+      >
+        <button
+          class="btn__filters-reset"
+        >
+          Reset Filters
+        </button>
+        <button
+          class="btn__copy-link"
+        >
+          Copy link
+        </button>
+      </div>
+      <div
+        class="filter__panel"
+      >
+        <h3
+          class="title__filter"
+        >
+          Category
+        </h3>
+        <div
+          class="filter__list"
+        >
+          <div
+            class="checkbox-filter"
+          >
+            <input
+              checked=""
+              class="input__category"
+              id="Aeonium"
+              type="checkbox"
+              value="Aeonium"
+            />
+            <label
+              class="label__filter"
+              for="Aeonium"
+            >
+              Aeonium
+            </label>
+            <span
+              class="span__filter"
+            >
+              (
+              1
+              /
+              4
+              )
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="filter__panel"
+      >
+        <h3
+          class="title__filter"
+        >
+          Brand
+        </h3>
+        <div
+          class="filter__list"
+        >
+          <div
+            class="checkbox-filter"
+          >
+            <input
+              checked=""
+              class="input__filter"
+              id="London-Plants&Co"
+              type="checkbox"
+              value="London-Plants&Co"
+            />
+            <label
+              class="label__filter"
+              for="London-Plants&Co"
+            >
+              London-Plants&Co
+            </label>
+            <span
+              class="span__filter"
+            >
+              (
+              1
+              /
+              4
+              )
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="filter__panel"
+      >
+        <h3
+          class="title__filter"
+        >
+          Price
+        </h3>
+        <div
+          class="filter__list"
+        >
+          <div
+            class="form_control"
+          >
+            <div
+              class="form_control_container__time"
+            >
+              22
+            </div>
+            ⟷
+            <div
+              class="form_control_container__time"
+            >
+              30
+            </div>
+          </div>
+          <div
+            class="range_container"
+          >
+            <div
+              class="sliders_control"
+            >
+              <input
+                id="fromSlider"
+                max="30"
+                min="22"
+                type="range"
+                value="22"
+              />
+              <input
+                id="toSlider"
+                max="30"
+                min="22"
+                type="range"
+                value="30"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="filter__panel"
+      >
+        <h3
+          class="title__filter"
+        >
+          Stock
+        </h3>
+        <div
+          class="filter__list"
+        >
+          <div
+            class="form_control"
+          >
+            <div
+              class="form_control_container__time"
+            >
+              45
+            </div>
+            ⟷
+            <div
+              class="form_control_container__time"
+            >
+              68
+            </div>
+          </div>
+          <div
+            class="range_container"
+          >
+            <div
+              class="sliders_control"
+            >
+              <input
+                id="fromSlider"
+                max="50"
+                min="45"
+                type="range"
+                value="45"
+              />
+              <input
+                id="toSlider"
+                max="50"
+                min="45"
+                type="range"
+                value="68"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

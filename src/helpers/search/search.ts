@@ -1,5 +1,5 @@
-import { IProduct } from "../interfaces/product";
-import { getSortedValues } from "./sorting";
+import { IProduct } from "../../interfaces/product";
+import { getSortedValues } from "../sorting/sorting";
 
 export const getSearchProducts = (searchQuery: string, product: IProduct) =>
   product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -18,6 +18,9 @@ export const getProducts = (
   stocks: number[],
   products: IProduct[]
 ): IProduct[] => {
+  const isPricesNaN = prices.filter((price) => price === 0).length;
+  const isStockNaN = stocks.filter((stock) => stock === 0).length;
+
   const filteredProducts = products
     .filter((product: IProduct) =>
       categories.length ? categories.includes(product.category) : product
@@ -26,12 +29,12 @@ export const getProducts = (
       brands.length ? brands.includes(product.brand) : product
     )
     .filter((product: IProduct) =>
-      prices.length
+      prices.length && isPricesNaN === 0
         ? product.price >= prices[0] && product.price <= prices[1]
         : product
     )
     .filter((product: IProduct) =>
-      stocks.length
+      stocks.length && isStockNaN === 0
         ? product.stock >= stocks[0] && product.stock <= stocks[1]
         : product
     )

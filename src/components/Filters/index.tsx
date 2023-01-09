@@ -13,6 +13,7 @@ const Filters: FunctionComponent<FiltersType> = ({
   productFilters,
 }: FiltersType) => {
   const [copied, setCopied] = useState<boolean>(false);
+
   const copy = (): void => {
     const el = document.createElement("input");
     el.value = window.location.href;
@@ -163,11 +164,11 @@ const Filters: FunctionComponent<FiltersType> = ({
           maxLabel={filters.prices[1]}
           valueFromSlider={filters.prices[0]}
           minFromSlider={productFilters.prices[0]}
-          maxFromSlider={filters.prices[1]}
+          maxFromSlider={productFilters.prices[1]}
           setFiltersFromSlider={setFilterMinPrices}
           setFiltersToSlider={setFilterMaxPrices}
           valueToSlider={filters.prices[1]}
-          minToSlider={filters.prices[0]}
+          minToSlider={productFilters.prices[0]}
           maxToSlider={productFilters.prices[1]}
         />
       </div>
@@ -178,11 +179,11 @@ const Filters: FunctionComponent<FiltersType> = ({
           maxLabel={filters.stocks[1]}
           valueFromSlider={filters.stocks[0]}
           minFromSlider={productFilters.stocks[0]}
-          maxFromSlider={filters.stocks[1]}
+          maxFromSlider={productFilters.stocks[1]}
           setFiltersFromSlider={setFilterMinStocks}
           setFiltersToSlider={setFilterMaxStocks}
           valueToSlider={filters.stocks[1]}
-          minToSlider={filters.stocks[0]}
+          minToSlider={productFilters.stocks[0]}
           maxToSlider={productFilters.stocks[1]}
         />
       </div>
