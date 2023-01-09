@@ -1,0 +1,253 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+
+.main__product_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container-inner {
+  padding: 15px;
+  width: 33.3%;
+
+  @include media-tablet {
+    width: 50%;
+  }
+
+  @include media-mobile {
+    width: 100%;
+  }
+}
+
+.product-block-inner{
+  border-radius: 5px;
+  background: $color-white;
+  border: 2px solid $color-grey;
+  overflow: hidden;
+  flex-direction: column;
+  display: flex;
+  padding: 5px;
+}
+
+.img-prod_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product__img_link {
+  color: $color-black;
+}
+
+.product__img {
+  width: 150px;
+}
+
+.product__info_wrapper {
+  text-align: center;
+}
+
+.product__text-name {
+  color: $color-black;
+  font-size: $font-size-md;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.2px;
+  padding:5px 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.product__description_card {
+  display: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: left;
+  color: $color-black;
+  font-family: $font-family-primary;
+}
+
+.product__category_card {
+  color: $color-black;
+  font-family: $font-family-primary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding:5px 5px;
+}
+
+.product__brand_card {
+  color: $color-black;
+  font-family: $font-family-primary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding:5px 5px;
+}
+
+.product__rating_card {
+  color: $color-black;
+  font-family: $font-family-primary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding:5px 5px;
+}
+
+.product__stock_card {
+  color: $color-black;
+  font-family: $font-family-primary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding:5px 5px;
+}
+
+.product__price_card {
+  padding:5px 5px;
+  color: $color-black;
+  font-family: $font-family-primary;
+}
+
+.product__btn {
+  margin: 10px 0;
+  padding: 8px 15px 7px;
+  height: auto;
+  background-color:$color-green-black;
+  color: $color-white;
+  border-color: $color-green-white;
+  font-family: $font-family-primary;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+
+  &:hover {
+    background-color:  $color-green-hover;
+  }
+}
+
+.line {
+  .container-inner { 
+    width: 100%;
+  }
+
+  .product-block-inner {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .product__img {
+    @include media-mobile {
+      width: 100px;
+    }
+  }
+
+  .img-prod_wrapper {
+    width: 25%;
+  }
+
+  .product__info_wrapper {
+    width: 75%;
+
+    @include media-small-mobile {
+      display: flex;
+      flex-direction: column;
+      justify-items: flex-start;
+    }
+  }
+
+  .product__text_wrapper {
+    width: 100%;
+
+    @include media-mobile {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .product__text-name {
+    max-width: 280px;
+
+    @include media-mobile {
+      max-width: 170px;
+    }
+
+    @include media-small-mobile {
+      max-width: 100%;
+    }
+  }
+
+  .product__description_card {
+    display: block;
+    padding: 5px;
+
+    @include media-mobile {
+      display: none;
+    }
+  }
+  
+  .product__category_card {
+    text-align: left;
+  }
+
+  .product__brand_card {
+    text-align: left;
+
+    @include media-mobile {
+      max-width: 170px;
+    }
+
+    @include media-small-mobile {
+      max-width: 100%;     
+    }
+  }
+
+  .product__rating_card {
+    text-align: left;
+  }
+
+  .product__rating_card {
+    text-align: left;
+  }
+
+  .product__stock_card {
+    text-align: left;
+  }
+
+  .product__price_card {
+    text-align: left;
+  }
+
+  .product__quantity {
+
+    .product__btn {
+      @include media-small-mobile {
+        padding: 8px 5px 7px;
+      }
+    }
+
+    @include media-mobile {
+      display: flex;
+      align-self: flex-start;
+    }
+
+    @include media-small-mobile {
+      align-self: flex-start;
+      justify-self: flex-end;
+    }
+  }
+}
+
+.not-found {
+  text-align: center;
+  font-size: 200%;
+  margin-top: 10%;
+}
+
+.product-active {
+  box-shadow: 0 0 5px 2px $color-green-white;
+  border: 2px solid $color-green-hover;
+}

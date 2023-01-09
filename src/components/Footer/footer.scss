@@ -1,0 +1,70 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.footer {
+  background-color: $color-light-grey;
+  color: $color-dark-grey;
+  height: 100px;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 100%;
+  padding: 18px 20px;
+
+  @include media-mobile {
+    padding: 18px 10px;
+  }
+}
+
+.footer__github {
+  display: flex;
+	justify-content: flex-start;
+	align-self: center;
+}
+
+.footer__github-link {
+  display: block;
+  align-self: center;
+  background-image: url('../../assets/images/png/github.png');
+  width: 64px;
+  height: 64px;
+  margin-right: 20px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @include media-mobile {
+    width: 44px;
+    height: 44px;
+    background-size: contain;
+    margin-right: 10px;
+  }
+}
+
+.footer__year {
+  font-size: $font-size-xlg;
+	width: 50px;
+	align-self: center;
+
+  @include media-mobile {
+    font-size: $font-size-lg;
+  }
+}
+
+.footer__rs {
+  display: block;
+  background-image: url('../../assets/images/svg/rs_school_js.svg');
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 50px;
+  align-self: center;
+
+  @include media-mobile {
+    width: 100px;
+    height: 40px;
+  }
+}

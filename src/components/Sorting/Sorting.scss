@@ -1,0 +1,12 @@
+@import "../../sass/variables";
+
+.form-select {
+  appearance: menulist-button;
+  width: 100%;
+  opacity: 1;
+  height: 38px;
+  font-size: 14px;
+  border: 2px solid $color-grey;
+  border-radius: 5px;
+  cursor: pointer;
+}

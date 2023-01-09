@@ -1,0 +1,45 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+
+.not-found-page {
+  height: calc(100vh - 200px);
+	background-image: url('../../assets/images/img/not-found.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-top: 0;
+	display: flex;
+	justify-content: center;
+
+	@include media-mobile {
+		height: calc(100vh - 220px);
+		background-size: contain;
+	}
+}
+
+.vh {
+	border-top: 1px solid $color-dark-grey;
+}
+
+.not-found-page__button {
+	display: block;
+	width: 130px;
+	height: 50px;
+	font-size: $font-size-xlg;
+	background-color:$color-green-black;
+  color: $color-white;
+	border: 2px solid $color-green-white;
+	cursor: pointer;
+	border-radius: 5px;
+	margin-top: 30px;
+	padding-top: 5px;
+	text-align: center;
+	transition: 0.5s;
+
+	&:last-child {
+		margin-right: 0;
+	}
+
+	&:hover {
+		background-color: $color-green-hover;
+	}
+}

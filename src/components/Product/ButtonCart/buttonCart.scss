@@ -1,0 +1,28 @@
+@import '../../../sass/variables';
+
+.product__button {
+	font-size: $font-size-llg;
+	background-color:$color-green-black;
+	color: $color-white;
+	border: 2px solid $color-green-white;
+	font-size: $font-size-lg;
+	cursor: pointer;
+	transition: 0.5s;
+	border-radius: 5px;
+	margin-right: 15px;
+	padding: 10px 10px;
+	
+	&:last-child {
+		margin-right: 0;
+	}
+
+	&:hover {
+		background-color: $color-green-hover;
+	}
+  
+	&:disabled {
+		background-color: $color-light-grey;
+		color: $color-dark-grey;
+		cursor: default;		
+	}
+}

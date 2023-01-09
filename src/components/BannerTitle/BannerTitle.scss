@@ -1,0 +1,19 @@
+@import "../../sass/variables";
+
+.banner {
+  background-color: $color-white-grey;
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid $color-grey;
+  width: 100%;
+}
+
+.banner__title {
+  font-weight: $font-weight-bold;
+  margin: 5px 0;
+  text-transform: capitalize;
+  float: none;
+  color: $color-black;
+  font-family: $font-family-primary;
+  font-size: $font-size-xlg;
+}

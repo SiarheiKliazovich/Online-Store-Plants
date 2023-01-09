@@ -1,0 +1,168 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.product__wrapper {
+  display: flex;
+	padding: 20px 10px;
+	min-height: calc(100vh - 259px);
+
+	@include media-mobile {
+		flex-direction: column;
+	}
+}
+
+.product__images {
+	@include media-mobile {
+		display: flex;
+		flex-direction: column;
+		max-width: 500px;	
+		align-self: center;	
+	}
+}
+
+.product__main-image {
+  border: 1px solid $color-grey;
+	border-radius: 10px;
+	overflow: hidden;	
+
+	@include media-tablet {
+		display: flex;
+		justify-content: center;
+	}
+
+	&:hover {
+		.product__main-img {
+			transform: scale(1.1);
+		}
+	}	
+
+	@include media-mobile {
+		display: flex;
+		justify-content: center;
+		align-self: center;		
+	}
+}
+
+.product__main-img {
+  width: 400px;
+  height: 400px;
+	transition: 1s;
+	
+	@include media-tablet {
+		width: 300px;
+  	height: 300px;
+	}
+
+	@include media-mobile{
+		width: 250px;
+  	height: 250px;
+	}
+}
+
+.product__mini-images {
+	display: flex;
+	padding: 20px 0;
+
+	@include media-mobile {
+		align-self: center;	
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+
+.product__mini-image {
+	border: 1px solid $color-grey;
+	border-radius: 10px;
+	overflow: hidden;
+	margin-right: 10px;
+	cursor: pointer;
+
+	&:last-child {
+		margin-right: 0;
+	}
+
+	@include media-mobile {
+		margin-bottom: 5px;
+		&:last-child {
+			margin-right: 10px;
+		}
+	}
+}
+
+.product__mini-img {
+	width: 128px;
+  height: 128px;
+	transition: 1s;
+
+	@include media-mobile{
+		width: 100px;
+  	height: 100px;
+	}
+}
+
+.product__description {
+	display: flex;
+	flex-direction: column;
+	font-family: $font-family-secondary;
+	margin-left: 30px;
+	margin-right: 20px;
+}
+
+.hl {
+	border-bottom: 1px solid $color-grey;
+}
+
+.product__title {	
+	font-size: $font-size-xlg;
+}
+
+.product__text {
+	margin: 10px 0 10px 0;
+	font-size: $font-size-lg;
+
+	span {
+		font-weight: $font-weight-bolder;
+	}
+}
+
+.product__brand {
+	margin-bottom: 5px;
+}
+
+.product__category {
+	margin-bottom: 5px;
+}
+
+.product__availability {
+	margin-bottom: 5px;
+}
+
+.product__size {
+	margin-bottom: 10px;
+}
+
+.product__price {
+	font-size: $font-size-llg;
+	padding-bottom: 10px;
+
+	span {
+		font-weight: $font-weight-bolder;
+	}	
+}
+
+.product__buttons {
+	display: flex;
+	padding-top: 0;
+	padding-bottom: 10px;
+}
+
+.product__desc {
+	padding-top: 20px;
+	font-size: $font-size-md;
+	font-weight: $font-weight-light;
+	line-height: $line-height-sm;
+
+	span {
+		font-weight: $font-weight-normal;
+	}
+}

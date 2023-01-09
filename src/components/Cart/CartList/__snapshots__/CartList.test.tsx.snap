@@ -1,0 +1,454 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders cart list 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="cart__content"
+      >
+        <div
+          class="pagination__wrapper"
+        >
+          <div
+            class="cart__title"
+          >
+            Products In Cart
+          </div>
+          <div
+            class="cart__pag"
+          >
+            Limit:
+            <input
+              class="pag__input"
+              max="1"
+              min="1"
+              type="number"
+              value="3"
+            />
+          </div>
+          <div
+            class="page__number"
+          >
+            Page:
+            <button
+              class="next__page"
+            >
+              &lt;
+            </button>
+            <span
+              class="numder-page"
+            >
+              1
+            </span>
+            <button
+              class="prev__page"
+            >
+              &gt;
+            </button>
+          </div>
+        </div>
+        <div
+          class="cart__header"
+        >
+          <div
+            class="header__name"
+          >
+            Product
+          </div>
+          <div
+            class="header__price"
+          >
+            Price
+          </div>
+          <div
+            class="header__quantity"
+          >
+            Quantity
+          </div>
+          <div
+            class="header__total"
+          >
+            Total
+          </div>
+        </div>
+        <div
+          class="cart__items"
+        >
+          <li
+            class="cart__item"
+          >
+            <div
+              class="cart__item-number"
+            >
+              1
+            </div>
+            <a
+              href="/product/1"
+            >
+              <img
+                alt="Biotech Garden Jade Plant"
+                class="cart__item-img"
+                src="https://envatopixel.com/wordpress/plantlish/wp-content/uploads/2021/07/2.webp"
+              />
+            </a>
+            <div
+              class="cart__item-desc"
+            >
+              <a
+                href="/product/1"
+              >
+                <div
+                  class="cart__item-text"
+                >
+                  <div
+                    class="cart__item-name"
+                  >
+                    Biotech Garden Jade Plant
+                  </div>
+                  <div
+                    class="cart__item-category"
+                  >
+                    Aeonium
+                  </div>
+                  <div
+                    class="cart__item-stock"
+                  >
+                    In stock: 
+                    100
+                  </div>
+                </div>
+              </a>
+              <div
+                class="cart__price"
+              >
+                22
+                 $
+              </div>
+              <div
+                class="cart__counter"
+              >
+                <button
+                  class="mini-button"
+                >
+                  -
+                </button>
+                <div
+                  class="counter"
+                >
+                  1
+                </div>
+                <button
+                  class="mini-button"
+                >
+                  +
+                </button>
+              </div>
+              <div
+                class="cart__total"
+              >
+                22
+                 $
+              </div>
+            </div>
+          </li>
+        </div>
+      </div>
+      <div
+        class="cart__summary"
+      >
+        <div
+          class="summary__title"
+        >
+          Summary
+        </div>
+        <div
+          class="summary__items"
+        >
+          Products: 
+          10
+        </div>
+        <div
+          class="summary__amount"
+        >
+          Total: 
+          3000
+          $
+        </div>
+        <div
+          class="summary__promo"
+        >
+          <div
+            class="promo__input"
+          >
+            <input
+              id="code"
+              type="search"
+              value=""
+            />
+          </div>
+          <div
+            class="promo__codes"
+          >
+            Promo for test: 'RS', 'EPM'
+          </div>
+        </div>
+        <button
+          class="cart__button"
+        >
+          Buy
+        </button>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="cart__content"
+    >
+      <div
+        class="pagination__wrapper"
+      >
+        <div
+          class="cart__title"
+        >
+          Products In Cart
+        </div>
+        <div
+          class="cart__pag"
+        >
+          Limit:
+          <input
+            class="pag__input"
+            max="1"
+            min="1"
+            type="number"
+            value="3"
+          />
+        </div>
+        <div
+          class="page__number"
+        >
+          Page:
+          <button
+            class="next__page"
+          >
+            &lt;
+          </button>
+          <span
+            class="numder-page"
+          >
+            1
+          </span>
+          <button
+            class="prev__page"
+          >
+            &gt;
+          </button>
+        </div>
+      </div>
+      <div
+        class="cart__header"
+      >
+        <div
+          class="header__name"
+        >
+          Product
+        </div>
+        <div
+          class="header__price"
+        >
+          Price
+        </div>
+        <div
+          class="header__quantity"
+        >
+          Quantity
+        </div>
+        <div
+          class="header__total"
+        >
+          Total
+        </div>
+      </div>
+      <div
+        class="cart__items"
+      >
+        <li
+          class="cart__item"
+        >
+          <div
+            class="cart__item-number"
+          >
+            1
+          </div>
+          <a
+            href="/product/1"
+          >
+            <img
+              alt="Biotech Garden Jade Plant"
+              class="cart__item-img"
+              src="https://envatopixel.com/wordpress/plantlish/wp-content/uploads/2021/07/2.webp"
+            />
+          </a>
+          <div
+            class="cart__item-desc"
+          >
+            <a
+              href="/product/1"
+            >
+              <div
+                class="cart__item-text"
+              >
+                <div
+                  class="cart__item-name"
+                >
+                  Biotech Garden Jade Plant
+                </div>
+                <div
+                  class="cart__item-category"
+                >
+                  Aeonium
+                </div>
+                <div
+                  class="cart__item-stock"
+                >
+                  In stock: 
+                  100
+                </div>
+              </div>
+            </a>
+            <div
+              class="cart__price"
+            >
+              22
+               $
+            </div>
+            <div
+              class="cart__counter"
+            >
+              <button
+                class="mini-button"
+              >
+                -
+              </button>
+              <div
+                class="counter"
+              >
+                1
+              </div>
+              <button
+                class="mini-button"
+              >
+                +
+              </button>
+            </div>
+            <div
+              class="cart__total"
+            >
+              22
+               $
+            </div>
+          </div>
+        </li>
+      </div>
+    </div>
+    <div
+      class="cart__summary"
+    >
+      <div
+        class="summary__title"
+      >
+        Summary
+      </div>
+      <div
+        class="summary__items"
+      >
+        Products: 
+        10
+      </div>
+      <div
+        class="summary__amount"
+      >
+        Total: 
+        3000
+        $
+      </div>
+      <div
+        class="summary__promo"
+      >
+        <div
+          class="promo__input"
+        >
+          <input
+            id="code"
+            type="search"
+            value=""
+          />
+        </div>
+        <div
+          class="promo__codes"
+        >
+          Promo for test: 'RS', 'EPM'
+        </div>
+      </div>
+      <button
+        class="cart__button"
+      >
+        Buy
+      </button>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
