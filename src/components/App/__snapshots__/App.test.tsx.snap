@@ -552,6 +552,12 @@ Object {
                 </div>
               </div>
               <div
+                class="main__product_total"
+              >
+                Total: 
+                40
+              </div>
+              <div
                 class="main__product_wrapper"
               >
                 <div
@@ -4663,6 +4669,12 @@ Object {
                   </option>
                 </select>
               </div>
+            </div>
+            <div
+              class="main__product_total"
+            >
+              Total: 
+              40
             </div>
             <div
               class="main__product_wrapper"
